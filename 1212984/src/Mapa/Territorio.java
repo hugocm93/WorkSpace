@@ -11,6 +11,8 @@ public class Territorio {
 		int exercitos;
 		Jogador dono;
 		Simbolo simb;
+		String[] TerritoriosFronteira;
+		
 		
 
 }

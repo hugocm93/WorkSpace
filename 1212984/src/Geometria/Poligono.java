@@ -1,12 +1,14 @@
 package Geometria;
+import java.awt.*;
 
 public class Poligono {
-	Ponto[] vertices;
+	Point[] vertices;
 	
 	
-	public boolean dentroPolig(Ponto p){
+	public boolean dentroPolig(Point p){
 		
 		int i, j;
+		
 		boolean c = false;
 		
 		  for (i = 0, j = vertices.length-1; i < vertices.length; j = i++) {

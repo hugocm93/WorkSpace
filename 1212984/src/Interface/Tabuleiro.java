@@ -1,39 +1,43 @@
 package Interface;
 
 import java.awt.HeadlessException;
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.*;
 import javax.swing.*;
 
-
 public class Tabuleiro extends JFrame{
 	
-	private BufferedImage img;
+	static final long serialVersionUID = 1L;
+	private BufferedImage imgMapa;
+	private PainelMapa painelMapa = new PainelMapa();
+	private String path1 = System.getProperty("user.dir");
+	private String path2 = "/src/Imagens/Mapas/";
 	
 	public Tabuleiro(String title) throws HeadlessException {
 		super(title);
 		
+		this.add(painelMapa);
+		this.addMouseListener(painelMapa);
+		painelMapa.setVisible(true);
+		
 		try {
-			File obj1 = new File("war_tabuleiro_com_nomes.png");
-			System.out.println(obj1.getAbsolutePath() + "--->" +obj1.getCanonicalPath());
 			
-		    img = ImageIO.read(obj1);
-		    
-		} 
-		catch (IOException e) {
-			System.out.println("Imagem não encontrada.");
+			File imgMapaFile = new File(path1 + path2 + "war_tabuleiro_com_nomes.png");
+			imgMapa = ImageIO.read(imgMapaFile);
+			
 		}
 		
-	}
-	
-	public void paintComponent(Graphics g) {
-		super.paintComponents(g);
+		catch (IOException e) {
+			
+			System.out.println("Imagem não encontrada.");
+			
+		}
 		
-		g.drawImage(img, 0, 0, this);
-    }
-	
+		painelMapa.setImg(imgMapa);
+		painelMapa.repaint();
+		
+	}
 	
 }

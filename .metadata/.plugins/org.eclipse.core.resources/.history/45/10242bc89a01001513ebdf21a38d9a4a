@@ -1,0 +1,30 @@
+package Interface;
+
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+import javax.swing.*;
+
+public class PainelMapa extends JPanel{
+	
+	BufferedImage img;
+	
+	
+	
+	public BufferedImage getImg() {
+		return img;
+	}
+
+	public void setImg(BufferedImage img) {
+		this.img = img;
+	}
+
+
+
+	public void paintComponent(Graphics g) {
+		super.paintComponents(g);
+		
+		g.drawImage(img, 100, 100, this);
+    }
+
+}

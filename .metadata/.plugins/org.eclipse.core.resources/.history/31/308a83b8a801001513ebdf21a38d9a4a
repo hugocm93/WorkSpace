@@ -1,0 +1,33 @@
+package Mapa;
+
+import Estruturas.Jogador;
+import Estruturas.Simbolo;
+import Geometria.Poligono;
+
+public class Territorio {
+	
+		String nome;
+		Poligono poligono;
+		int exercitos;
+		Jogador dono;
+		Simbolo simb;
+		String[] TerritoriosFronteira;
+		
+		
+		public String getNome() {
+			return nome;
+		}
+		public void setNome(String nome) {
+			this.nome = nome;
+		}
+		public Poligono getPoligono() {
+			return poligono;
+		}
+		public void setPoligono(Poligono poligono) {
+			this.poligono = poligono;
+		}
+		
+		
+		
+
+}

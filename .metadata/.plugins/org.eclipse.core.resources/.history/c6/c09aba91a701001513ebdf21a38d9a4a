@@ -1,0 +1,49 @@
+package Geometria;
+import java.awt.*;
+
+public class Poligono {
+	Point[] vertices;
+	
+	{
+		
+		
+		vertices = new Point[12];
+		
+		for(int i=0 ; i<12 ; i++ ){
+			vertices[i] = new Point();
+		}
+		
+		vertices[0].setLocation(528/2,820/2);
+		vertices[1].setLocation(540/2,840/2);
+		vertices[2].setLocation(594/2,840/2);
+		vertices[3].setLocation(612/2,874/2);
+		vertices[4].setLocation(636/2,874/2);
+		vertices[5].setLocation(658/2,918/2);
+		vertices[6].setLocation(700/2,921/2);
+		vertices[7].setLocation(716/2,955/2);
+		vertices[8].setLocation(680/2,1016/2);
+		vertices[9].setLocation(694/2,1042/2);
+		vertices[10].setLocation(572/2,1043/2);
+		vertices[11].setLocation(488/2,898/2);
+		
+		
+	}
+	
+	
+	public boolean dentroPolig(Point p){
+		
+		int i, j;
+		boolean c = false;
+		
+		  for (i = 0, j = vertices.length-1; i < vertices.length; j = i++) {
+		    if ( ((vertices[i].getY() > p.getY()) != (vertices[j].getY() > p.getY() )) &&
+			 (p.getX() < (vertices[j].getX() - vertices[i].getX()) * (p.getY() -vertices[i].getY()) / (vertices[j].getY()-vertices[i].getY()) + vertices[i].getX()) )
+		       c = !c;
+		    
+		    System.out.println(c);
+		  }
+		  
+		  return c;
+	}
+
+}
