@@ -4,7 +4,12 @@ import java.awt.*;
 public class Poligono {
 	Point[] vertices;
 	
-	
+	public Poligono(Point[] vertices) {
+
+		this.vertices = vertices;
+		
+	}
+
 	public boolean dentroPolig(Point p){
 		
 		int i, j;

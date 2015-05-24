@@ -1,0 +1,10 @@
+package Mapa;
+
+public class Mundo {
+	
+		Continente[] continentes;
+		
+		Tabela1 tabTroca;
+				
+
+}

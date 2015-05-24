@@ -1,0 +1,18 @@
+package Mapa;
+
+public class Mundo {
+	
+		Continente[] continentes;
+		Tabela1 tabTroca;
+		
+		public Mundo(){
+			
+			tabTroca = new Tabela1();
+			continentes = new Continente[6]; 
+			
+			
+			
+		}
+				
+
+}

@@ -1,0 +1,77 @@
+package Mapa;
+
+import Estruturas.*;
+import Geometria.*;
+import java.awt.*;
+
+public class Mundo {
+	
+		Continente[] continentes;
+		Tabela1 tabTroca;
+		
+		public Mundo(){
+			
+			tabTroca = new Tabela1();
+			continentes = new Continente[6]; 
+			
+			String nome;
+			Territorio[] territorios;
+			Cor cor;
+			int exercitosTabela;
+			String nomeT;
+			Poligono poligono;
+			Simbolo simb;
+			String[] territoriosFronteira;
+			
+			
+			
+			
+			
+//			nome = "América do Norte";
+//			cor = new Cor(238,64,54);
+//			exercitosTabela = 5;
+//			territorios = new Territorio[9];
+//			
+//			nomeT = "Alasca";
+			poligono = Poligono(new Point[]{new Point(),new Point(),new Point(),new Point()});
+//			simb = Simbolo.TRIANGULO;
+//			territoriosFronteira = ;
+//			//territorios[i] = Territorio(nomeT, poligono, 0, null, simb, territoriosFronteira);
+//			
+//			//continentes[0] = new Continente(nome, territorios, cor, null, exercitosTabela);
+//			
+//			nome = "América do Sul";
+//			cor = new Cor(0,104,56);
+//			exercitosTabela = 2;
+//			//territorios = ;
+//			//continentes[0] = new Continente(nome, territorios, cor, null, exercitosTabela);
+//			
+//			nome = "África";
+//			cor = new Cor(101,45,144);
+//			exercitosTabela = 3;
+//			//territorios = ;
+//			//continentes[0] = new Continente(nome, territorios, cor, null, exercitosTabela);
+//			
+//			nome = "Europa";
+//			cor = new Cor(43,56,143);
+//			exercitosTabela = 5;
+//			//territorios = ;
+//			//continentes[0] = new Continente(nome, territorios, cor, null, exercitosTabela);
+//			
+//			nome = "Ásia";
+//			cor = new Cor(246,146,30);
+//			exercitosTabela = 7;
+//			//territorios = ;
+//			//continentes[0] = new Continente(nome, territorios, cor, null, exercitosTabela);
+//			
+//			nome = "Oceania";
+//			cor = new Cor(38,169,224);
+//			exercitosTabela = 2;
+//			//territorios = ;
+//			//continentes[0] = new Continente(nome, territorios, cor, null, exercitosTabela);
+			
+			
+		}
+				
+
+}

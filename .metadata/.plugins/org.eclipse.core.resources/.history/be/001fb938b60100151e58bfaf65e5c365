@@ -1,0 +1,36 @@
+package Mapa;
+
+import Estruturas.*;
+
+public class Mundo {
+	
+		Continente[] continentes;
+		Tabela1 tabTroca;
+		
+		public Mundo(){
+			
+			tabTroca = new Tabela1();
+			continentes = new Continente[6]; 
+			
+			String nome;
+			Territorio[] territorios;
+			Cor cor;
+			int exercitosTabela;
+			
+			
+			
+			
+			
+			
+			nome = "América do Norte";
+			//territorios = ;
+			//cor = ;
+			exercitosTabela = 5;
+			
+			continentes[0] = new Continente(nome, territorios, cor, null, exercitosTabela);
+			
+			
+		}
+				
+
+}
