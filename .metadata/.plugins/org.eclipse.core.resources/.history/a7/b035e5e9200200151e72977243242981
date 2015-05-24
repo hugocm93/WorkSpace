@@ -32,7 +32,7 @@ public class PainelMapa extends JPanel implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
-		int packedInt = img.getRGB(e.getX()*2 - 1, e.getY()*2 + 80);
+		int packedInt = img.getRGB(e.getX()*2, e.getY()*2);
 		
 		Color color = new Color(packedInt, true);
 //        System.out.printf("(%d,%d,%d)\n", color.getRed(),color.getGreen(),color.getBlue());
@@ -40,28 +40,15 @@ public class PainelMapa extends JPanel implements MouseListener{
 		
 //		System.out.printf("new Point(%d,%d),", e.getX(), e.getY());
 		
-		int flag = 0;
-		
+				
 		for(int j=0 ; j<mundo.getContinentes().length ;j++){
 			if(mundo.getContinentes()[j].getCor().equals(new Cor(color.getRed(),color.getGreen(),color.getBlue())) == false){
-				//System.out.printf("%d %d %d - %d %d %d\n", mundo.getContinentes()[j].getCor().getR(),mundo.getContinentes()[j].getCor().getG(),mundo.getContinentes()[j].getCor().getB(),color.getRed(),color.getGreen(),color.getBlue());
-				continue;
+				System.out.printf("%d %d %d - %d %d %d", mundo.getContinentes()[j].getCor().getR(),mundo.getContinentes()[j].getCor().getG(),mundo.getContinentes()[j].getCor().getB(),color.getRed(),color.getGreen(),color.getBlue());
+				break;
 			}
 			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
 				if(mundo.getContinentes()[j].getTerritorios()[i].getPoligono().dentroPolig(new Point(e.getX(),e.getY()+80)) == true){
 					System.out.println(mundo.getContinentes()[j].getTerritorios()[i].getNome());
-					flag = 1;
-				}
-			}
-		}
-		
-		if(flag == 0){
-			for(int j=0 ; j<mundo.getContinentes().length ;j++){
-				
-				for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
-					if(mundo.getContinentes()[j].getTerritorios()[i].getPoligono().dentroPolig(new Point(e.getX(),e.getY()+80)) == true){
-						System.out.println(mundo.getContinentes()[j].getTerritorios()[i].getNome());
-					}
 				}
 			}
 		}

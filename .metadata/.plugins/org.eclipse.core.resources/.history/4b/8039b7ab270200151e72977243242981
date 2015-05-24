@@ -57,7 +57,10 @@ public class PainelMapa extends JPanel implements MouseListener{
 		
 		if(flag == 0){
 			for(int j=0 ; j<mundo.getContinentes().length ;j++){
-				
+				if(mundo.getContinentes()[j].getCor().equals(new Cor(color.getRed(),color.getGreen(),color.getBlue())) == false){
+					//System.out.printf("%d %d %d - %d %d %d\n", mundo.getContinentes()[j].getCor().getR(),mundo.getContinentes()[j].getCor().getG(),mundo.getContinentes()[j].getCor().getB(),color.getRed(),color.getGreen(),color.getBlue());
+					continue;
+				}
 				for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
 					if(mundo.getContinentes()[j].getTerritorios()[i].getPoligono().dentroPolig(new Point(e.getX(),e.getY()+80)) == true){
 						System.out.println(mundo.getContinentes()[j].getTerritorios()[i].getNome());
