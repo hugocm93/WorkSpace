@@ -9,8 +9,6 @@ public class Mundo {
 		Continente[] continentes;
 		Tabela1 tabTroca;
 		Jogador[] jogadores;
-		Dado[] dadosAtaque;
-		Dado[] dadosDefesa;
 		
 		public Mundo(){
 			
