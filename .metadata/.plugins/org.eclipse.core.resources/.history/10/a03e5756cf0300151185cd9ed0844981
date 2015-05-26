@@ -25,7 +25,16 @@ public class PainelMapa extends JPanel implements MouseListener{
 	private String path2 = "/src/Imagens/Mapas/";
 	private BufferedImage imgMapa;
 	
+	public Tabuleiro tabuleiro;
 	
+	public Tabuleiro getTabuleiro() {
+		return tabuleiro;
+	}
+
+	public void setTabuleiro(Tabuleiro tabuleiro) {
+		this.tabuleiro = tabuleiro;
+	}
+
 	public PainelMapa(){
 		try {
 			

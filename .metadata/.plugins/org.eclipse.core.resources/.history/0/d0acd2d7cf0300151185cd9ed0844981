@@ -14,14 +14,20 @@ public class Tabuleiro extends JFrame{
 	
 	private static Tabuleiro instance;
 	
+	private Tabuleiro(String[] str){
+		
+	}
+	private Tabuleiro(){
+		
+	}
 	
 	public static Tabuleiro getInstance() {
 	      if (instance == null)
-	         instance = new Tabuleiro("War");
+	         instance = new Tabuleiro();
 	      return instance;
 	   }
 	
-	private Tabuleiro(String title) throws HeadlessException {
+	public Tabuleiro(String title) throws HeadlessException {
 		super(title);
 				
 		this.add(painelTelaInicial);

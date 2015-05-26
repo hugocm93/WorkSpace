@@ -3,7 +3,6 @@ package Interface;
 
 import java.awt.Component;
 import java.awt.Graphics;
-import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -70,12 +69,11 @@ public class PainelTelaInicial extends JPanel implements MouseListener{
 		
 		PainelMapa painelMapa = new PainelMapa();
 		
+		this.setVisible(false);
+		
 		Tabuleiro.getInstance().add(painelMapa);
 		Tabuleiro.getInstance().addMouseListener(painelMapa);
 		painelMapa.setVisible(true);
-		
-		this.setVisible(false);
-		Tabuleiro.getInstance().removeMouseListener(this);
 		
 		
 	}

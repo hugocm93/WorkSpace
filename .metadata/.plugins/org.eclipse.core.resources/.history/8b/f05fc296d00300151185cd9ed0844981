@@ -70,12 +70,12 @@ public class PainelTelaInicial extends JPanel implements MouseListener{
 		
 		PainelMapa painelMapa = new PainelMapa();
 		
+		this.setVisible(false);
+		
 		Tabuleiro.getInstance().add(painelMapa);
 		Tabuleiro.getInstance().addMouseListener(painelMapa);
 		painelMapa.setVisible(true);
-		
-		this.setVisible(false);
-		Tabuleiro.getInstance().removeMouseListener(this);
+		this.removeComponentListener((ComponentListener) this);
 		
 		
 	}
