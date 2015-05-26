@@ -9,7 +9,7 @@ public class Jogo {
 		Tabuleiro janela = new Tabuleiro("War");
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
 		janela.setVisible(true);
-
+		
 		
 	}
 

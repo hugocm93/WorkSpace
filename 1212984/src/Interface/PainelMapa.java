@@ -6,19 +6,28 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 import Mapa.*;
 import Estruturas.Cor;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class PainelMapa extends JPanel implements MouseListener{
 	
 	private static final long serialVersionUID = 1L;
 	private BufferedImage img;
-	private Mundo mundo = new Mundo();
+	private Mundo mundo = Mundo.getInstance();
 	
 	private int largura = 1024;
 	private int altura = 768;
+	private int constMagica = 0;
+	
+//	private int largura = 800;
+//	private int altura = 600;
+//	private int constMagica = 10;
 	
 	
 	private int largImg = 2133;
@@ -32,7 +41,30 @@ public class PainelMapa extends JPanel implements MouseListener{
 	private int deslocamento = Math.round(80*constConversaoY);
 	private int deslocamento2 = 80;
 	
+	private String path1 = System.getProperty("user.dir");
+	private String path2 = "/src/Imagens/Mapas/";
+	private BufferedImage imgMapa;
+	
+	public PainelMapa(){
+		try {
+			
+			File imgMapaFile = new File(path1 + path2 + "war_tabuleiro_com_nomes.png");
+			imgMapa = ImageIO.read(imgMapaFile);
+			
+		}
+		
+		catch (IOException e) {
+			
+			System.out.println("Imagem não encontrada.");
+			
+		}
+		
+		this.setImg(imgMapa);
+		this.repaint();
 
+	}
+	
+	
 	public void setImg(BufferedImage img) {
 		this.img = img;
 	}
@@ -77,11 +109,11 @@ public class PainelMapa extends JPanel implements MouseListener{
 		
 		for(int j=0 ; j<mundo.getContinentes().length ;j++){
 			if(mundo.getContinentes()[j].getCor().equals(new Cor(color.getRed(),color.getGreen(),color.getBlue())) == false){
-				//System.out.printf("%d %d %d - %d %d %d\n", mundo.getContinentes()[j].getCor().getR(),mundo.getContinentes()[j].getCor().getG(),mundo.getContinentes()[j].getCor().getB(),color.getRed(),color.getGreen(),color.getBlue());
+//				System.out.printf("%d %d %d - %d %d %d\n", mundo.getContinentes()[j].getCor().getR(),mundo.getContinentes()[j].getCor().getG(),mundo.getContinentes()[j].getCor().getB(),color.getRed(),color.getGreen(),color.getBlue());
 				continue;
 			}
 			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
-				if(mundo.getContinentes()[j].getTerritorios()[i].getPoligono().dentroPolig(new Point( Math.round(e.getX()/constConversaoX),Math.round(e.getY()/constConversaoY+deslocamento2))) == true){
+				if(mundo.getContinentes()[j].getTerritorios()[i].getPoligono().dentroPolig(new Point( Math.round(e.getX()/constConversaoX),Math.round((e.getY())/constConversaoY)+deslocamento2-constMagica)) == true){
 					System.out.println(mundo.getContinentes()[j].getTerritorios()[i].getNome());
 					flag = 1;
 				}
@@ -91,7 +123,7 @@ public class PainelMapa extends JPanel implements MouseListener{
 		if(flag == 0){
 			for(int j=0 ; j<mundo.getContinentes().length ;j++){
 				for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
-					if(mundo.getContinentes()[j].getTerritorios()[i].getPoligono().dentroPolig(new Point(Math.round(e.getX()/constConversaoX),Math.round(e.getY()/constConversaoY+deslocamento2))) == true){
+					if(mundo.getContinentes()[j].getTerritorios()[i].getPoligono().dentroPolig(new Point(Math.round(e.getX()/constConversaoX),Math.round((e.getY())/constConversaoY)+deslocamento2-constMagica)) == true){
 						System.out.println(mundo.getContinentes()[j].getTerritorios()[i].getNome());
 					}
 				}

@@ -12,7 +12,18 @@ public class Mundo {
 		Dado[] dadosAtaque;
 		Dado[] dadosDefesa;
 		
-		public Mundo(){
+		
+		
+		private static Mundo instance;
+		
+		public static Mundo getInstance() {
+		      if (instance == null)
+		         instance = new Mundo();
+		      return instance;
+		   }
+
+		
+		private Mundo(){
 			
 			tabTroca = new Tabela1();
 			continentes = new Continente[6]; 
