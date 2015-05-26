@@ -18,9 +18,9 @@ public class Tabuleiro extends JFrame{
 		this.addMouseListener(painelMapa);
 		painelMapa.setVisible(true);
 		
-		//this.add(painelTelaInicial);
-		//this.addMouseListener(painelTelaInicial);
-		//painelTelaInicial.setVisible(true);
+//		this.add(painelTelaInicial);
+//		this.addMouseListener(painelTelaInicial);
+//		painelTelaInicial.setVisible(true);
 		
 		this.setSize(Constantes.getLargura(), Constantes.getAltura());
 		

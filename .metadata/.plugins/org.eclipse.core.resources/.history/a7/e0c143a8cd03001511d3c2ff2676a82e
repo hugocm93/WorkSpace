@@ -9,7 +9,7 @@ public class Tabuleiro extends JFrame{
 	static final long serialVersionUID = 1L;
 	
 	private PainelMapa painelMapa = new PainelMapa();
-	//private PainelTelaInicial painelTelaInicial = new PainelTelaInicial();
+	private PainelTelaInicial painelTelaInicial = new PainelTelaInicial();
 	
 	public Tabuleiro(String title) throws HeadlessException {
 		super(title);

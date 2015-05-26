@@ -62,7 +62,7 @@ public class PainelTelaInicial extends JPanel implements MouseListener{
 
 
 	public void mouseClicked(MouseEvent e) {
-		
+		this.setVisible(false);
 		
 	}
 

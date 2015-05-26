@@ -55,7 +55,7 @@ public class PainelTelaInicial extends JPanel implements MouseListener{
 		
 		g.drawImage(imgMapa, 0, - Constantes.getDeslocamento(), Constantes.getLargura(), Constantes.getAltura() , null);
 		g.drawImage(imgTitulo, 0, -5, Constantes.getLargura() + 5,Math.round(imgTitulo.getHeight()/Constantes.getConstConversao()) , null);
-		g.drawImage(imgPlay, Constantes.getLargura() - imgPlay.getWidth()/3 ,  Constantes.getAltura() - imgPlay.getHeight()/2, imgPlay.getWidth()/4, imgPlay.getHeight()/4 , null);
+		g.drawImage(imgPlay, Constantes.getLargura() - imgPlay.getWidth()/2 ,  Constantes.getAltura() - imgPlay.getHeight(), imgPlay.getWidth()/4, imgPlay.getHeight()/4 , null);
 		
 		g.finalize();
     }

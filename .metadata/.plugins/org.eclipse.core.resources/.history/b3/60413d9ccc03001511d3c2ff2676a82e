@@ -22,7 +22,6 @@ public class PainelTelaInicial extends JPanel implements MouseListener{
 	private String path3 = "/src/Imagens/Background/";
 	private BufferedImage imgMapa;
 	private BufferedImage imgTitulo;
-	private BufferedImage imgPlay;
 
 	public PainelTelaInicial(){
 		
@@ -33,9 +32,6 @@ public class PainelTelaInicial extends JPanel implements MouseListener{
 			
 			File imgTituloFile = new File(path1 + path3 + "war_titulo.png");
 			imgTitulo = ImageIO.read(imgTituloFile);
-			
-			File imgPlayFile = new File(path1 + path3 + "war_play.png");
-			imgPlay = ImageIO.read(imgPlayFile);
 			
 		}
 		
@@ -55,7 +51,6 @@ public class PainelTelaInicial extends JPanel implements MouseListener{
 		
 		g.drawImage(imgMapa, 0, - Constantes.getDeslocamento(), Constantes.getLargura(), Constantes.getAltura() , null);
 		g.drawImage(imgTitulo, 0, -5, Constantes.getLargura() + 5,Math.round(imgTitulo.getHeight()/Constantes.getConstConversao()) , null);
-		g.drawImage(imgPlay, Constantes.getLargura() - imgPlay.getWidth()/3 ,  Constantes.getAltura() - imgPlay.getHeight()/2, imgPlay.getWidth()/4, imgPlay.getHeight()/4 , null);
 		
 		g.finalize();
     }
