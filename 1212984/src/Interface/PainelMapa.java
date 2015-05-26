@@ -17,6 +17,21 @@ public class PainelMapa extends JPanel implements MouseListener{
 	private BufferedImage img;
 	private Mundo mundo = new Mundo();
 	
+	private int largura = 1024;
+	private int altura = 768;
+	
+	
+	private int largImg = 2133;
+	private int altImg = 1600;
+	
+	private float constConversao = (float)altImg/altura;
+	private float constConversaoX = (float)largura/1067;
+	private float constConversaoY = (float)altura/800;
+	
+	private int deslocamento = Math.round(80*constConversaoY);
+	private int deslocamento2 = 80;
+	
+
 	public void setImg(BufferedImage img) {
 		this.img = img;
 	}
@@ -24,21 +39,38 @@ public class PainelMapa extends JPanel implements MouseListener{
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
 		
-		g.drawImage(img, 0, -80, 1067,800 , null);
+		g.drawImage(img, 0, - deslocamento, largura,altura , null);
 		g.finalize();
     }
 
+	
+	public int getAltura() {
+		return altura;
+	}
+
+	public void setAltura(int altura) {
+		this.altura = altura;
+	}
+
+	public int getLargura() {
+		return largura;
+	}
+
+	public void setLargura(int largura) {
+		this.largura = largura;
+	}
 
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
-		int packedInt = img.getRGB(e.getX()*2 - 1, e.getY()*2 + 80);
+		int packedInt = img.getRGB(Math.round(e.getX()*constConversao), Math.round((e.getY() + deslocamento)*constConversao - deslocamento/2));
 		
 		Color color = new Color(packedInt, true);
 //        System.out.printf("(%d,%d,%d)\n", color.getRed(),color.getGreen(),color.getBlue());
 		
 		
-//		System.out.printf("new Point(%d,%d),", e.getX(), e.getY());
+//		System.out.printf("new Point(%d,%d),", Math.round(e.getX()*constConversaoX), Math.round(e.getY()*constConversaoY));
+		
 		
 		int flag = 0;
 		
@@ -48,7 +80,7 @@ public class PainelMapa extends JPanel implements MouseListener{
 				continue;
 			}
 			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
-				if(mundo.getContinentes()[j].getTerritorios()[i].getPoligono().dentroPolig(new Point(e.getX(),e.getY()+80)) == true){
+				if(mundo.getContinentes()[j].getTerritorios()[i].getPoligono().dentroPolig(new Point( Math.round(e.getX()/constConversaoX),Math.round(e.getY()/constConversaoY+deslocamento2))) == true){
 					System.out.println(mundo.getContinentes()[j].getTerritorios()[i].getNome());
 					flag = 1;
 				}
@@ -58,14 +90,13 @@ public class PainelMapa extends JPanel implements MouseListener{
 		if(flag == 0){
 			for(int j=0 ; j<mundo.getContinentes().length ;j++){
 				for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
-					if(mundo.getContinentes()[j].getTerritorios()[i].getPoligono().dentroPolig(new Point(e.getX(),e.getY()+80)) == true){
+					if(mundo.getContinentes()[j].getTerritorios()[i].getPoligono().dentroPolig(new Point(Math.round(e.getX()/constConversaoX),Math.round(e.getY()/constConversaoY+deslocamento2))) == true){
 						System.out.println(mundo.getContinentes()[j].getTerritorios()[i].getNome());
 					}
 				}
 			}
 		}
 		
-      
 		
 	}
 

@@ -7,9 +7,9 @@ public class Jogo {
 		// TODO Auto-generated method stub
 		
 		Tabuleiro janela = new Tabuleiro("War");
-		janela.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		janela.setSize(1067,800);
+		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
 		janela.setVisible(true);
+
 		
 	}
 
