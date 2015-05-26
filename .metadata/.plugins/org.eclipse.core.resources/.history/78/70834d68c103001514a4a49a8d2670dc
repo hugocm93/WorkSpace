@@ -1,0 +1,25 @@
+package Estruturas;
+
+public  abstract class Constantes {
+	
+	public int largura = 1024;
+	public int altura = 768;
+	public int constMagica = 0;
+	
+//	public int largura = 800;
+//	public int altura = 600;
+//	public int constMagica = 10;
+	
+	
+	public int largImg = 2133;
+	public int altImg = 1600;
+	
+	public float constConversao = (float)altImg/altura;
+	public float constConversao2 = (float)largImg/largura;
+	public float constConversaoX = (float)largura/1067;
+	public float constConversaoY = (float)altura/800;
+	
+	public int deslocamento = Math.round(80*constConversaoY);
+	public int deslocamento2 = 80;
+
+}

@@ -19,6 +19,7 @@ import javax.swing.*;
 public class PainelMapa extends JPanel implements MouseListener{
 	
 	private static final long serialVersionUID = 1L;
+	private BufferedImage img;
 	private Mundo mundo = Mundo.getInstance();
 		
 	private String path1 = System.getProperty("user.dir");
@@ -39,41 +40,54 @@ public class PainelMapa extends JPanel implements MouseListener{
 			
 		}
 		
+		this.setImg(imgMapa);
 		this.repaint();
 
 	}
 	
+	
+	public void setImg(BufferedImage img) {
+		this.img = img;
+	}
+
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
 		
-		g.drawImage(imgMapa, 0, - Constantes.getDeslocamento(), Constantes.getLargura(), Constantes.getAltura() , null);
+		g.drawImage(img, 0, - Constantes.getDeslocamento(), Constantes.getLargura(), Constantes.getAltura() , null);
 		g.finalize();
 
     }
 
 
 	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
-		int packedInt = imgMapa.getRGB(Math.round(e.getX()*Constantes.getConstConversao2()), Math.round((e.getY() + Constantes.getDeslocamento())*Constantes.getConstConversao() - Constantes.getDeslocamento()/2));
+		int packedInt = img.getRGB(Math.round(e.getX()*Constantes.getConstConversao2()), Math.round((e.getY() + Constantes.getDeslocamento())*Constantes.getConstConversao() - Constantes.getDeslocamento()/2));
+		
 		Color color = new Color(packedInt, true);
+//        System.out.printf("(%d,%d,%d)\n", color.getRed(),color.getGreen(),color.getBlue());
 		
-//      System.out.printf("(%d,%d,%d)\n", color.getRed(),color.getGreen(),color.getBlue());
+		
 //		System.out.printf("new Point(%d,%d),", Math.round(e.getX()*constConversaoX), Math.round(e.getY()*constConversaoY));
 		
-		int j;
-		for(j=0 ; mundo.getContinentes()[j].getCor().equals(new Cor(color.getRed(),color.getGreen(),color.getBlue())) == false ;j++){
-//			System.out.printf("%d %d %d - %d %d %d\n", mundo.getContinentes()[j].getCor().getR(),mundo.getContinentes()[j].getCor().getG(),mundo.getContinentes()[j].getCor().getB(),color.getRed(),color.getGreen(),color.getBlue());
+		
+		boolean flag = false;
+		
+		for(int j=0 ; j<mundo.getContinentes().length ;j++){
+			if(mundo.getContinentes()[j].getCor().equals(new Cor(color.getRed(),color.getGreen(),color.getBlue())) == false){
+//				System.out.printf("%d %d %d - %d %d %d\n", mundo.getContinentes()[j].getCor().getR(),mundo.getContinentes()[j].getCor().getG(),mundo.getContinentes()[j].getCor().getB(),color.getRed(),color.getGreen(),color.getBlue());
+				continue;
+			}
+			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
+				flag = this.percorre(e, j);
+			}
 		}
 		
-		if(mundo.getContinentes()[j].getCor().equals(new Cor(color.getRed(),color.getGreen(),color.getBlue())) == true){
-			this.percorre(e, j);
-		}
-		
-		else{
-			for(int k=0 ; j<mundo.getContinentes().length ;k++)
-				this.percorre(e, k);
-		}
+		if(flag == false)
+			for(int j=0 ; j<mundo.getContinentes().length ;j++)
+				this.percorre(e, j);
 				
+		
 	}
 
 	public void mousePressed(MouseEvent e) {}

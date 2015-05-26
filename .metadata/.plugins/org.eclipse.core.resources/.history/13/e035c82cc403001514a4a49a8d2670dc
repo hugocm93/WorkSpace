@@ -17,12 +17,13 @@ public class Tabuleiro extends JFrame{
 		this.add(painelMapa);
 		this.addMouseListener(painelMapa);
 		painelMapa.setVisible(true);
+		this.setSize(Constantes.getLargura(), Constantes.getAltura());
+		
 		
 //		this.add(painelTelaInicial);
 //		this.addMouseListener(painelTelaInicial);
 //		painelTelaInicial.setVisible(true);
-		
-		this.setSize(Constantes.getLargura(), Constantes.getAltura());
+//		this.setSize(painelTelaInicial.getLargura(), painelTelaInicial.getAltura());
 		
 	
 	}
