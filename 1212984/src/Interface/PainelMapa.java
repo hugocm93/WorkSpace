@@ -25,6 +25,7 @@ public class PainelMapa extends JPanel implements MouseListener{
 	private int altImg = 1600;
 	
 	private float constConversao = (float)altImg/altura;
+	private float constConversao2 = (float)largImg/largura;
 	private float constConversaoX = (float)largura/1067;
 	private float constConversaoY = (float)altura/800;
 	
@@ -63,7 +64,7 @@ public class PainelMapa extends JPanel implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
-		int packedInt = img.getRGB(Math.round(e.getX()*constConversao), Math.round((e.getY() + deslocamento)*constConversao - deslocamento/2));
+		int packedInt = img.getRGB(Math.round(e.getX()*constConversao2), Math.round((e.getY() + deslocamento)*constConversao - deslocamento/2));
 		
 		Color color = new Color(packedInt, true);
 //        System.out.printf("(%d,%d,%d)\n", color.getRed(),color.getGreen(),color.getBlue());
