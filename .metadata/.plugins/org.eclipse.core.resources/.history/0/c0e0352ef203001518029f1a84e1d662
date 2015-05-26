@@ -55,21 +55,7 @@ public class PainelTelaInicial extends JPanel implements ActionListener{
 			
 		}
 		
-		
-		
-		BufferedImage thumbnail = Scalr.resize(imgPlay, 100);
-		botaoPlay.setIcon(new ImageIcon(thumbnail));
-		botaoPlay.addActionListener(this);
-		botaoPlay.setOpaque(false);
-		botaoPlay.setContentAreaFilled(false);
-		botaoPlay.setBorderPainted(false);
-		botaoPlay.setSize(imgPlay.getWidth()/4, imgPlay.getHeight()/4);
-		botaoPlay.setBounds(Constantes.getLargura() - imgPlay.getWidth()/3 ,  Constantes.getAltura() - imgPlay.getHeight()/2, imgPlay.getWidth()/4, imgPlay.getHeight()/4);
-		this.add(botaoPlay);
-		botaoPlay.setVisible(true);
-		
 		this.repaint();
-		
 
 	}
 	
@@ -79,23 +65,38 @@ public class PainelTelaInicial extends JPanel implements ActionListener{
 		
 		g.drawImage(imgMapa, 0, - Constantes.getDeslocamento(), Constantes.getLargura(), Constantes.getAltura() , null);
 		g.drawImage(imgTitulo, 0, -5, Constantes.getLargura() + 5,Math.round(imgTitulo.getHeight()/Constantes.getConstConversao()) , null);
+		//g.drawImage(imgPlay, Constantes.getLargura() - imgPlay.getWidth()/3 ,  Constantes.getAltura() - imgPlay.getHeight()/2, imgPlay.getWidth()/4, imgPlay.getHeight()/4 , null);
+		
+		
+		botaoPlay.setOpaque(false);
+		botaoPlay.setContentAreaFilled(false);
+		botaoPlay.setBorderPainted(false);
+		
+		BufferedImage thumbnail = Scalr.resize(imgPlay, 100);
+		botaoPlay.setIcon(new ImageIcon(thumbnail));
+		botaoPlay.addActionListener(this);
+		
+		botaoPlay.setSize(imgPlay.getWidth()/4, imgPlay.getHeight()/4);
+		botaoPlay.setBounds(Constantes.getLargura() - imgPlay.getWidth()/3 ,  Constantes.getAltura() - imgPlay.getHeight()/2, imgPlay.getWidth()/4, imgPlay.getHeight()/4);
+		this.add(botaoPlay);
+		botaoPlay.setVisible(true);
 		g.finalize();
     }
 
 
 
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == botaoPlay){
-			System.out.println("Action");
-			
-			PainelMapa painelMapa = new PainelMapa();
+		
+		System.out.println("Action");
+		
+//		PainelMapa painelMapa = new PainelMapa();
+//		
+//		Tabuleiro.getInstance().add(painelMapa);
+//		Tabuleiro.getInstance().addMouseListener(painelMapa);
+//		painelMapa.setVisible(true);
+//		
+//		this.setVisible(false);
 
-			Tabuleiro.getInstance().add(painelMapa);
-			Tabuleiro.getInstance().addMouseListener(painelMapa);
-			painelMapa.setVisible(true);
-
-			this.setVisible(false);
-		}
 		
 	}
 

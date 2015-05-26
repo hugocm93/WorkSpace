@@ -25,6 +25,7 @@ public class Tabuleiro extends JFrame{
 		super(title);
 				
 		this.add(painelTelaInicial);
+		this.addMouseListener(painelTelaInicial);
 		painelTelaInicial.setVisible(true);
 		
 		this.setSize(Constantes.getLargura(), Constantes.getAltura());
