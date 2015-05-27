@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+
 import Mapa.Mundo;
 import Estruturas.Constantes;
 
@@ -57,14 +58,25 @@ public class PainelTelaInicial extends JPanel implements ActionListener{
 		
 		
 		BufferedImage thumbnail = Scalr.resize(imgPlay, 100);
+		
+	
 		botaoPlay.setIcon(new ImageIcon(thumbnail));
 		botaoPlay.addActionListener(this);
+		
+		this.add(botaoPlay);
+		
+		botaoPlay.setBounds( 800,800   ,100 ,100 );
+		
+		
 		botaoPlay.setOpaque(false);
 		botaoPlay.setContentAreaFilled(false);
 		botaoPlay.setBorderPainted(false);
+<<<<<<< HEAD
 		botaoPlay.setSize(imgPlay.getWidth()/4, imgPlay.getHeight()/4);
 		
 		this.add(botaoPlay);
+=======
+>>>>>>> c163c84de9add41d2a2e47b4955f3ab5db3493e4
 		botaoPlay.setVisible(true);
 		
 		this.repaint();
