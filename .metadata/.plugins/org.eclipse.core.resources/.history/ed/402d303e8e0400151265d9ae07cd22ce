@@ -71,10 +71,12 @@ public class PainelTelaInicial extends JPanel implements ActionListener{
 		botaoPlay.setOpaque(false);
 		botaoPlay.setContentAreaFilled(false);
 		botaoPlay.setBorderPainted(false);
+<<<<<<< HEAD
 		botaoPlay.setSize(imgPlay.getWidth()/4, imgPlay.getHeight()/4);
 		
 		this.add(botaoPlay);
-
+=======
+>>>>>>> c163c84de9add41d2a2e47b4955f3ab5db3493e4
 		botaoPlay.setVisible(true);
 		
 		this.repaint();
