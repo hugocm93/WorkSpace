@@ -27,9 +27,11 @@ public class PainelTelaInicial extends JPanel implements ActionListener{
 		
 	private String path1 = System.getProperty("user.dir");
 	private String path2 = "/src/Imagens/Background/";
+	private String path3 = "/src/Imagens/Pinos/";
 	private BufferedImage imgMapa;
 	private BufferedImage imgTitulo;
 	private BufferedImage imgPlay;
+	private BufferedImage[] pinos = new BufferedImage[6];;
 	
 	JButton botaoPlay = new JButton();
 	
@@ -47,6 +49,13 @@ public class PainelTelaInicial extends JPanel implements ActionListener{
 			File imgPlayFile = new File(path1 + path2 + "war_play.png");
 			imgPlay = ImageIO.read(imgPlayFile);
 			
+			File[] imgPinoFile = new File[]{new File(path1 + path3 + "vermelho.png"),new File(path1 + path3 + "verde.png"),new File(path1 + path3 + "amarelo.png"),new File(path1 + path3 + "azul.png"),new File(path1 + path3 + "branco.png"),new File(path1 + path3 + "preto.png")};
+			
+			for(int i=0;i<6;i++){
+				pinos[i] = ImageIO.read(imgPinoFile[i]);
+			}
+			
+			
 		}
 		
 		catch (IOException e) {
@@ -62,19 +71,11 @@ public class PainelTelaInicial extends JPanel implements ActionListener{
 	
 		botaoPlay.setIcon(new ImageIcon(thumbnail));
 		botaoPlay.addActionListener(this);
-		
 		this.add(botaoPlay);
-		
-		botaoPlay.setBounds( 800,800   ,100 ,100 );
-		
-		
 		botaoPlay.setOpaque(false);
 		botaoPlay.setContentAreaFilled(false);
 		botaoPlay.setBorderPainted(false);
 		botaoPlay.setSize(imgPlay.getWidth()/4, imgPlay.getHeight()/4);
-		
-		this.add(botaoPlay);
-
 		botaoPlay.setVisible(true);
 		
 		this.repaint();
@@ -89,6 +90,12 @@ public class PainelTelaInicial extends JPanel implements ActionListener{
 		g.drawImage(imgMapa, 0, - Constantes.getDeslocamento(), Constantes.getLargura(), Constantes.getAltura() , null);
 		g.drawImage(imgTitulo, 0, -5, Constantes.getLargura() + 5,Math.round(imgTitulo.getHeight()/Constantes.getConstConversao()) , null);
 		botaoPlay.setBounds(Constantes.getLargura() - imgPlay.getWidth()/3 ,  Constantes.getAltura() - imgPlay.getHeight()/2, imgPlay.getWidth()/4, imgPlay.getHeight()/4);
+		
+		for(int i=0;i<2;i++){
+			for(int j=0;j<3;j++){
+				g.drawImage(pinos[j+i*3], i*400+70, j*170+150, 65, 65 , null);
+			}
+		}
 		g.finalize();
     }
 
