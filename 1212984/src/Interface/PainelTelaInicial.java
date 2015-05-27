@@ -8,12 +8,12 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
 
 import Mapa.Mundo;
 import Estruturas.Constantes;
@@ -58,23 +58,25 @@ public class PainelTelaInicial extends JPanel implements ActionListener{
 		
 		
 		
+		
 		BufferedImage thumbnail = Scalr.resize(imgPlay, 100);
 		
 	
 		botaoPlay.setIcon(new ImageIcon(thumbnail));
 		botaoPlay.addActionListener(this);
+		botaoPlay.setBounds( 200, 200  ,50 ,50 );
 		
 		this.add(botaoPlay);
-		
-		botaoPlay.setBounds( 800,800   ,100 ,100 );
-		
+		botaoPlay.setVisible(true);
 		
 		botaoPlay.setOpaque(false);
 		botaoPlay.setContentAreaFilled(false);
 		botaoPlay.setBorderPainted(false);
-		botaoPlay.setVisible(true);
 		
 		this.repaint();
+		
+		
+		
 		
 
 	}
