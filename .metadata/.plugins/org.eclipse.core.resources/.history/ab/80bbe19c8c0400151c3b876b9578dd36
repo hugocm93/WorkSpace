@@ -14,6 +14,7 @@ public class Tabuleiro extends JFrame{
 	
 	private static Tabuleiro instance;
 	
+	
 	public static Tabuleiro getInstance() {
 	      if (instance == null)
 	         instance = new Tabuleiro("War");

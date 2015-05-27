@@ -25,7 +25,8 @@ public class PainelTelaInicial extends JPanel implements ActionListener{
 	private Mundo mundo = Mundo.getInstance();
 		
 	private String path1 = System.getProperty("user.dir");
-	private String path2 = "/src/Imagens/Background/";
+	private String path2 = "/src/Imagens/Mapas/";
+	private String path3 = "/src/Imagens/Background/";
 	private BufferedImage imgMapa;
 	private BufferedImage imgTitulo;
 	private BufferedImage imgPlay;
@@ -37,13 +38,13 @@ public class PainelTelaInicial extends JPanel implements ActionListener{
 		
 		try {
 			
-			File imgMapaFile = new File(path1 + path2 + "war_tabuleiro_fundo.png");
+			File imgMapaFile = new File(path1 + path3 + "war_tabuleiro_fundo.png");
 			imgMapa = ImageIO.read(imgMapaFile);
 			
-			File imgTituloFile = new File(path1 + path2 + "war_titulo.png");
+			File imgTituloFile = new File(path1 + path3 + "war_titulo.png");
 			imgTitulo = ImageIO.read(imgTituloFile);
 			
-			File imgPlayFile = new File(path1 + path2 + "war_play.png");
+			File imgPlayFile = new File(path1 + path3 + "war_play.png");
 			imgPlay = ImageIO.read(imgPlayFile);
 			
 		}
@@ -63,7 +64,7 @@ public class PainelTelaInicial extends JPanel implements ActionListener{
 		botaoPlay.setContentAreaFilled(false);
 		botaoPlay.setBorderPainted(false);
 		botaoPlay.setSize(imgPlay.getWidth()/4, imgPlay.getHeight()/4);
-		
+		botaoPlay.setBounds(Constantes.getLargura() - imgPlay.getWidth()/3 ,  Constantes.getAltura() - imgPlay.getHeight()/2, imgPlay.getWidth()/4, imgPlay.getHeight()/4);
 		this.add(botaoPlay);
 		botaoPlay.setVisible(true);
 		
@@ -78,8 +79,7 @@ public class PainelTelaInicial extends JPanel implements ActionListener{
 		
 		g.drawImage(imgMapa, 0, - Constantes.getDeslocamento(), Constantes.getLargura(), Constantes.getAltura() , null);
 		g.drawImage(imgTitulo, 0, -5, Constantes.getLargura() + 5,Math.round(imgTitulo.getHeight()/Constantes.getConstConversao()) , null);
-		botaoPlay.setBounds(Constantes.getLargura() - imgPlay.getWidth()/3 ,  Constantes.getAltura() - imgPlay.getHeight()/2, imgPlay.getWidth()/4, imgPlay.getHeight()/4);
-		g.finalize();
+		//g.finalize();
     }
 
 
