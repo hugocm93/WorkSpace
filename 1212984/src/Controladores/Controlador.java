@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+
 import javax.swing.JFrame;
+
 import Interface.*;
 import Modelos.*;
 
@@ -85,6 +87,14 @@ public abstract class Controlador {
 			}
 		}
 		return false;
+	}
+	
+	public static void criaNovoJogador(String nome, String cor){
+		mundo.insereNovoJogador( new Jogador(nome, cor, null, null, null, null));
+	}
+	
+	public static int getNJogadores(){
+		return mundo.nJogadores();
 	}
 
 

@@ -14,6 +14,7 @@ public class Mundo {
 
 		tabTroca = new Tabela1();
 		continentes = new Continente[6]; 
+		jogadores = new Jogador[6]; 
 
 		String nome;
 		Territorio[] territorios;
@@ -413,6 +414,22 @@ public class Mundo {
 
 	public Continente[] getContinentes() {
 		return continentes;
+	}
+	
+	public void insereNovoJogador(Jogador jogador){
+		int i;
+		for(i=0; jogadores[i]!=null;i++){
+			if(jogadores[i].getCor().equals(jogador.getCor())==true){
+				return;
+			}
+		}
+		jogadores[i]=jogador;
+	}
+	
+	public int nJogadores(){
+		int i;
+		for(i=0; jogadores[i]!=null;i++);
+		return i+1;
 	}
 
 }
