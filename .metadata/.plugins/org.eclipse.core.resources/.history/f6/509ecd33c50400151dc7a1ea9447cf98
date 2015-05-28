@@ -1,0 +1,33 @@
+package Controladores;
+import javax.swing.JFrame;
+
+import Interface.PainelMapa;
+import Interface.Tabuleiro;
+
+
+public abstract class Controlador {
+	
+	private static Tabuleiro janela;
+	
+	public static void criaJanela(){
+		
+		janela = Tabuleiro.getInstance();
+		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
+		janela.setVisible(true);
+	}
+	
+	public static void criaPainelMapa(){
+		System.out.println("Action");
+		
+		PainelMapa painelMapa = new PainelMapa();
+
+		Tabuleiro.getInstance().add(painelMapa);
+		Tabuleiro.getInstance().addMouseListener(painelMapa);
+		painelMapa.setVisible(true);
+
+		janela.setVisible(false);
+	}
+
+	
+
+}

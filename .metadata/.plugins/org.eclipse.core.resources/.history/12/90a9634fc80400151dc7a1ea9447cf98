@@ -1,0 +1,14 @@
+package Interface;
+
+import java.awt.HeadlessException;
+import javax.swing.*;
+
+public class Tabuleiro extends JFrame{
+	
+	static final long serialVersionUID = 1L;
+	
+	
+	
+	}
+	
+

@@ -1,0 +1,19 @@
+import javax.swing.JFrame;
+
+import Interface.Tabuleiro;
+
+
+public abstract class Controlador {
+	
+	private static Tabuleiro janela;
+	
+	public static void criaJanela(){
+		
+		janela = Tabuleiro.getInstance();
+		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
+		janela.setVisible(true);
+	}
+
+	
+
+}

@@ -1,0 +1,65 @@
+package Controladores;
+
+import javax.swing.JFrame;
+
+import Interface.*;
+import Mapa.Mundo;
+import Estruturas.*;
+
+public  class Controlador {
+
+	private  Tabuleiro janela;
+	private  PainelTelaInicial painelTelaInicial;
+	private  PainelMapa painelMapa;
+
+	private static Controlador instance;
+
+	public static Controlador getInstance() {
+		if (instance == null)
+			instance = new Controlador();
+		return instance;
+	}
+
+	private Controlador(){
+		
+	}
+	public  void criaJanela(){
+
+		janela = new Tabuleiro("War");
+		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
+		janela.setVisible(true);
+		
+		Controlador.getInstance().criaPainelTelaInicial();
+		Controlador.getInstance().irPainelTelaInicial();
+	}
+
+	public  void criaPainelMapa(){
+
+		painelMapa = new PainelMapa();
+
+
+	}
+	public  void irPainelMapa(){
+		janela.add(painelMapa);
+		janela.addMouseListener(painelMapa);
+		painelMapa.setVisible(true);
+
+		if(painelTelaInicial!=null)
+			painelTelaInicial.setVisible(false);
+	}
+
+	public  void criaPainelTelaInicial(){
+		painelTelaInicial = new PainelTelaInicial();
+
+	}
+	public  void irPainelTelaInicial(){
+		System.out.println(janela);
+		janela.add(painelTelaInicial);
+		painelTelaInicial.setVisible(true);
+
+		janela.setSize(Constantes.getLargura(), Constantes.getAltura());
+	}
+
+
+
+}
