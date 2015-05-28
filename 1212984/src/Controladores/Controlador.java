@@ -49,7 +49,6 @@ public abstract class Controlador {
 	}
 	
 	public static void irPainelTelaInicial(){
-		System.out.println(janela);
 		janela.add(painelTelaInicial);
 		painelTelaInicial.setVisible(true);
 
