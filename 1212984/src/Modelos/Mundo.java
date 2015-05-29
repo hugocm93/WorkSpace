@@ -418,18 +418,10 @@ public class Mundo {
 	
 	public void insereNovoJogador(Jogador jogador){
 		int i;
-		for(i=0; jogadores[i]!=null;i++){
-			if(jogadores[i].getCor().equals(jogador.getCor())==true){
-				return;
-			}
-		}
+		for(i=0; jogadores[i]!=null;i++);
 		jogadores[i]=jogador;
+		System.out.println(jogadores[i].getNome()+"->"+jogadores[i].getCor());
 	}
 	
-	public int nJogadores(){
-		int i;
-		for(i=0; jogadores[i]!=null;i++);
-		return i+1;
-	}
-
+	
 }

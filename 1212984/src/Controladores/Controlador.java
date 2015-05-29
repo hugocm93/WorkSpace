@@ -90,13 +90,8 @@ public abstract class Controlador {
 	}
 	
 	public static void criaNovoJogador(String nome, String cor){
-		mundo.insereNovoJogador( new Jogador(nome, cor, null, null, null, null));
+		mundo.insereNovoJogador(new Jogador(nome, cor, null, null, null, null));
 	}
-	
-	public static int getNJogadores(){
-		return mundo.nJogadores();
-	}
-
 
 
 }

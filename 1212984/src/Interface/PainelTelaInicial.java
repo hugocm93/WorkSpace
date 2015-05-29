@@ -33,7 +33,7 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 	private JButton botaoPlay = new JButton();
 	private JTextField[] jogadoresTexto  = new JTextField[]{new JTextField(20),new JTextField(20),new JTextField(20),new JTextField(20),new JTextField(20),new JTextField(20)};
 	private String[] cores;
-	
+	private int nJogadores=0;
 
 	public PainelTelaInicial(){
 
@@ -101,11 +101,24 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		
+		nJogadores = 0;
 		if(e.getSource() == botaoPlay){
 
-			if(Controlador.getNJogadores()>3){
-
+			for(int i=0;i<2;i++){
+				for(int j=0;j<3;j++){					
+					if(jogadoresTexto[j+i*3].getText().equals(String.format("Nome do jogador %d", j+i*3+1))==false && jogadoresTexto[j+i*3].getText().equals(String.format(""))==false){
+						nJogadores++;
+					}
+				}
+			}
+			
+			if(nJogadores>=3){
+				for(int i=0 ; i<6;i++){
+					if(jogadoresTexto[i].getText().equals(String.format("Nome do jogador %d", i+1))==false && (jogadoresTexto[i].getText().equals(String.format(""))==false)){
+						Controlador.criaNovoJogador(jogadoresTexto[i].getText(), cores[i]);
+					}	
+				}
+				
 				Controlador.criaPainelMapa();
 				Controlador.irPainelMapa();
 			}
@@ -125,12 +138,5 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 
 	public void focusLost(FocusEvent e) {
 
-		for(int i=0 ; i<6;i++){
-			if(e.getSource() == jogadoresTexto[i] && String.format("Nome do jogador %d", i+1).equals(jogadoresTexto[i].getText())==false){
-				Controlador.criaNovoJogador(jogadoresTexto[i].getText(), cores[i]);
-				System.out.println(jogadoresTexto[i].getText());
-			}
-			
-		}
 	}
 }
