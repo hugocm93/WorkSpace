@@ -1,0 +1,18 @@
+package Modelos;
+
+public class Dado {
+
+	int valor;
+	
+	public Dado()
+	{
+		valor = 0;
+	}
+	
+	public int rolar_dado()
+	{
+		valor = 1 + (int)(Math.random() * 6);
+		return valor;
+	}
+	
+}

@@ -1,18 +1,23 @@
 package Interface;
 
+import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
 import Controladores.Controlador;
+import Interface.PainelOpcoes;
 
 public class PainelMapa extends JPanel implements MouseListener{
 	
 	private static final long serialVersionUID = 1L;
+	PainelOpcoes painelOpcoes = new PainelOpcoes();
 	private String path1 = System.getProperty("user.dir");
 	private String path2 = "/src/zImagens/Mapas/";
 	private BufferedImage imgMapa;
@@ -26,7 +31,10 @@ public class PainelMapa extends JPanel implements MouseListener{
 			System.out.println("Imagem não encontrada.");
 		}
 		
+		this.setLayout(new BorderLayout());
+		this.add(painelOpcoes, BorderLayout.SOUTH);
 		this.repaint();
+			
 	}
 	
 	public void paintComponent(Graphics g) {

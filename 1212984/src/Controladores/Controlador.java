@@ -2,8 +2,10 @@ package Controladores;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -16,7 +18,7 @@ public abstract class Controlador {
 	private static PainelTelaInicial painelTelaInicial;
 	private static PainelMapa painelMapa;
 	private static Mundo mundo;
-
+	private static Territorio clicado ;
 	public static void criaMundo(){
 		mundo = new Mundo();
 	}
@@ -27,8 +29,10 @@ public abstract class Controlador {
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
 		janela.setVisible(true);
 		
-		Controlador.criaPainelTelaInicial();
-		Controlador.irPainelTelaInicial();
+		//Controlador.criaPainelTelaInicial();
+		//Controlador.irPainelTelaInicial();
+		Controlador.criaPainelMapa();
+		Controlador.irPainelMapa();
 	}
 
 	public static void criaPainelMapa(){
@@ -80,12 +84,15 @@ public abstract class Controlador {
 	}
 	
 	private static boolean percorre(MouseEvent e, int j){
+		
 		for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
 			if(mundo.getContinentes()[j].getTerritorios()[i].getPoligono().dentroPolig(new Point( Math.round(e.getX()/Constantes.getConstConversaoX()),Math.round((e.getY())/Constantes.getConstConversaoY())+ Constantes.getDeslocamento2()-Constantes.getConstMagica())) == true){
 				System.out.println(mundo.getContinentes()[j].getTerritorios()[i].getNome());
+				clicado = mundo.getContinentes()[j].getTerritorios()[i];
 				return true;
 			}
 		}
+		clicado = null;
 		return false;
 	}
 	
@@ -93,5 +100,69 @@ public abstract class Controlador {
 		mundo.insereNovoJogador(new Jogador(nome, cor, null, null, null, null));
 	}
 
+	public static Territorio getTerritorioClicado (){
+		return clicado;
+	}
+	
+	public static ArrayList<Dado> jogarDadosAtaque(){
+		ArrayList <Dado> ret = new ArrayList <Dado>();
+		Dado dado1 = new Dado();
+		Dado dado2 = new Dado();
+		Dado dado3 = new Dado();
+		Dado dado4 = new Dado();
+		Dado dado5 = new Dado();
+		Dado dado6 = new Dado();
+		Boolean ataqueOuDefesa = true;
+		int valorDado1, valorDado2, valorDado3, valorDado4, valorDado5, valorDado6;
+		int exercitos = Controlador.getTerritorioClicado().getExercitos();
+		
+		if (ataqueOuDefesa == true){
+			if(exercitos > 3){
+				valorDado1 = dado1.rolar_dado();
+				dado1.imgDado();
+				valorDado2 = dado2.rolar_dado();
+				dado2.imgDado();
+				valorDado3 = dado3.rolar_dado();
+				dado3.imgDado();
+			}
+			if(exercitos == 3){
+				valorDado1 = dado1.rolar_dado();
+				dado1.imgDado();
+				valorDado2 = dado2.rolar_dado();
+				dado2.imgDado();
+			}
+			if(exercitos == 2){
+				valorDado1 = dado1.rolar_dado();
+				dado1.imgDado();
+			}
+		ataqueOuDefesa = false;
+		}
+		
+		if (ataqueOuDefesa == false){
+			if(exercitos >= 3){
+				valorDado4 = dado4.rolar_dado();
+				dado4.imgDado();
+				valorDado5 = dado5.rolar_dado();
+				dado5.imgDado();
+				valorDado6 = dado6.rolar_dado();
+				dado6.imgDado();
+			}
+			if(exercitos == 2){
+				valorDado4 = dado4.rolar_dado();
+				dado4.imgDado();
+				valorDado5 = dado5.rolar_dado();
+				dado5.imgDado();
+			}
+			if(exercitos == 1){
+				valorDado4 = dado4.rolar_dado();
+				dado4.imgDado();
+			}
+		ataqueOuDefesa = true;
+		}
+		
+		ret.add(dado1);	ret.add(dado2); ret.add(dado3); ret.add(dado4);	ret.add(dado5); ret.add(dado6);
+		return ret;
+	}
+	
 
 }

@@ -1,0 +1,80 @@
+package Interface;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import org.imgscalr.Scalr;
+
+import Interface.PainelOpcoes.BotaoListener;
+
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.io.File;
+import java.io.IOException;
+
+public class FrameDados extends JFrame{
+	
+	private static final long serialVersionUID = 1L;
+	private String path1 = System.getProperty("user.dir");
+	private String path2 = "/src/zImagens/Dados/";
+	private BufferedImage imgAtaque;
+	private BufferedImage imgDefesa;
+	
+	public FrameDados(){
+		super("Lançar Dados");
+		
+		JButton botaoLancarDadosAtaque = new JButton();
+		JButton botaoLancarDadosDefesa = new JButton();
+		
+		try {
+			File imgPlayFile = new File(path1 + path2 + "botaoLancarDadosAtaque.png");
+			imgAtaque = ImageIO.read(imgPlayFile);
+
+			File imgPlayFile1 = new File(path1 + path2 + "botaoLancarDadosDefesa.png");
+			imgDefesa = ImageIO.read(imgPlayFile1);
+		}
+		
+		catch (IOException e) {
+			System.out.println("Imagem não encontrada.");
+		}
+		
+		botaoLancarDadosAtaque.setIcon(new ImageIcon(imgAtaque));
+		botaoLancarDadosDefesa.setIcon(new ImageIcon(imgDefesa));
+		
+		botaoLancarDadosAtaque.setSize(100, 50);
+		botaoLancarDadosDefesa.setSize(100, 50);
+		//botaoDado.setVisible(true);
+		
+		Container cont  = getContentPane();
+		cont.setLayout(new FlowLayout());
+		cont.add(botaoLancarDadosAtaque);
+		cont.add(botaoLancarDadosDefesa);
+		
+		botaoLancarDadosAtaque.addActionListener( new lancarDados());
+		botaoLancarDadosDefesa.addActionListener(new lancarDados());
+		
+		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setSize (200, 200);
+		setVisible(true);
+	}
+		
+	private class lancarDados implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		
+	}
+	
+}
