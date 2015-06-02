@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;Interface.FrameFimDaJoagada.java&apos; to &apos;FrameFimDaJogada.java&apos;&#x0D;&#x0A;- Original project: &apos;1212984&apos;&#x0D;&#x0A;- Original element: &apos;Interface.FrameFimDaJoagada.java&apos;&#x0D;&#x0A;- Renamed element: &apos;Interface.FrameFimDaJogada.java&apos;" description="Rename compilation unit &apos;FrameFimDaJoagada.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;Interface{FrameFimDaJoagada.java" name="FrameFimDaJogada.java" references="false" stamp="1433252270682" version="1.0"/>
+</session>

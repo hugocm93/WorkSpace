@@ -2,7 +2,6 @@ package Controladores;
 
 import java.awt.Color;
 import java.awt.Point;
-
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -19,6 +18,7 @@ public abstract class Controlador {
 	private static PainelMapa painelMapa;
 	private static Mundo mundo;
 	private static Territorio clicado ;
+	private static Dado ataqueOuDefesa ;
 	public static void criaMundo(){
 		mundo = new Mundo();
 	}
@@ -70,7 +70,14 @@ public abstract class Controlador {
 	public static void novoFrameDados(){
 		FrameDados f = new FrameDados();
 		
-		f.setBounds(janela.getWidth()/2-100,janela.getHeight()/2-100,200,200);
+		f.setBounds(janela.getWidth()/2-100,janela.getHeight()/2-100,200,220);
+		f.setVisible(true);
+	}
+	
+	public static void novoFrameFimDaJogada(){
+		FrameFimDaJogada f = new FrameFimDaJogada();
+		
+		f.setBounds(janela.getWidth()/2-100,janela.getHeight()/2-100,220,100);
 		f.setVisible(true);
 	}
 	
@@ -121,16 +128,16 @@ public abstract class Controlador {
 		return clicado;
 	}
 	
-	
+	public static Boolean getAtaqueOuDefesa (){
+		return ataqueOuDefesa.getAtaqueOuDefesa();
+	}
+		
 	public static ArrayList<Dado> jogarDadosAtaque(){
+		
 		ArrayList <Dado> ret = new ArrayList <Dado>();
-		Dado dado1 = new Dado();
-		Dado dado2 = new Dado();
-		Dado dado3 = new Dado();
-		Dado dado4 = new Dado();
-		Dado dado5 = new Dado();
-		Dado dado6 = new Dado();
-		Boolean ataqueOuDefesa = true;
+		Dado dado1 = new Dado(); Dado dado2 = new Dado(); Dado dado3 = new Dado();
+		Dado dado4 = new Dado(); Dado dado5 = new Dado(); Dado dado6 = new Dado();
+		Boolean ataqueOuDefesa = Controlador.getAtaqueOuDefesa();
 		int valorDado1, valorDado2, valorDado3, valorDado4, valorDado5, valorDado6;
 		int exercitos = Controlador.getTerritorioClicado().getExercitos();
 		
@@ -142,16 +149,22 @@ public abstract class Controlador {
 				dado2.imgDado();
 				valorDado3 = dado3.rolar_dado();
 				dado3.imgDado();
+				
+				ret.add(dado1);	ret.add(dado2); ret.add(dado3);
 			}
 			if(exercitos == 3){
 				valorDado1 = dado1.rolar_dado();
 				dado1.imgDado();
 				valorDado2 = dado2.rolar_dado();
 				dado2.imgDado();
+				
+				ret.add(dado1);	ret.add(dado2);
 			}
 			if(exercitos == 2){
 				valorDado1 = dado1.rolar_dado();
 				dado1.imgDado();
+				
+				ret.add(dado1);
 			}
 		ataqueOuDefesa = false;
 		}
@@ -164,21 +177,26 @@ public abstract class Controlador {
 				dado5.imgDado();
 				valorDado6 = dado6.rolar_dado();
 				dado6.imgDado();
+				
+				ret.add(dado4);	ret.add(dado5); ret.add(dado6);
 			}
 			if(exercitos == 2){
 				valorDado4 = dado4.rolar_dado();
 				dado4.imgDado();
 				valorDado5 = dado5.rolar_dado();
 				dado5.imgDado();
+				
+				ret.add(dado4);	ret.add(dado5);
 			}
 			if(exercitos == 1){
 				valorDado4 = dado4.rolar_dado();
 				dado4.imgDado();
+				
+				ret.add(dado4);	
 			}
 		ataqueOuDefesa = true;
 		}
 		
-		ret.add(dado1);	ret.add(dado2); ret.add(dado3); ret.add(dado4);	ret.add(dado5); ret.add(dado6);
 		return ret;
 	}
 	

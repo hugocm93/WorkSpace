@@ -57,7 +57,4 @@ public class Jogador {
 			this.continentesPossuidos = continentesPossuidos;
 		}
 		
-		
-		
-		
 }
