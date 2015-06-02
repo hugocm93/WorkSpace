@@ -75,16 +75,16 @@ public class FrameDados extends JFrame{
 			
 		}
 		
-		
-//		public void actionPerformed1(ActionEvent e) {
-//			if(e.getSource() == botaoDado){
-//				if(e.getSource() == botaoLancarDadosAtaque)
-//					Controlador.jogarDadosAtaque();
-//				
-//				if(e.getSource() == botaoLancarDadosDefesa)
-//					Controlador.jogarDadosDefesa();
-//			}
-//		}
+		/*
+		public void actionPerformed(ActionEvent e) {
+			if(e.getSource() == botaoDado){
+				if(e.getSource() == botaoLancarDadosAtaque)
+					Controlador.jogarDadosAtaque();
+				
+				if(e.getSource() == botaoLancarDadosDefesa)
+					Controlador.jogarDadosDefesa();
+			}
+		}*/
 	                                     
 	}
 
