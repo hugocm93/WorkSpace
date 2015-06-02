@@ -2,7 +2,7 @@ package Controladores;
 
 import java.awt.Color;
 import java.awt.Point;
-
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -23,8 +23,6 @@ public abstract class Controlador {
 		mundo = new Mundo();
 	}
 	
-	
-	//Inicio dos metodos relacionados com o fluxo de execucao******************************
 	public static void criaJanela(){
 
 		janela = new JFrame("War");
@@ -66,17 +64,6 @@ public abstract class Controlador {
 
 		janela.setSize(Constantes.getLargura(), Constantes.getAltura());
 	}
-	
-	public static void novoFrameDados(){
-		FrameDados f = new FrameDados();
-		
-		f.setBounds(janela.getWidth()/2-100,janela.getHeight()/2-100,200,200);
-		f.setVisible(true);
-	}
-	
-	//Fim dos metodos relacionados com o fluxo de execucao******************************
-	
-	
 	
 	public static void detectaTerritorio(MouseEvent e, BufferedImage imgMapa){
 		int packedInt = imgMapa.getRGB(Math.round(e.getX()*Constantes.getConstConversao2()), Math.round((e.getY() + Constantes.getDeslocamento())*Constantes.getConstConversao() - Constantes.getDeslocamento()/2));
@@ -121,7 +108,12 @@ public abstract class Controlador {
 		return clicado;
 	}
 	
-	
+	public static void novoFrameDados(){
+		FrameDados f = new FrameDados();
+		
+		f.setBounds(janela.getWidth()/2-100,janela.getHeight()/2-100,200,200);
+		f.setVisible(true);
+	}
 	public static ArrayList<Dado> jogarDadosAtaque(){
 		ArrayList <Dado> ret = new ArrayList <Dado>();
 		Dado dado1 = new Dado();

@@ -54,16 +54,9 @@ public class FrameDados extends JFrame{
 		
 		botaoLancarDadosAtaque.addActionListener( new lancarDados());
 		botaoLancarDadosDefesa.addActionListener(new lancarDados());
-		botaoLancarDadosAtaque.setVisible(true);
-		botaoLancarDadosAtaque.setOpaque(false);
-		botaoLancarDadosAtaque.setContentAreaFilled(false);
-		botaoLancarDadosAtaque.setBorderPainted(false);
 		
-		botaoLancarDadosDefesa.setVisible(true);
-		botaoLancarDadosDefesa.setOpaque(false);
-		botaoLancarDadosDefesa.setContentAreaFilled(false);
-		botaoLancarDadosDefesa.setBorderPainted(false);
 		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 	}
 		

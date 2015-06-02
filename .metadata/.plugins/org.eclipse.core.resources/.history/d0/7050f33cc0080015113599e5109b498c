@@ -65,6 +65,8 @@ public class FrameDados extends JFrame{
 		botaoLancarDadosDefesa.setBorderPainted(false);
 		
 		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
 	}
 		
 	private class lancarDados implements ActionListener{

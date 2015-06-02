@@ -39,7 +39,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		catch (IOException e) {
 			System.out.println("Imagem não encontrada.");
 		}
-		this.setPreferredSize(new Dimension(1024,85));
+		this.setPreferredSize(new Dimension(1024,80));
 		this.setLayout(new FlowLayout());
 		botaoDado.setIcon(new ImageIcon(Scalr.resize(imgDados, 50)));
 		botaoDado.setSize(50, 50);
