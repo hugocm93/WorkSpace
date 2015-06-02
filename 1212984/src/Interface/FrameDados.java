@@ -23,7 +23,7 @@ public class FrameDados extends JFrame{
 	private BufferedImage imgDefesa;
 	
 	public FrameDados(){
-		super("Lançar Dados");
+		super("Lancar Dados");
 		
 		JButton botaoLancarDadosAtaque = new JButton();
 		JButton botaoLancarDadosDefesa = new JButton();
@@ -37,7 +37,7 @@ public class FrameDados extends JFrame{
 		}
 		
 		catch (IOException e) {
-			System.out.println("Imagem não encontrada.");
+			System.out.println("Imagem nï¿½o encontrada.");
 		}
 		
 		botaoLancarDadosAtaque.setIcon(new ImageIcon(imgAtaque));
@@ -57,8 +57,7 @@ public class FrameDados extends JFrame{
 		
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize (200, 200);
-		setVisible(true);
+		
 	}
 		
 	private class lancarDados implements ActionListener{

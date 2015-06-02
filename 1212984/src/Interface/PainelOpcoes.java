@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 
 import org.imgscalr.Scalr;
 
+import Controladores.Controlador;
+
 public class PainelOpcoes extends JPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
@@ -58,7 +60,9 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 	public class BotaoListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent arg0) {
-			new FrameDados();
+			//new FrameDados();
+			Controlador.novoFrameDados();
+			
 		}
 		
 	}

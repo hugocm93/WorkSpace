@@ -29,10 +29,12 @@ public abstract class Controlador {
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
 		janela.setVisible(true);
 		
+		
 		//Controlador.criaPainelTelaInicial();
 		//Controlador.irPainelTelaInicial();
 		Controlador.criaPainelMapa();
 		Controlador.irPainelMapa();
+	
 	}
 
 	public static void criaPainelMapa(){
@@ -47,6 +49,8 @@ public abstract class Controlador {
 
 		if(painelTelaInicial!=null)
 			painelTelaInicial.setVisible(false);
+			
+		janela.setSize(Constantes.getLargura(), Constantes.getAltura());
 	}
 
 	public static void criaPainelTelaInicial(){
@@ -104,6 +108,12 @@ public abstract class Controlador {
 		return clicado;
 	}
 	
+	public static void novoFrameDados(){
+		FrameDados f = new FrameDados();
+		
+		f.setBounds(janela.getWidth()/2-100,janela.getHeight()/2-100,200,200);
+		f.setVisible(true);
+	}
 	public static ArrayList<Dado> jogarDadosAtaque(){
 		ArrayList <Dado> ret = new ArrayList <Dado>();
 		Dado dado1 = new Dado();
