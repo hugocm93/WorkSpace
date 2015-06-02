@@ -2,15 +2,9 @@ package Interface;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
-import Modelos.Dado;
-import Modelos.Jogador;
-import Modelos.Territorio;
-
 import java.awt.Container;
 import java.awt.FlowLayout;
 

@@ -8,14 +8,11 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
 import org.imgscalr.Scalr;
-
 import Controladores.Controlador;
 
 public class PainelOpcoes extends JPanel implements ActionListener{
@@ -53,8 +50,10 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		this.setLayout(new FlowLayout());
 		
 		botaoFimDaJogada.setIcon(new ImageIcon(imgFimDaJogada));
-		botaoFimDaJogada.setSize(45, 20);
-		botaoFimDaJogada.setVisible(true);
+		//botaoFimDaJogada.setSize(45, 20);
+		
+		
+
 		botaoFimDaJogada.setOpaque(false);
 		botaoFimDaJogada.setContentAreaFilled(false);
 		botaoFimDaJogada.setBorderPainted(false);
@@ -79,6 +78,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		super.paintComponents(g);
 		
 		g.drawImage(imgFundo, 0, 0, Constantes.getLargura(), 200 , null);
+		botaoFimDaJogada.setBounds( Constantes.getLargura() -160,30 ,130, 50);
 		g.finalize();
 	}
 	

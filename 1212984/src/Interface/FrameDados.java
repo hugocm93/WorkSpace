@@ -88,7 +88,7 @@ public class FrameDados extends JFrame{
 			List<Dado> resultados = Controlador.jogarDadosAtaque();
 			
 			for(Dado dado : resultados) {  
-				//System.out.println(resultados.get().rolar_dado());  
+				System.out.println(dado.rolar_dado());  
 			}
 		}
 	}
@@ -96,7 +96,7 @@ public class FrameDados extends JFrame{
 	private class fechar implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {  
-		      System.exit(getDefaultCloseOperation());  
+		    setVisible(false);  
 		} 
 	}
 }
