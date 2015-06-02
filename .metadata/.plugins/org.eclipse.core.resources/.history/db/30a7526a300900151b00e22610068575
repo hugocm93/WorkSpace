@@ -1,0 +1,55 @@
+package Interface;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.io.File;
+import java.io.IOException;
+
+public class FrameFimDaJogada extends JFrame{
+	
+	private static final long serialVersionUID = 1L;
+
+	public FrameFimDaJogada(){
+		super("Fim da Jogada");
+		
+		JButton ok = new JButton("OK");
+		JButton cancelar = new JButton("Cancelar");
+		
+		ok.setSize(40,20);
+		cancelar.setSize(40,20);
+		
+		Container cont  = getContentPane();
+		cont.setLayout(new FlowLayout());
+		cont.add(ok);
+		cont.add(cancelar);
+		
+		ok.addActionListener(new fechar());  
+		cancelar.addActionListener(new fechar());
+		
+		ok.setVisible(true);
+		ok.setOpaque(false);
+		ok.setContentAreaFilled(false);
+		ok.setBorderPainted(false);
+
+		cancelar.setVisible(true);
+		cancelar.setOpaque(false);
+		cancelar.setContentAreaFilled(false);
+		cancelar.setBorderPainted(false);
+	}
+		
+	private class fechar implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {  
+		      System.exit(getDefaultCloseOperation());  
+		} 
+	}
+}

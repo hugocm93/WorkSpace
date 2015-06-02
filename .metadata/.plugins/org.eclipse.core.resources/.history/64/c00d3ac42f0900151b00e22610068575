@@ -1,0 +1,88 @@
+package Interface;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.io.File;
+import java.io.IOException;
+
+public class FrameFimDaJogada extends JFrame{
+	
+	private static final long serialVersionUID = 1L;
+/*	private String path1 = System.getProperty("user.dir");
+	private String path2 = "/src/zImagens/Botoes/";
+	private BufferedImage imgFimDaJogada;
+	*/
+	public FrameFimDaJogada(){
+		super("Fim da Jogada");
+		
+		/*JButton botaoFimDaJogada = new JButton();*/
+		JButton ok = new JButton("OK");
+		JButton cancelar = new JButton("Cancelar");
+		
+/*		try {
+			File imgPlayFile = new File(path1 + path2 + "botaoFimDaJogada.png");
+			imgFimDaJogada = ImageIO.read(imgPlayFile);
+		}
+		
+		
+		catch (IOException e) {
+			System.out.println("Imagem n�o encontrada.");
+		}*/
+		
+		/*botaoFimDaJogada.setIcon(new ImageIcon(imgFimDaJogada));
+		
+		botaoFimDaJogada.setSize(90, 40);
+		*/ok.setSize(40,20);
+		cancelar.setSize(40,20);
+		
+		Container cont  = getContentPane();
+		cont.setLayout(new FlowLayout());
+//		cont.add(botaoFimDaJogada);
+		cont.add(ok);
+		cont.add(cancelar);
+		
+		/*botaoFimDaJogada.addActionListener( new lancarDados());*/
+		ok.addActionListener(new fechar());  
+		cancelar.addActionListener(new fechar());
+		
+		/*botaoFimDaJogada.setVisible(true);
+		botaoFimDaJogada.setOpaque(false);
+		botaoFimDaJogada.setContentAreaFilled(false);
+		botaoFimDaJogada.setBorderPainted(false);*/
+
+		ok.setVisible(true);
+		ok.setOpaque(false);
+		ok.setContentAreaFilled(false);
+		ok.setBorderPainted(false);
+
+		cancelar.setVisible(true);
+		cancelar.setOpaque(false);
+		cancelar.setContentAreaFilled(false);
+		cancelar.setBorderPainted(false);
+	}
+		
+	private class lancarDados implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Nathalia");
+			//Controlador.jogarDadosAtaque();
+		}
+	}
+
+	private class fechar implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {  
+		      System.exit(getDefaultCloseOperation());  
+		} 
+	}
+}

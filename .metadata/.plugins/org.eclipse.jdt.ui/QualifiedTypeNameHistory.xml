@@ -30,4 +30,8 @@
 <fullyQualifiedTypeName name="com.sun.xml.internal.ws.api.server.Container"/>
 <fullyQualifiedTypeName name="java.awt.FlowLayout"/>
 <fullyQualifiedTypeName name="Controladores.Controlador"/>
+<fullyQualifiedTypeName name="javax.swing.SwingConstants"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javax.swing.JLabel"/>
+<fullyQualifiedTypeName name="Modelos.Jogador"/>
 </qualifiedTypeNameHistroy>

@@ -8,14 +8,12 @@ public class Dado {
 	Boolean ataqueOuDefesa;
 	ImageIcon icon;
 	
-	public Dado()
-	{
+	public Dado() {
 		valor = 0;
 		ataqueOuDefesa = true;
 	}
 	
-	public int rolar_dado()
-	{
+	public int rolar_dado() {
 		valor = 1 + (int)(Math.random() * 6);
 		return valor;
 	}
