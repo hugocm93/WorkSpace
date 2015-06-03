@@ -15,6 +15,18 @@ public class Mundo {
 		tabTroca = new Tabela1();
 		continentes = new Continente[6]; 
 		jogadores = new Jogador[6]; 
+		dadosAtaque = new Dado[3];
+		dadosDefesa = new Dado[3];
+		
+		for(int i=0;i<3;i++){
+			dadosAtaque[i] = new Dado();
+			dadosAtaque[i].setTipo(TipoDado.ATAQUE);
+		}
+		
+		for(int i=0;i<3;i++){
+			dadosDefesa[i] = new Dado();
+			dadosDefesa[i].setTipo(TipoDado.DEFESA);
+		}
 
 		String nome;
 		Territorio[] territorios;
@@ -422,6 +434,44 @@ public class Mundo {
 		jogadores[i]=jogador;
 		System.out.println(jogadores[i].getNome()+"->"+jogadores[i].getCor());
 	}
+
+	public Tabela1 getTabTroca() {
+		return tabTroca;
+	}
+
+	public void setTabTroca(Tabela1 tabTroca) {
+		this.tabTroca = tabTroca;
+	}
+
+	public Jogador[] getJogadores() {
+		return jogadores;
+	}
+
+	public void setJogadores(Jogador[] jogadores) {
+		this.jogadores = jogadores;
+	}
+
+	public Dado[] getDadosAtaque() {
+		return dadosAtaque;
+	}
+
+	public void setDadosAtaque(Dado[] dadosAtaque) {
+		this.dadosAtaque = dadosAtaque;
+	}
+
+	public Dado[] getDadosDefesa() {
+		return dadosDefesa;
+	}
+
+	public void setDadosDefesa(Dado[] dadosDefesa) {
+		this.dadosDefesa = dadosDefesa;
+	}
+
+	public void setContinentes(Continente[] continentes) {
+		this.continentes = continentes;
+	}
+	
+	
 	
 	
 }

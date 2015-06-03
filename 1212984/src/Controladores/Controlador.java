@@ -5,10 +5,8 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-
 import Interface.*;
 import Modelos.*;
 
@@ -22,14 +20,11 @@ public abstract class Controlador {
 	private static PainelOpcoes painelOpcoes;
 	private static Mundo mundo;
 	private static Territorio clicado ;
-	private static Dado ataqueOuDefesa ;
+
+
 	public static void criaMundo(){
 		mundo = new Mundo();
-		ataqueOuDefesa = new Dado();
 	}
-
-
-
 
 
 	//////Inicio dos metodos relacionados com o fluxo de execucao******************************
@@ -38,6 +33,7 @@ public abstract class Controlador {
 		janela = new JFrame("War");
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
 		janela.setVisible(true);
+		janela.setResizable(false);
 
 
 		//Controlador.criaPainelTelaInicial();
@@ -95,6 +91,7 @@ public abstract class Controlador {
 
 		frameDados.setBounds((int)janela.getLocation().getX()+janela.getWidth()/2-100,(int)janela.getLocation().getY()+janela.getHeight()/2-110,200,220);
 		frameDados.setVisible(true);
+		frameDados.setResizable(false);
 	}
 
 	public static void novoFrameFimDaJogada(){
@@ -104,6 +101,7 @@ public abstract class Controlador {
 
 		frameFimDaJogada.setBounds((int)janela.getLocation().getX()+janela.getWidth()/2-110,(int)janela.getLocation().getY()+janela.getHeight()/2-50,220,100);
 		frameFimDaJogada.setVisible(true);
+		frameFimDaJogada.setResizable(false);
 	}
 
 	//////Fim dos metodos relacionados com o fluxo de execucao******************************
@@ -170,75 +168,62 @@ public abstract class Controlador {
 
 
 	//////Inicio dos metodos relacionados com o frameDados************************************************
-	public static Boolean getAtaqueOuDefesa (){
-		return ataqueOuDefesa.getAtaqueOuDefesa();
+
+	public static  void jogarDadosAtaque(int nExercitosAtaque){
+		
+		for(int i=0;i<3;i++){
+			mundo.getDadosAtaque()[i].reseta();
+		}
+		
+		if(nExercitosAtaque<=3){
+			for(int i=0;i<nExercitosAtaque-1;i++){
+				mundo.getDadosAtaque()[i].rolar_dado();
+			}
+		}
+		else{
+			for(int i=0;i<3;i++){
+				mundo.getDadosAtaque()[i].rolar_dado();
+			}
+		}
+		
 	}
-
-	public static ArrayList<Dado> jogarDadosAtaque(){
-
-		ArrayList <Dado> ret = new ArrayList <Dado>();
-		Dado dado1 = new Dado(); Dado dado2 = new Dado(); Dado dado3 = new Dado();
-		Dado dado4 = new Dado(); Dado dado5 = new Dado(); Dado dado6 = new Dado();
-		Boolean ataqueOuDefesa = Controlador.getAtaqueOuDefesa();
-		int valorDado1, valorDado2, valorDado3, valorDado4, valorDado5, valorDado6;
-		//int exercitos = Controlador.getTerritorioClicado().getExercitos();
-		int exercitos = 4;
-		if (ataqueOuDefesa == true){
-			if(exercitos > 3){
-				valorDado1 = dado1.rolar_dado();
-				dado1.imgDado();
-				valorDado2 = dado2.rolar_dado();
-				dado2.imgDado();
-				valorDado3 = dado3.rolar_dado();
-				dado3.imgDado();
-
-				ret.add(dado1);	ret.add(dado2); ret.add(dado3);
-			}
-			else if(exercitos == 3){
-				valorDado1 = dado1.rolar_dado();
-				dado1.imgDado();
-				valorDado2 = dado2.rolar_dado();
-				dado2.imgDado();
-
-				ret.add(dado1);	ret.add(dado2);
-			}
-			else if(exercitos == 2){
-				valorDado1 = dado1.rolar_dado();
-				dado1.imgDado();
-
-				ret.add(dado1);
-			}
-			ataqueOuDefesa = false;
+	
+public static void jogarDadosDefesa(int nExercitosDefesa){
+		
+		for(int i=0;i<3;i++){
+			mundo.getDadosDefesa()[i].reseta();
 		}
-
-		if (ataqueOuDefesa == false){
-			if(exercitos >= 3){
-				valorDado4 = dado4.rolar_dado();
-				dado4.imgDado();
-				valorDado5 = dado5.rolar_dado();
-				dado5.imgDado();
-				valorDado6 = dado6.rolar_dado();
-				dado6.imgDado();
-
-				ret.add(dado4);	ret.add(dado5); ret.add(dado6);
+		
+		if(nExercitosDefesa<=3){
+			for(int i=0;i<nExercitosDefesa;i++){
+				mundo.getDadosDefesa()[i].rolar_dado();
 			}
-			else if(exercitos == 2){
-				valorDado4 = dado4.rolar_dado();
-				dado4.imgDado();
-				valorDado5 = dado5.rolar_dado();
-				dado5.imgDado();
-
-				ret.add(dado4);	ret.add(dado5);
-			}
-			else if(exercitos == 1){
-				valorDado4 = dado4.rolar_dado();
-				dado4.imgDado();
-
-				ret.add(dado4);	
-			}
-			ataqueOuDefesa = true;
 		}
-
+		else{
+			for(int i=0;i<3;i++){
+				mundo.getDadosDefesa()[i].rolar_dado();
+			}
+		}
+		
+	}
+	
+	public static ImageIcon[] getNomesDasImagensDosDadosDeAtaque(){
+		ImageIcon[] ret = new ImageIcon[3];
+		
+		for(int i=0;i<3;i++){
+			ret[i] = mundo.getDadosAtaque()[i].getIcon();
+		}
+		
+		return ret;
+	}
+	
+	public static ImageIcon[] getNomesDasImagensDosDadosDeDefesa(){
+		ImageIcon[] ret = new ImageIcon[3];
+		
+		for(int i=0;i<3;i++){
+			ret[i] = mundo.getDadosDefesa()[i].getIcon();
+		}
+		
 		return ret;
 	}
 	//////Fim dos metodos relacionados com o frameDados************************************************

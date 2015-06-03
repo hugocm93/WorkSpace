@@ -58,8 +58,9 @@ public class FrameDados extends JFrame{
 		cont.add(botaoLancarDadosDefesa);
 		cont.add(ok);
 		
-		botaoLancarDadosAtaque.addActionListener( new lancarDados());
-		botaoLancarDadosDefesa.addActionListener(new lancarDados());
+		botaoLancarDadosAtaque.addActionListener( new lancarDadosAtaque());
+		botaoLancarDadosDefesa.addActionListener(new lancarDadosDefesa());
+		
 		ok.addActionListener(new fechar());  
 		
 		botaoLancarDadosAtaque.setVisible(true);
@@ -80,15 +81,28 @@ public class FrameDados extends JFrame{
 		
 	}
 		
-	private class lancarDados implements ActionListener{
+	private class lancarDadosAtaque implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("Nathalia");
-			List<Dado> resultados = Controlador.jogarDadosAtaque();
+			Controlador.jogarDadosAtaque(4);
+			ImageIcon[] imagensDados = Controlador.getNomesDasImagensDosDadosDeAtaque();
 			
-			for(Dado dado : resultados) {  
-				System.out.println(dado.rolar_dado());  
+			for(int i=0;i<3;i++){
+				System.out.println(imagensDados[i]);
+			}
+		}
+	}
+	
+	private class lancarDadosDefesa implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Controlador.jogarDadosDefesa(4);
+			ImageIcon[] imagensDados = Controlador.getNomesDasImagensDosDadosDeDefesa();
+			
+			for(int i=0;i<3;i++){
+				System.out.println(imagensDados[i]);
 			}
 		}
 	}

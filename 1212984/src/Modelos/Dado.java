@@ -5,37 +5,46 @@ import javax.swing.ImageIcon;
 public class Dado {
 
 	int valor;
-	Boolean ataqueOuDefesa;
 	ImageIcon icon;
-	
+	TipoDado tipo;
+
 	public Dado() {
 		valor = 0;
-		ataqueOuDefesa = true;
+		icon = null;
+		tipo = TipoDado.INDEF;
 	}
-	
+
 	public int rolar_dado() {
 		valor = 1 + (int)(Math.random() * 6);
+
+		if(tipo == TipoDado.ATAQUE){
+			icon = new ImageIcon("src/zImagens/Dados/dado_ataque_" + valor + ".png");
+		}
+		else if(tipo == TipoDado.DEFESA){
+			icon = new ImageIcon("src/zImagens/Dados/dado_defesa_" + valor + ".png");
+		}
+		else{
+			icon = null;
+		}
+
 		return valor;
 	}
+
+	public TipoDado getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoDado tipo) {
+		this.tipo = tipo;
+	}
 	
-	public Boolean getAtaqueOuDefesa() {
-		return ataqueOuDefesa;
+	public void reseta(){
+		valor = 0;
+		icon = null;
 	}
 
-	public void setAtaqueOuDefesa(Boolean ataqueOuDefesa) {
-		this.ataqueOuDefesa = ataqueOuDefesa;
-	}
-
-	public void imgDado(){
-		int i;
-		for (i = 1; i < 7; i ++){
-			if (valor == i){
-				if(ataqueOuDefesa == true)
-					icon = new ImageIcon("src/zImagens/Dados/dado_ataque_" + i + ".png");
-				else
-					icon = new ImageIcon("src/zImagens/Dados/dado_defesa_" + i + ".png");
-			}
-		}
+	public ImageIcon getIcon() {
+		return icon;
 	}
 	
 }
