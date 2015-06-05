@@ -22,10 +22,10 @@ public class FrameDados extends JFrame{
 	private String path2 = "/src/zImagens/Dados/";
 	private BufferedImage imgAtaque;
 	private BufferedImage imgDefesa;
+
 	private JButton botaoLancarDadosAtaque;
 	private JButton botaoLancarDadosDefesa;
 	private JButton ok;
-	private boolean defesaPodeJogar = false;
 
 	public FrameDados(){
 		super("Lancar Dados");
@@ -73,7 +73,6 @@ public class FrameDados extends JFrame{
 		botaoLancarDadosDefesa.setOpaque(false);
 		botaoLancarDadosDefesa.setContentAreaFilled(false);
 		botaoLancarDadosDefesa.setBorderPainted(false);
-		botaoLancarDadosDefesa.setEnabled(false);
 
 		ok.setVisible(true);
 	}
@@ -110,9 +109,6 @@ public class FrameDados extends JFrame{
 				dado.setBounds(i*55+10*i + 5,20, 55, 55);
 				dado.setVisible(true);
 				dado.setOpaque(false);
-				
-				defesaPodeJogar = true;
-				botaoLancarDadosDefesa.setEnabled(true);
 			}
 		}
 	}
@@ -121,9 +117,6 @@ public class FrameDados extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if(defesaPodeJogar == false){
-				return;
-			}
 			ControladorFrameDados.jogarDadosDefesa(4);
 			ControladorFrameDados.ordenarDadosDeDefesa();
 			ImageIcon[] imagensDados = ControladorFrameDados.getNomesDasImagensDosDadosDeDefesa();
