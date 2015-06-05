@@ -1,0 +1,13 @@
+package Controladores;
+
+import Modelos.Mundo;
+
+public class ControladorPainelOpcoes {
+	
+	private static Mundo mundo = Mundo.getInstance();
+	
+	public static int jogadorAtual(){
+		return mundo.getJogadorDaVez();
+	}
+
+}

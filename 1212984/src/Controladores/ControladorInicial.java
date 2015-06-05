@@ -11,4 +11,13 @@ public class ControladorInicial {
 		mundo.insereNovoJogador(new Jogador(nome, cor, null, null, null, null));
 	}
 
+	public static void sortSequencia() {
+		mundo.desordena();
+		
+	}
+	
+	public static void imprime(){
+		mundo.listaJogadores();
+	}
+
 }

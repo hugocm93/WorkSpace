@@ -1,12 +1,12 @@
 package Modelos;
 
 public class Jogador {
-	String nome;
-	String cor;
-	Objetivo obj;
-	Carta[] cartas;
-	Territorio[] territoriosPossuidos;
-	Continente[] continentesPossuidos;
+	private String nome;
+	private String cor;
+	private Objetivo obj;
+	private Carta[] cartas;
+	private Territorio[] territoriosPossuidos;
+	private Continente[] continentesPossuidos;
 
 
 	public Jogador(String nome, String cor, Objetivo obj, Carta[] cartas, Territorio[] territoriosPossuidos, Continente[] continentesPossuidos) {
@@ -55,5 +55,5 @@ public class Jogador {
 	public void setContinentesPossuidos(Continente[] continentesPossuidos) {
 		this.continentesPossuidos = continentesPossuidos;
 	}
-
+	
 }

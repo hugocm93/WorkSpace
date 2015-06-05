@@ -28,10 +28,10 @@ public class ControladorFluxo {
 		janela.setResizable(false);
 
 
-		//Controlador.criaPainelTelaInicial();
-		//Controlador.irPainelTelaInicial();
-		ControladorFluxo.criaPainelMapa();
-		ControladorFluxo.irPainelMapa();
+		ControladorFluxo.criaPainelTelaInicial();
+		ControladorFluxo.irPainelTelaInicial();
+		//ControladorFluxo.criaPainelMapa();
+		//ControladorFluxo.irPainelMapa();
 
 	}
 

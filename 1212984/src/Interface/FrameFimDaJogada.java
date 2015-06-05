@@ -5,20 +5,24 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import Controladores.ControladorPainelOpcoes;
 import java.awt.Container;
 import java.awt.FlowLayout;
 
-public class FrameFimDaJogada extends JFrame{
+public class FrameFimDaJogada extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
+	private JButton ok;
+	private JButton cancelar;
 
 	public FrameFimDaJogada(){
 		super("Fim da Jogada");
 
-		String nomeJogador = "fulano";
-		JLabel frase = new JLabel("Passar Jogada para " + nomeJogador) ;
-		JButton ok = new JButton("OK");
-		JButton cancelar = new JButton("Cancelar");
+		//String nomeJogador = "fulano";
+		ControladorPainelOpcoes.proximo();
+		JLabel frase = new JLabel("Passar Jogada para " + ControladorPainelOpcoes.jogadorAtual("nome")) ;
+		ok = new JButton("OK");
+		cancelar = new JButton("Cancelar");
 
 		ok.setSize(50,30);
 		cancelar.setSize(50,30);
@@ -29,8 +33,8 @@ public class FrameFimDaJogada extends JFrame{
 		cont.add(ok);
 		cont.add(cancelar);
 
-		ok.addActionListener(new fechar());  
-		cancelar.addActionListener(new fechar());
+		ok.addActionListener(this);  
+		cancelar.addActionListener(this);
 
 		frase.setVisible(true);
 
@@ -38,12 +42,19 @@ public class FrameFimDaJogada extends JFrame{
 		cancelar.setVisible(true);
 	}
 
-	private class fechar implements ActionListener{
-		public void actionPerformed(ActionEvent e) {  
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == ok){
 			setVisible(false);  
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			dispose(); 
-		} 
+		}
+		if(e.getSource() == cancelar){
+			setVisible(false);  
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			dispose(); 
+			ControladorPainelOpcoes.anterior();
+		}
+		
 	}
 
 

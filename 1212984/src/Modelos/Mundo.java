@@ -9,6 +9,7 @@ public class Mundo {
 	Jogador[] jogadores;
 	Dado[] dadosAtaque;
 	Dado[] dadosDefesa;
+	int jogadorDaVez;
 
 	private static Mundo instance;
 
@@ -441,7 +442,6 @@ public class Mundo {
 		int i;
 		for(i=0; jogadores[i]!=null;i++);
 		jogadores[i]=jogador;
-		System.out.println(jogadores[i].getNome()+"->"+jogadores[i].getCor());
 	}
 
 	public Tabela1 getTabTroca() {
@@ -510,5 +510,42 @@ public class Mundo {
 		}
 	}
 
+	public void desordena(){
+		int i;
+		Jogador[] jogadores2 = new Jogador[]{null,null,null,null,null,null}; 
+		for(i=0; i<6 && jogadores[i]!=null;i++);
+		
+		for(int j=0; j<i;){
+			int aux = (int)(Math.random() * 6);
+			if(jogadores[aux]!=null){
+				jogadores2[j] = jogadores[aux];
+				jogadores[aux] = null;
+				j++;
+			}
+		}
+		this.setJogadores(jogadores2);
+	}
+	
+	public void listaJogadores(){
+		for(int i=0; i<6 && jogadores[i]!=null ;i++){
+			System.out.println(jogadores[i].getNome());
+		}
+	}
+	
+	public void proximoJogador(){
+		int i;
+		for(i=0; i<6 && jogadores[i]!=null ;i++);
+		jogadorDaVez = (jogadorDaVez+1)%i;
+	}
+	
+	public void jogadorAnt(){
+		int i;
+		for(i=0; i<6 && jogadores[i]!=null ;i++);
+		jogadorDaVez = (jogadorDaVez-1)%i;
+	}
+
+	public int getJogadorDaVez() {
+		return jogadorDaVez;
+	}
 
 }

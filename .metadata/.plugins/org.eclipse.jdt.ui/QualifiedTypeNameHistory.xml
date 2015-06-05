@@ -4,7 +4,6 @@
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="java.awt.image.ImageObserver"/>
-<fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="java.awt.Point"/>
 <fullyQualifiedTypeName name="Estruturas.Cor"/>
 <fullyQualifiedTypeName name="java.awt.event.MouseListener"/>
@@ -33,9 +32,12 @@
 <fullyQualifiedTypeName name="javax.swing.SwingConstants"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="Modelos.Jogador"/>
-<fullyQualifiedTypeName name="javax.swing.JLabel"/>
 <fullyQualifiedTypeName name="java.awt.Component"/>
 <fullyQualifiedTypeName name="Modelos.TipoDado"/>
 <fullyQualifiedTypeName name="javax.swing.JPopupMenu"/>
 <fullyQualifiedTypeName name="javax.swing.JMenuItem"/>
+<fullyQualifiedTypeName name="Controladores.ControladorInicial"/>
+<fullyQualifiedTypeName name="javax.swing.JLabel"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="Controladores.ControladorPainelOpcoes"/>
 </qualifiedTypeNameHistroy>

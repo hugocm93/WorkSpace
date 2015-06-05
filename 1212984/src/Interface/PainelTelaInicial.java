@@ -117,6 +117,8 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 					}	
 				}
 
+				ControladorInicial.sortSequencia();	//sorteando a sequencia
+
 				ControladorFluxo.criaPainelMapa();
 				ControladorFluxo.irPainelMapa();
 			}
@@ -127,11 +129,25 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 	}
 
 	public void focusGained(FocusEvent e) {
-		for(int i=0 ; i<6;i++){
-			if(e.getSource() == jogadoresTexto[i]){
-				jogadoresTexto[i].setText("");
-			}
-		}
+
+		if(e.getSource() == jogadoresTexto[0]){
+			jogadoresTexto[0].setText(" ");
+        }
+		if(e.getSource() == jogadoresTexto[1]){
+			jogadoresTexto[1].setText(" ");
+        }
+		if(e.getSource() == jogadoresTexto[2]){
+			jogadoresTexto[2].setText(" ");
+        }
+		if(e.getSource() == jogadoresTexto[3]){
+			jogadoresTexto[3].setText(" ");
+        }
+		if(e.getSource() == jogadoresTexto[4]){
+			jogadoresTexto[4].setText(" ");
+        }
+		if(e.getSource() == jogadoresTexto[5]){
+			jogadoresTexto[5].setText(" ");
+        }
 	}
 
 	public void focusLost(FocusEvent e) {

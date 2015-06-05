@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import org.imgscalr.Scalr;
 import Controladores.ControladorFrameDados;
 
-public class FrameDados extends JFrame{
+public class FrameDados extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private String path1 = System.getProperty("user.dir");
@@ -59,10 +59,10 @@ public class FrameDados extends JFrame{
 		cont.add(botaoLancarDadosDefesa);
 		cont.add(ok);
 
-		botaoLancarDadosAtaque.addActionListener( new lancarDadosAtaque());
-		botaoLancarDadosDefesa.addActionListener(new lancarDadosDefesa());
+		botaoLancarDadosAtaque.addActionListener(this);
+		botaoLancarDadosDefesa.addActionListener(this);
 
-		ok.addActionListener(new fechar());  
+		ok.addActionListener(this);  
 
 		botaoLancarDadosAtaque.setVisible(true);
 		botaoLancarDadosAtaque.setOpaque(false);
@@ -78,10 +78,13 @@ public class FrameDados extends JFrame{
 		ok.setVisible(true);
 	}
 
-	private class lancarDadosAtaque implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == ok){
+			setVisible(false);  
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			dispose();
+		}
+		if(e.getSource() == botaoLancarDadosAtaque){
 			ControladorFrameDados.jogarDadosAtaque(4);
 			ControladorFrameDados.ordenarDadosDeAtaque();
 			ImageIcon[] imagensDados = ControladorFrameDados.getNomesDasImagensDosDadosDeAtaque();
@@ -110,17 +113,12 @@ public class FrameDados extends JFrame{
 				dado.setBounds(i*55+10*i + 5,20, 55, 55);
 				dado.setVisible(true);
 				dado.setOpaque(false);
-				
+
 				defesaPodeJogar = true;
 				botaoLancarDadosDefesa.setEnabled(true);
 			}
 		}
-	}
-
-	private class lancarDadosDefesa implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == botaoLancarDadosDefesa){
 			if(defesaPodeJogar == false){
 				return;
 			}
@@ -154,16 +152,6 @@ public class FrameDados extends JFrame{
 			}
 
 		}
-	}
-
-	private class fechar implements ActionListener{
-
-		public void actionPerformed(ActionEvent e) {  
-			setVisible(false);  
-			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			dispose();
-
-		} 
 	}
 
 }
