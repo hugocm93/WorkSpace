@@ -46,5 +46,15 @@ public class Dado {
 	public ImageIcon getIcon() {
 		return icon;
 	}
+
+	public int getValor() {
+		return valor;
+	}
+
+	public void setValor(int valor) {
+		this.valor = valor;
+	}
+	
+	
 	
 }

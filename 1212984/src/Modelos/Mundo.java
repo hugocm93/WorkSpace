@@ -17,12 +17,13 @@ public class Mundo {
 		jogadores = new Jogador[6]; 
 		dadosAtaque = new Dado[3];
 		dadosDefesa = new Dado[3];
-		
+
+
 		for(int i=0;i<3;i++){
 			dadosAtaque[i] = new Dado();
 			dadosAtaque[i].setTipo(TipoDado.ATAQUE);
 		}
-		
+
 		for(int i=0;i<3;i++){
 			dadosDefesa[i] = new Dado();
 			dadosDefesa[i].setTipo(TipoDado.DEFESA);
@@ -427,7 +428,7 @@ public class Mundo {
 	public Continente[] getContinentes() {
 		return continentes;
 	}
-	
+
 	public void insereNovoJogador(Jogador jogador){
 		int i;
 		for(i=0; jogadores[i]!=null;i++);
@@ -470,8 +471,36 @@ public class Mundo {
 	public void setContinentes(Continente[] continentes) {
 		this.continentes = continentes;
 	}
-	
-	
-	
-	
+
+	public void ordenarDados(TipoDado t){
+		if(t == TipoDado.ATAQUE){
+
+			int fim=3;
+
+			for(;fim>0;fim--){
+				for(int j=0;j<fim-1;j++){
+					if(dadosAtaque[j].getValor() < dadosAtaque[j+1].getValor()){
+						Dado aux = dadosAtaque[j];
+						dadosAtaque[j] = dadosAtaque[j+1];
+						dadosAtaque[j+1] = aux;
+					}
+				}
+			}
+		}
+		else{
+			int fim=3;
+
+			for(;fim>0;fim--){
+				for(int j=0;j<fim-1;j++){
+					if(dadosDefesa[j].getValor() < dadosDefesa[j+1].getValor()){
+						Dado aux = dadosDefesa[j];
+						dadosDefesa[j] = dadosDefesa[j+1];
+						dadosDefesa[j+1] = aux;
+					}
+				}
+			}
+		}
+	}
+
+
 }

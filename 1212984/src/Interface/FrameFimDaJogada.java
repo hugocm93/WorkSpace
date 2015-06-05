@@ -35,14 +35,14 @@ public class FrameFimDaJogada extends JFrame{
 		frase.setVisible(true);
 		
 		ok.setVisible(true);
-		ok.setOpaque(false);
-		ok.setContentAreaFilled(false);
-		ok.setBorderPainted(false);
+		//ok.setOpaque(false);
+		//ok.setContentAreaFilled(false);
+		//ok.setBorderPainted(false);
 
 		cancelar.setVisible(true);
-		cancelar.setOpaque(false);
-		cancelar.setContentAreaFilled(false);
-		cancelar.setBorderPainted(false);
+		//cancelar.setOpaque(false);
+		//cancelar.setContentAreaFilled(false);
+		//cancelar.setBorderPainted(false);
 	}
 		
 	private class fechar implements ActionListener{

@@ -5,8 +5,10 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+
 import Interface.*;
 import Modelos.*;
 
@@ -56,7 +58,7 @@ public abstract class Controlador {
 		if(painelTelaInicial!=null)
 			painelTelaInicial.setVisible(false);
 
-		janela.setSize(Constantes.getLargura(), Constantes.getAltura());
+		janela.setSize(Constantes.getLargura(), Constantes.getAltura()-15);
 	}
 
 	public static void criaPainelTelaInicial(){
@@ -88,6 +90,9 @@ public abstract class Controlador {
 		if(frameDados==null){
 			frameDados = new FrameDados();
 		}
+		else if(frameDados.isVisible() == false){
+			frameDados = new FrameDados();
+		}
 
 		frameDados.setBounds((int)janela.getLocation().getX()+janela.getWidth()/2-100,(int)janela.getLocation().getY()+janela.getHeight()/2-110,200,220);
 		frameDados.setVisible(true);
@@ -96,6 +101,9 @@ public abstract class Controlador {
 
 	public static void novoFrameFimDaJogada(){
 		if(frameFimDaJogada==null){
+			frameFimDaJogada = new FrameFimDaJogada();
+		}
+		else if(frameFimDaJogada.isVisible() == false){
 			frameFimDaJogada = new FrameFimDaJogada();
 		}
 
@@ -227,5 +235,19 @@ public static void jogarDadosDefesa(int nExercitosDefesa){
 		return ret;
 	}
 	//////Fim dos metodos relacionados com o frameDados************************************************
+
+	public static void ordenarDadosDeAtaque() {
+		// TODO Auto-generated method stub
+		
+		mundo.ordenarDados(TipoDado.ATAQUE);
+		
+	}
+	
+	public static void ordenarDadosDeDefesa() {
+		// TODO Auto-generated method stub
+		
+		mundo.ordenarDados(TipoDado.DEFESA);
+		
+	}
 
 }
