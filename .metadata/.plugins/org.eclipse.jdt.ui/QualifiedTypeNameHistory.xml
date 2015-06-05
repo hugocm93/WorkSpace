@@ -32,6 +32,10 @@
 <fullyQualifiedTypeName name="Controladores.Controlador"/>
 <fullyQualifiedTypeName name="javax.swing.SwingConstants"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="javax.swing.JLabel"/>
 <fullyQualifiedTypeName name="Modelos.Jogador"/>
+<fullyQualifiedTypeName name="javax.swing.JLabel"/>
+<fullyQualifiedTypeName name="java.awt.Component"/>
+<fullyQualifiedTypeName name="Modelos.TipoDado"/>
+<fullyQualifiedTypeName name="javax.swing.JPopupMenu"/>
+<fullyQualifiedTypeName name="javax.swing.JMenuItem"/>
 </qualifiedTypeNameHistroy>

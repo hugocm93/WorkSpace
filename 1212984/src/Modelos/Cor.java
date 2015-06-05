@@ -32,7 +32,7 @@ public class Cor {
 	public void setB(int b) {
 		this.b = b;
 	}
-	
+
 	public boolean equals(Object obj){
 		Cor aux = (Cor)obj;
 		if(aux.getR() == this.getR() && aux.getG() == this.getG() && aux.getB() == this.getB()){
@@ -52,7 +52,7 @@ public class Cor {
 		}
 		else{
 			return false;
-			
+
 		}
 	}
 

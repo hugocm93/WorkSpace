@@ -1,0 +1,43 @@
+package Controladores;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
+import Interface.*;
+import Modelos.*;
+
+public abstract class Controlador {
+
+	
+	private static Mundo mundo;
+	private static Territorio clicado ;
+
+
+
+
+	//////Inicio dos metodos relacionados com o frameDados************************************************
+
+	
+	//////Fim dos metodos relacionados com o frameDados************************************************
+
+	public static void ordenarDadosDeAtaque() {
+		// TODO Auto-generated method stub
+		
+		mundo.ordenarDados(TipoDado.ATAQUE);
+		
+	}
+	
+	public static void ordenarDadosDeDefesa() {
+		// TODO Auto-generated method stub
+		
+		mundo.ordenarDados(TipoDado.DEFESA);
+		
+	}
+
+}

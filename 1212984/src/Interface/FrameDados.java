@@ -1,6 +1,5 @@
 package Interface;
 
-
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -8,16 +7,13 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import org.imgscalr.Scalr;
-
-import Controladores.Controlador;
+import Controladores.ControladorFrameDados;
 
 public class FrameDados extends JFrame{
 
@@ -79,20 +75,15 @@ public class FrameDados extends JFrame{
 		botaoLancarDadosDefesa.setBorderPainted(false);
 
 		ok.setVisible(true);
-		//ok.setOpaque(false);
-		//ok.setContentAreaFilled(false);
-		//ok.setBorderPainted(false);
-
-
 	}
 
 	private class lancarDadosAtaque implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Controlador.jogarDadosAtaque(4);
-			Controlador.ordenarDadosDeAtaque();
-			ImageIcon[] imagensDados = Controlador.getNomesDasImagensDosDadosDeAtaque();
+			ControladorFrameDados.jogarDadosAtaque(4);
+			ControladorFrameDados.ordenarDadosDeAtaque();
+			ImageIcon[] imagensDados = ControladorFrameDados.getNomesDasImagensDosDadosDeAtaque();
 
 			for(int i=0;i<3;i++){
 				System.out.println(imagensDados[i]);
@@ -109,8 +100,9 @@ public class FrameDados extends JFrame{
 				BufferedImage aux = null;
 				try {
 					aux = ImageIO.read(new File(imagensDados[i].toString()));
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
+				}
+				catch (IOException e1) {
+
 					e1.printStackTrace();
 				}
 				dado.setIcon(new ImageIcon(Scalr.resize(aux, 55)));
@@ -125,9 +117,9 @@ public class FrameDados extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Controlador.jogarDadosDefesa(4);
-			Controlador.ordenarDadosDeDefesa();
-			ImageIcon[] imagensDados = Controlador.getNomesDasImagensDosDadosDeDefesa();
+			ControladorFrameDados.jogarDadosDefesa(4);
+			ControladorFrameDados.ordenarDadosDeDefesa();
+			ImageIcon[] imagensDados = ControladorFrameDados.getNomesDasImagensDosDadosDeDefesa();
 
 			for(int i=0;i<3;i++){
 				System.out.println(imagensDados[i]);
@@ -144,8 +136,8 @@ public class FrameDados extends JFrame{
 				BufferedImage aux = null;
 				try {
 					aux = ImageIO.read(new File(imagensDados[i].toString()));
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
+				} 
+				catch (IOException e1) {
 					e1.printStackTrace();
 				}
 				dado.setIcon(new ImageIcon(Scalr.resize(aux, 55)));
@@ -158,7 +150,7 @@ public class FrameDados extends JFrame{
 	}
 
 	private class fechar implements ActionListener{
-		@Override
+
 		public void actionPerformed(ActionEvent e) {  
 			setVisible(false);  
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

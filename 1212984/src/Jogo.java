@@ -1,10 +1,9 @@
-import Controladores.Controlador;
+import Controladores.ControladorFluxo;
 
 public class Jogo {
 
 	public static void main(String[] args) {
-		Controlador.criaJanela();
-		Controlador.criaMundo();
+		ControladorFluxo.criaJanela();
 	}
 
 }

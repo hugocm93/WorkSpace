@@ -1,86 +1,85 @@
 package Modelos;
 
-
 public class Territorio {
-	
-		String nome;
-		Poligono poligono;
-		int exercitos;
-		Jogador dono;
-		Simbolo simb;
-		String[] TerritoriosFronteira;
-		
-		
-		public Territorio(String nome, Poligono poligono, int exercitos, Jogador dono, Simbolo simb, String[] territoriosFronteira) {
-			
-			this.nome = nome;
-			this.poligono = poligono;
-			this.exercitos = exercitos;
-			this.dono = dono;
-			this.simb = simb;
-			TerritoriosFronteira = territoriosFronteira;
-		}
+
+	String nome;
+	Poligono poligono;
+	int exercitos;
+	Jogador dono;
+	Simbolo simb;
+	String[] TerritoriosFronteira;
 
 
-		public int getExercitos() {
-			return exercitos;
-		}
+	public Territorio(String nome, Poligono poligono, int exercitos, Jogador dono, Simbolo simb, String[] territoriosFronteira) {
+
+		this.nome = nome;
+		this.poligono = poligono;
+		this.exercitos = exercitos;
+		this.dono = dono;
+		this.simb = simb;
+		TerritoriosFronteira = territoriosFronteira;
+	}
 
 
-		public void setExercitos(int exercitos) {
-			this.exercitos = exercitos;
-		}
+	public int getExercitos() {
+		return exercitos;
+	}
 
 
-		public Jogador getDono() {
-			return dono;
-		}
+	public void setExercitos(int exercitos) {
+		this.exercitos = exercitos;
+	}
 
 
-		public void setDono(Jogador dono) {
-			this.dono = dono;
-		}
+	public Jogador getDono() {
+		return dono;
+	}
 
 
-		public Poligono getPoligono() {
-			return poligono;
-		}
+	public void setDono(Jogador dono) {
+		this.dono = dono;
+	}
 
 
-		public String getNome() {
-			return nome;
-		}
+	public Poligono getPoligono() {
+		return poligono;
+	}
 
 
-		public Simbolo getSimb() {
-			return simb;
-		}
+	public String getNome() {
+		return nome;
+	}
 
 
-		public void setSimb(Simbolo simb) {
-			this.simb = simb;
-		}
+	public Simbolo getSimb() {
+		return simb;
+	}
 
 
-		public String[] getTerritoriosFronteira() {
-			return TerritoriosFronteira;
-		}
+	public void setSimb(Simbolo simb) {
+		this.simb = simb;
+	}
 
 
-		public void setTerritoriosFronteira(String[] territoriosFronteira) {
-			TerritoriosFronteira = territoriosFronteira;
-		}
+	public String[] getTerritoriosFronteira() {
+		return TerritoriosFronteira;
+	}
 
 
-		public void setNome(String nome) {
-			this.nome = nome;
-		}
+	public void setTerritoriosFronteira(String[] territoriosFronteira) {
+		TerritoriosFronteira = territoriosFronteira;
+	}
 
 
-		public void setPoligono(Poligono poligono) {
-			this.poligono = poligono;
-		}
-		
-		
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public void setPoligono(Poligono poligono) {
+		this.poligono = poligono;
+	}
+
+
 
 }

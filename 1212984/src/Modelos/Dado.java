@@ -37,7 +37,7 @@ public class Dado {
 	public void setTipo(TipoDado tipo) {
 		this.tipo = tipo;
 	}
-	
+
 	public void reseta(){
 		valor = 0;
 		icon = null;
@@ -54,7 +54,7 @@ public class Dado {
 	public void setValor(int valor) {
 		this.valor = valor;
 	}
-	
-	
-	
+
+
+
 }

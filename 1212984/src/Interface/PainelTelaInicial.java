@@ -8,16 +8,14 @@ import java.awt.event.FocusListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import Controladores.Controlador;
-
+import Controladores.ControladorInicial;
+import Controladores.ControladorFluxo;
 import org.imgscalr.Scalr;
 
 public class PainelTelaInicial extends JPanel implements ActionListener, FocusListener{
@@ -91,7 +89,7 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 
 				g.drawImage(pinos[j+i*3], i*400+70, j*170+150, 65, 65 , null);
 				jogadoresTexto[j+i*3].setBounds(i*400+150,j*170+170,170,30);
-				
+
 				if(jogadoresTexto[j+i*3].getText().equals(String.format("Nome do jogador %d", j+i*3+1))==true || jogadoresTexto[j+i*3].getText().equals(String.format(""))==true){
 					jogadoresTexto[j+i*3].setText(String.format("Nome do jogador %d", j+i*3+1));
 				}
@@ -111,16 +109,16 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 					}
 				}
 			}
-			
+
 			if(nJogadores>=3){
 				for(int i=0 ; i<6;i++){
 					if(jogadoresTexto[i].getText().equals(String.format("Nome do jogador %d", i+1))==false && (jogadoresTexto[i].getText().equals(String.format(""))==false)){
-						Controlador.criaNovoJogador(jogadoresTexto[i].getText(), cores[i]);
+						ControladorInicial.criaNovoJogador(jogadoresTexto[i].getText(), cores[i]);
 					}	
 				}
-				
-				Controlador.criaPainelMapa();
-				Controlador.irPainelMapa();
+
+				ControladorFluxo.criaPainelMapa();
+				ControladorFluxo.irPainelMapa();
 			}
 			else{
 				JOptionPane.showMessageDialog(this, "O número mínimo de jogadores é 3.");

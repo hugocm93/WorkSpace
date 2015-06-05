@@ -1,6 +1,5 @@
 package Modelos;
 
-
 public class Carta {
 	
 	Jogador dono;
