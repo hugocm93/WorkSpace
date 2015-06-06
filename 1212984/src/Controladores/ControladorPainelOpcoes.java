@@ -5,6 +5,7 @@ import Modelos.Mundo;
 public class ControladorPainelOpcoes {
 	
 	private static Mundo mundo = Mundo.getInstance();
+	private static String[] rets;
 	
 	public static String jogadorAtual(String param){
 		if(param.equals("nome")){
@@ -24,4 +25,14 @@ public class ControladorPainelOpcoes {
 		mundo.jogadorAnt();
 	}
 
+	public static String[] getNomesDasImagensDosJogadores(){
+		rets = new String[6];
+
+		for(int i=0; i<6 && mundo.coresDosJogadores()[i]!=null ;i++){
+			rets[i] = mundo.coresDosJogadores()[i];
+		}
+
+		return rets;
+	}
+	
 }

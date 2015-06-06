@@ -1,2 +1,6 @@
 1433252270682	Rename compilation unit 'FrameFimDaJoagada.java'
 1433469447526	Delete element
+1433540654042	Convert local variable 'ret' to field
+1433540828833	Convert local variable 'ret' to field
+1433544178696	Convert local variable 'rets' to field
+1433557752820	Convert local variable 'imgPinosJogadorFile' to field
