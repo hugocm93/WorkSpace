@@ -31,11 +31,16 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 	private String path3 = "/src/zImagens/Dados/";
 	private String path4 = "/src/zImagens/Botoes/";
 	private String path5 = "/src/zImagens/Pinos/";
+	private String[] cores = ControladorPainelOpcoes.getNomesDasImagensDosJogadores();
 	private BufferedImage imgFimDaJogada;
 	private BufferedImage imgFundo;
 	private BufferedImage imgDados;
+	private BufferedImage imgSeta;
 	private BufferedImage imgJogador;
+	private BufferedImage[] imgPinos = new BufferedImage[6];
 	private JLabel nomeJogador;
+	private JLabel[] ordemDosJogadores = new JLabel[6];
+	private File[] imgPinosJogadorFiles;
 
 	public PainelOpcoes(){
 
@@ -48,10 +53,14 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 
 			File imgPlayFile1 = new File(path1 + path4 + "botaoFimDaJogada.png");
 			imgFimDaJogada = ImageIO.read(imgPlayFile1);
-			
+
 			File imgJogadorFile = new File(path1 + path5 + ControladorPainelOpcoes.jogadorAtual("cor"));
 			imgJogador = ImageIO.read(imgJogadorFile);
-			
+
+			for(int i=0; i<6 && cores[i]!=null ; i++){
+				File imgPinosJogadorFiles = new File(path1 + path5 + cores[i]);
+				imgPinos[i] = ImageIO.read(imgPinosJogadorFiles);
+			}
 		}
 		catch (IOException e) {
 			System.out.println("Imagem não encontrada.");
@@ -59,6 +68,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 
 		this.setPreferredSize(new Dimension(1024,125));
 		this.setLayout(new FlowLayout());
+
 
 		botaoFimDaJogada.setIcon(new ImageIcon(imgFimDaJogada));
 		botaoFimDaJogada.setOpaque(false);
@@ -77,13 +87,20 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		botaoDado.addActionListener(this);
 		this.add(botaoDado);
 		botaoDado.setVisible(true);
-		
+
+		for ( int i = 0; i<6 && imgPinos[i]!=null ; i++ ){
+			ordemDosJogadores[i] = new JLabel();
+			ordemDosJogadores[i].setIcon(new ImageIcon(Scalr.resize(imgPinos[i], 20)));
+			ordemDosJogadores[i].setVisible(true);
+			this.add(ordemDosJogadores[i]);
+		}
+
 		nomeJogador = new JLabel();
 		nomeJogador.setForeground(Color.white);
 		nomeJogador.setText(ControladorPainelOpcoes.jogadorAtual("nome"));
-        nomeJogador.setVisible(true);
-        this.add(nomeJogador);
-        
+		nomeJogador.setVisible(true);
+		this.add(nomeJogador);
+
 		this.setVisible(true);
 		this.repaint();
 	}
@@ -94,17 +111,31 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		g.drawImage(imgFundo, 0, 0, Constantes.getLargura(), 200 , null);
 		botaoFimDaJogada.setBounds(Constantes.getLargura() -160,30 ,130, 50);
 		g.drawImage(imgJogador, 20, 20, 65, 65 , null);
+
 		nomeJogador.setBounds(20, 88, 150, 20);
-		
-		File imgJogadorFile = new File(path1 + path5 + ControladorPainelOpcoes.jogadorAtual("cor"));
-		try {
+
+		for ( int i = 0, j = 120; i<6 && imgPinos[i]!=null ; i++, j=j+22 ){
+			ordemDosJogadores[i].setBounds(j, 0, 20, 20);			
+		}
+
+		try{
+			File imgSetaFile = new File(path1 + path2 + "seta.png");
+			imgSeta = ImageIO.read(imgSetaFile);
+
+			File imgJogadorFile = new File(path1 + path5 + ControladorPainelOpcoes.jogadorAtual("cor")); 
 			imgJogador = ImageIO.read(imgJogadorFile);
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
 		nomeJogador.setText(ControladorPainelOpcoes.jogadorAtual("nome"));
-		
+
+		for(int i=0;i<6;i++){
+			if(ControladorPainelOpcoes.jogadorAtual("cor") == cores[i]){
+				g.drawImage(imgSeta, 109 + 22*i, 16, 40, 40, null);
+			}
+		}
+
 		g.finalize();
 	}
 
