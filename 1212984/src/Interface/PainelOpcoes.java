@@ -48,7 +48,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 			File imgMapaFile = new File(path1 + path2 + "war_tabuleiro_fundo.png");
 			imgFundo = ImageIO.read(imgMapaFile);
 
-			File imgPlayFile = new File(path1 + path3 + "botaoDados.png");
+			File imgPlayFile = new File(path1 + path3 + "botaoDados2.png");
 			imgDados = ImageIO.read(imgPlayFile);
 
 			File imgPlayFile1 = new File(path1 + path4 + "botaoFimDaJogada.png");
@@ -128,6 +128,8 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 
 			e.printStackTrace();
 		}
+		
+		nomeJogador.setText("");
 		nomeJogador.setText(ControladorPainelOpcoes.jogadorAtual("nome"));
 
 		for(int i=0;i<6;i++){

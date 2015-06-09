@@ -26,7 +26,7 @@ public class PainelMapa extends JPanel implements MouseListener{
 			imgMapa = ImageIO.read(imgMapaFile);
 		}
 		catch (IOException e) {
-			System.out.println("Imagem n√£o encontrada.");
+			System.out.println("Imagem n„o encontrada.");
 		}
 
 		this.setLayout(new BorderLayout());
@@ -67,11 +67,11 @@ public class PainelMapa extends JPanel implements MouseListener{
 
 	private void doPop(MouseEvent e){
 		PopUp menu = new PopUp();
-		menu.show(e.getComponent(), e.getXOnScreen(), e.getYOnScreen());
+		menu.show(e.getComponent(), e.getX(), e.getY());
 	}
 
 	private void doPop(MouseEvent e, String s){
 		PopUp menu = new PopUp(s);
-		menu.show(e.getComponent(), e.getXOnScreen(), e.getYOnScreen());
+		menu.show(e.getComponent(), e.getX(), e.getY());
 	}
 }

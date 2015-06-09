@@ -38,10 +38,10 @@ public class FrameDados extends JFrame implements ActionListener{
 		ok = new JButton("OK");
 
 		try {
-			File imgPlayFile = new File(path1 + path2 + "botaoLancarDadosAtaque.png");
+			File imgPlayFile = new File(path1 + path2 + "botaoLancarDadosAtaque2.png");
 			imgAtaque = ImageIO.read(imgPlayFile);
 
-			File imgPlayFile1 = new File(path1 + path2 + "botaoLancarDadosDefesa.png");
+			File imgPlayFile1 = new File(path1 + path2 + "botaoLancarDadosDefesa2.png");
 			imgDefesa = ImageIO.read(imgPlayFile1);
 		}
 
@@ -52,8 +52,8 @@ public class FrameDados extends JFrame implements ActionListener{
 		botaoLancarDadosAtaque.setIcon(new ImageIcon(imgAtaque));
 		botaoLancarDadosDefesa.setIcon(new ImageIcon(imgDefesa));
 
-		botaoLancarDadosAtaque.setSize(90, 40);
-		botaoLancarDadosDefesa.setSize(90, 40);
+		//botaoLancarDadosAtaque.setSize(90, 35);
+		//botaoLancarDadosDefesa.setSize(90, 35);
 		ok.setSize(45,20);
 
 		Container cont  = getContentPane();
