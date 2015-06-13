@@ -17,7 +17,7 @@ public class Territorio {
 
 		this.nome = nome;
 		this.poligono = poligono;
-		this.exercitos = 1;
+		this.exercitos = exercitos;
 		this.dono = dono;
 		this.simb = simb;
 		this.base = base;
