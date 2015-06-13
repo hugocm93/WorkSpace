@@ -1,24 +1,27 @@
 package Modelos;
 
+import java.util.ArrayList;
+
 public class Jogador {
 	private String nome;
 	private String cor;
 	private Objetivo obj;
-	private Carta[] cartas;
-	private Territorio[] territoriosPossuidos;
-	private Continente[] continentesPossuidos;
-
-
-	public Jogador(String nome, String cor, Objetivo obj, Carta[] cartas, Territorio[] territoriosPossuidos, Continente[] continentesPossuidos) {
-
+	private ArrayList< Carta > cartas = new ArrayList< Carta >();
+	private ArrayList< Territorio > territoriosPossuidos = new ArrayList< Territorio >();
+	private ArrayList<Continente> continentesPossuidos = new ArrayList<Continente>();
+	
+	
+	
+	
+	public Jogador(String nome, String cor, Objetivo obj, ArrayList<Carta> cartas, ArrayList<Territorio> territoriosPossuidos, ArrayList<Continente> continentesPossuidos) {
+		super();
 		this.nome = nome;
 		this.cor = cor;
 		this.obj = obj;
-		this.cartas = cartas;
-		this.territoriosPossuidos = territoriosPossuidos;
-		this.continentesPossuidos = continentesPossuidos;
+		this.cartas = new ArrayList< Carta >();
+		this.territoriosPossuidos = new ArrayList< Territorio >();
+		this.continentesPossuidos = new ArrayList<Continente>();
 	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -37,23 +40,26 @@ public class Jogador {
 	public void setObj(Objetivo obj) {
 		this.obj = obj;
 	}
-	public Carta[] getCartas() {
+	public ArrayList<Carta> getCartas() {
 		return cartas;
 	}
-	public void setCartas(Carta[] cartas) {
+	public void setCartas(ArrayList<Carta> cartas) {
 		this.cartas = cartas;
 	}
-	public Territorio[] getTerritoriosPossuidos() {
+	public ArrayList<Territorio> getTerritoriosPossuidos() {
 		return territoriosPossuidos;
 	}
-	public void setTerritoriosPossuidos(Territorio[] territoriosPossuidos) {
+	public void setTerritoriosPossuidos(ArrayList<Territorio> territoriosPossuidos) {
 		this.territoriosPossuidos = territoriosPossuidos;
 	}
-	public Continente[] getContinentesPossuidos() {
+	public ArrayList<Continente> getContinentesPossuidos() {
 		return continentesPossuidos;
 	}
-	public void setContinentesPossuidos(Continente[] continentesPossuidos) {
+	public void setContinentesPossuidos(ArrayList<Continente> continentesPossuidos) {
 		this.continentesPossuidos = continentesPossuidos;
 	}
+
+
+	
 	
 }

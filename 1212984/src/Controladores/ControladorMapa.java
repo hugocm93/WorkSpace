@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
 import Interface.Constantes;
 import Modelos.Cor;
 import Modelos.Mundo;
@@ -19,7 +21,7 @@ public class ControladorMapa {
 		Color color = new Color(packedInt, true);
 
 		//      System.out.printf("(%d,%d,%d)\n", color.getRed(),color.getGreen(),color.getBlue());
-		//		System.out.printf("new Point(%d,%d),", Math.round(e.getX()*constConversaoX), Math.round(e.getY()*constConversaoY));
+		//System.out.printf("new Point(%d,%d),", Math.round(e.getX()*Constantes.constConversaoX), Math.round(e.getY()*Constantes.constConversaoY));
 
 		int j;
 		for(j=0 ; j<6 && mundo.getContinentes()[j].getCor().equals(new Cor(color.getRed(),color.getGreen(),color.getBlue())) == false;j++){
@@ -57,6 +59,37 @@ public class ControladorMapa {
 
 	public static Territorio getTerritorioClicado (){
 		return clicado;
+	}
+
+	public static void sortearTerritorios(){
+		mundo.distribuirTerritorios();
+
+	}
+
+	public static ArrayList<Point> colocarBase(String cor){
+	   int index;
+	   
+	   int u;
+		for(u=0; u<6 && mundo.getJogadores()[u]!=null ;u++);
+		
+	   for(index=0;index<u;index++){
+		   if(mundo.getJogadores()[index]!=null && mundo.getJogadores()[index].getCor().equals(cor)){
+			  // System.out.println(mundo.getJogadores()[index].getCor() + cor);
+			   break;
+		   }
+	   }
+	   if(index>=u){
+		   return null;
+	   }
+       ArrayList<Point> pontos = new ArrayList<Point>();
+		for( Territorio ter :mundo.getJogadores()[index].getTerritoriosPossuidos() )  {  
+               //pontos.add(new Point( Math.round(ter.getBase().x/Constantes.getConstConversaoX()),Math.round((ter.getBase().y)/Constantes.getConstConversaoY())+ Constantes.getDeslocamento2()-Constantes.getConstMagica()));
+			pontos.add(new Point(Math.round(ter.getBase().x*Constantes.constConversaoX-5), Math.round(ter.getBase().y*Constantes.constConversaoY)-Constantes.deslocamento2 - 40));
+               //pontos.add(new Point(ter.getBase().x,ter.getBase().y));
+		}
+		pontos.add(new Point(-50,-50));
+		return pontos;
+
 	}
 
 }

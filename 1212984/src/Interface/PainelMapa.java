@@ -2,15 +2,22 @@ package Interface;
 
 import java.awt.BorderLayout;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import org.imgscalr.Scalr;
+
 import Controladores.ControladorFluxo;
 import Controladores.ControladorMapa;
+import Controladores.ControladorPainelOpcoes;
 
 public class PainelMapa extends JPanel implements MouseListener{
 
@@ -18,20 +25,54 @@ public class PainelMapa extends JPanel implements MouseListener{
 
 	private String path1 = System.getProperty("user.dir");
 	private String path2 = "/src/zImagens/Mapas/";
+	private String path5 = "/src/zImagens/Pinos/";
+	private BufferedImage[] imgPinos = new BufferedImage[6];
+	private String[] cores = ControladorPainelOpcoes.getNomesDasImagensDosJogadores();
 	private BufferedImage imgMapa;
+	
+
+
 
 	public PainelMapa(){
 		try {
 			File imgMapaFile = new File(path1 + path2 + "war_tabuleiro_com_nomes.png");
 			imgMapa = ImageIO.read(imgMapaFile);
+
+			for(int i=0; i<6 && cores[i]!=null ; i++){
+				File imgPinosJogadorFiles = new File(path1 + path5 + cores[i]);
+				imgPinos[i] = ImageIO.read(imgPinosJogadorFiles);
+			}
 		}
 		catch (IOException e) {
-			System.out.println("Imagem não encontrada.");
+			System.out.println("Imagem nï¿½o encontrada.");
 		}
+
 
 		this.setLayout(new BorderLayout());
 		ControladorFluxo.criaPainelOpcoes();
 		ControladorFluxo.irPainelOpcoes();
+
+		ControladorMapa.sortearTerritorios();
+//		int j=0;
+		for(int i = 0;i<6;i++){
+			
+			
+			ArrayList<Point> pontos = ControladorMapa.colocarBase(cores[i]);
+
+            if(pontos==null){
+            	break;
+            }
+            
+			for(Point p : pontos){
+				JLabel pins = new JLabel();
+				pins.setIcon(new ImageIcon(Scalr.resize(imgPinos[i], 18)));
+				pins.setBounds(p.x, p.y, 25, 25);	
+				//System.out.println(p.x + " " + p.y + "->" + j++);
+				pins.setVisible(true);
+				this.add(pins); 
+			}
+			
+		}
 		this.repaint();
 
 
@@ -41,6 +82,8 @@ public class PainelMapa extends JPanel implements MouseListener{
 		super.paintComponents(g);
 
 		g.drawImage(imgMapa, 0, - Constantes.getDeslocamento(), Constantes.getLargura(), Constantes.getAltura() , null);
+
+
 		g.finalize();
 	}
 
@@ -54,8 +97,10 @@ public class PainelMapa extends JPanel implements MouseListener{
 	}
 
 	public void mousePressed(MouseEvent e) {
-		if (e.isPopupTrigger())
+		String aux = ControladorMapa.detectaTerritorio(e, imgMapa);
+		if(aux!=null){
 			doPop(e);
+		}
 
 	}
 	public void mouseReleased(MouseEvent e) {

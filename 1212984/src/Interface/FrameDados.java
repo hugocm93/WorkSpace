@@ -43,6 +43,7 @@ public class FrameDados extends JFrame implements ActionListener{
 
 			File imgPlayFile1 = new File(path1 + path2 + "botaoLancarDadosDefesa2.png");
 			imgDefesa = ImageIO.read(imgPlayFile1);
+			
 		}
 
 		catch (IOException e) {
@@ -80,6 +81,7 @@ public class FrameDados extends JFrame implements ActionListener{
 
 		ok.setVisible(true);
 	}
+	
 
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == ok){

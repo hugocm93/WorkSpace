@@ -1,23 +1,37 @@
 package Modelos;
 
+import java.awt.Point;
+
 public class Territorio {
 
 	String nome;
 	Poligono poligono;
+	Point base;
 	int exercitos;
 	Jogador dono;
 	Simbolo simb;
 	String[] TerritoriosFronteira;
 
 
-	public Territorio(String nome, Poligono poligono, int exercitos, Jogador dono, Simbolo simb, String[] territoriosFronteira) {
+	public Territorio(String nome, Poligono poligono, int exercitos, Jogador dono, Simbolo simb, String[] territoriosFronteira, Point base) {
 
 		this.nome = nome;
 		this.poligono = poligono;
 		this.exercitos = exercitos;
 		this.dono = dono;
 		this.simb = simb;
+		this.base = base;
 		TerritoriosFronteira = territoriosFronteira;
+	}
+
+
+	public Point getBase() {
+		return base;
+	}
+
+
+	public void setBase(Point base) {
+		this.base = base;
 	}
 
 
