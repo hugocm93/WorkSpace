@@ -94,6 +94,9 @@ public class Territorio {
 		this.poligono = poligono;
 	}
 
+	public void exerMais(){
+		this.exercitos++;
+	}
 
 
 }

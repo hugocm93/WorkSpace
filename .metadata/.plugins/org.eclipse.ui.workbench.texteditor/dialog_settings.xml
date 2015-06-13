@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="253" key="DIALOG_WIDTH"/>
-		<item value="23" key="DIALOG_Y_ORIGIN"/>
-		<item value="986" key="DIALOG_X_ORIGIN"/>
-		<item value="417" key="DIALOG_HEIGHT"/>
+		<item value="255" key="DIALOG_WIDTH"/>
+		<item value="90" key="DIALOG_Y_ORIGIN"/>
+		<item value="428" key="DIALOG_HEIGHT"/>
+		<item value="615" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Noto Sans|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="imgFun" key="selection"/>
+		<item value="667" key="selection"/>
 		<list key="findhistory">
-			<item value="imgFun"/>
-			<item value="Scalr"/>
-			<item value="getNomesDasImagensDosDadosDeDefesa"/>
-			<item value="this"/>
-			<item value="jogarDadosAtaque"/>
-			<item value="println"/>
-			<item value="cores"/>
+			<item value="667"/>
+			<item value="add"/>
+			<item value="Ãº"/>
+			<item value="Ã§"/>
+			<item value="Ifrica"/>
+			<item value="Ã´"/>
+			<item value="Ãª"/>
+			<item value="Ã³"/>
 		</list>
 		<list key="replacehistory">
+			<item value="u"/>
+			<item value="c"/>
+			<item value="Africa"/>
+			<item value="o"/>
+			<item value="e"/>
+			<item value="I"/>
+			<item value="i"/>
+			<item value="a"/>
 		</list>
 	</section>
 </section>

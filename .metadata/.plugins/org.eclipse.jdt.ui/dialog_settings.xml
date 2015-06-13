@@ -26,11 +26,11 @@
 		<item value="false" key="OmitCallToSuper"/>
 	</section>
 	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
-		<item value="520" key="DIALOG_WIDTH"/>
-		<item value="70" key="DIALOG_Y_ORIGIN"/>
-		<item value="639" key="DIALOG_HEIGHT"/>
+		<item value="545" key="DIALOG_WIDTH"/>
+		<item value="1" key="DIALOG_Y_ORIGIN"/>
+		<item value="757" key="DIALOG_HEIGHT"/>
 		<item value="640" key="DIALOG_X_ORIGIN"/>
-		<item value="1|.Helvetica Neue DeskInterface|11.0|0|COCOA|1|.HelveticaNeueDeskInterface-Regular" key="DIALOG_FONT_NAME"/>
+		<item value="1|Noto Sans|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="RefactoringWizard.preview">
 		<item value="400" key="height"/>
@@ -59,11 +59,11 @@
 		<item value="false" key="SortOrdering"/>
 	</section>
 	<section name="DialogBounds_GenerateConstructorUsingFieldsSelectionDialog">
-		<item value="623" key="DIALOG_WIDTH"/>
-		<item value="83" key="DIALOG_Y_ORIGIN"/>
-		<item value="899" key="DIALOG_HEIGHT"/>
+		<item value="532" key="DIALOG_WIDTH"/>
+		<item value="33" key="DIALOG_Y_ORIGIN"/>
+		<item value="735" key="DIALOG_HEIGHT"/>
 		<item value="649" key="DIALOG_X_ORIGIN"/>
-		<item value="1|Cantarell|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="1|Noto Sans|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="NewPackageWizardPage">
 		<item value="false" key="create_package_info_java"/>

@@ -1,6 +1,7 @@
 package Interface;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
@@ -9,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -53,29 +55,63 @@ public class PainelMapa extends JPanel implements MouseListener{
 		ControladorFluxo.irPainelOpcoes();
 
 		ControladorMapa.sortearTerritorios();
+		
+		this.nExer();
+		
+		this.repaint();
+
+
+	}
+	
+	public void nExer(){
+		this.removeAll();
 //		int j=0;
 		for(int i = 0;i<6;i++){
+			int o=0;
+			ArrayList<Integer> nExerc = new ArrayList<Integer>();
+			ArrayList<Point> pontos = ControladorMapa.colocarBase(cores[i],nExerc);
 			
-			
-			ArrayList<Point> pontos = ControladorMapa.colocarBase(cores[i]);
+			 if(pontos==null){
+	            	break;
+	            }
+		
+			Integer[] intt = nExerc.toArray(new Integer[nExerc.size()]);
+			Point[] pointt = pontos.toArray(new Point[pontos.size()]);
 
-            if(pontos==null){
-            	break;
-            }
-            
-			for(Point p : pontos){
-				JLabel pins = new JLabel();
-				pins.setIcon(new ImageIcon(Scalr.resize(imgPinos[i], 18)));
-				pins.setBounds(p.x, p.y, 25, 25);	
+           
+			//for(Point p : pontos){
+			for(int y=0 ;y<pontos.size();y++){
+				
+//			    JLabel b = (JLabel)this.getComponentAt(pointt[y].x+12, pointt[y].y+4);
+//			    if(b!=null){
+//			    	this.remove(b);
+//			         b.setEnabled(false);
+//			    }
+				
+				ShadowLabel pins = new ShadowLabel(String.format("%d",intt[y]), JLabel.CENTER);
+				pins.setForeground(Color.white);
+				
+				pins.setBounds(pointt[y].x+8, pointt[y].y, 30, 30);	
 				//System.out.println(p.x + " " + p.y + "->" + j++);
 				pins.setVisible(true);
+				
+				this.add(pins);
+				
+				pins = new ShadowLabel();
+				
+                pins.setIcon(new ImageIcon(Scalr.resize(imgPinos[i], 20)));
+				
+				pins.setBounds(pointt[y].x, pointt[y].y, 30, 30);	
+				//System.out.println(p.x + " " + p.y + "->" + j++);
+				pins.setVisible(true);
+				
 				this.add(pins); 
+				
+				
 			}
 			
 		}
 		this.repaint();
-
-
 	}
 
 	public void paintComponent(Graphics g) {
@@ -83,7 +119,8 @@ public class PainelMapa extends JPanel implements MouseListener{
 
 		g.drawImage(imgMapa, 0, - Constantes.getDeslocamento(), Constantes.getLargura(), Constantes.getAltura() , null);
 
-
+		
+		
 		g.finalize();
 	}
 
@@ -96,13 +133,8 @@ public class PainelMapa extends JPanel implements MouseListener{
 		}
 	}
 
-	public void mousePressed(MouseEvent e) {
-		String aux = ControladorMapa.detectaTerritorio(e, imgMapa);
-		if(aux!=null){
-			doPop(e);
-		}
-
-	}
+	public void mousePressed(MouseEvent e) {}
+	
 	public void mouseReleased(MouseEvent e) {
 
 	}
@@ -110,13 +142,10 @@ public class PainelMapa extends JPanel implements MouseListener{
 	public void mouseEntered(MouseEvent e) {}
 	public void mouseExited(MouseEvent e) {}
 
-	private void doPop(MouseEvent e){
-		PopUp menu = new PopUp();
-		menu.show(e.getComponent(), e.getX(), e.getY());
-	}
 
 	private void doPop(MouseEvent e, String s){
 		PopUp menu = new PopUp(s);
+		menu.setPainel(this);
 		menu.show(e.getComponent(), e.getX(), e.getY());
 	}
 }

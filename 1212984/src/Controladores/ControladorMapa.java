@@ -66,30 +66,67 @@ public class ControladorMapa {
 
 	}
 
-	public static ArrayList<Point> colocarBase(String cor){
-	   int index;
-	   
-	   int u;
+	public static ArrayList<Point> colocarBase(String cor, ArrayList<Integer> nExer){
+		int index;
+
+		int u;
 		for(u=0; u<6 && mundo.getJogadores()[u]!=null ;u++);
+
+		for(index=0;index<u;index++){
+			if(mundo.getJogadores()[index]!=null && mundo.getJogadores()[index].getCor().equals(cor)){
+				// System.out.println(mundo.getJogadores()[index].getCor() + cor);
+				break;
+			}
+		}
+		if(index>=u){
+			return null;
+		}
+		ArrayList<Point> pontos = new ArrayList<Point>();
 		
-	   for(index=0;index<u;index++){
-		   if(mundo.getJogadores()[index]!=null && mundo.getJogadores()[index].getCor().equals(cor)){
-			  // System.out.println(mundo.getJogadores()[index].getCor() + cor);
-			   break;
-		   }
-	   }
-	   if(index>=u){
-		   return null;
-	   }
-       ArrayList<Point> pontos = new ArrayList<Point>();
 		for( Territorio ter :mundo.getJogadores()[index].getTerritoriosPossuidos() )  {  
-               //pontos.add(new Point( Math.round(ter.getBase().x/Constantes.getConstConversaoX()),Math.round((ter.getBase().y)/Constantes.getConstConversaoY())+ Constantes.getDeslocamento2()-Constantes.getConstMagica()));
-			pontos.add(new Point(Math.round(ter.getBase().x*Constantes.constConversaoX-5), Math.round(ter.getBase().y*Constantes.constConversaoY)-Constantes.deslocamento2 - 40));
-               //pontos.add(new Point(ter.getBase().x,ter.getBase().y));
+			
+			Point p = new Point(Math.round(ter.getBase().x*Constantes.constConversaoX-5), Math.round(ter.getBase().y*Constantes.constConversaoY)-Constantes.deslocamento2 - 40);
+			pontos.add(p);
+			
+			nExer.add(ter.getExercitos());
+			
 		}
 		pontos.add(new Point(-50,-50));
+		nExer.add(-2);
+		
 		return pontos;
 
+	}
+
+	public static int nExer(Point p){
+
+		for(int j=0;j<6;j++){
+			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
+				//System.out.println(mundo.getContinentes()[j].getTerritorios()[i].getBase() + " " +p);
+				Point aux = new Point(Math.round(mundo.getContinentes()[j].getTerritorios()[i].getBase().x*Constantes.constConversaoX-5), Math.round(mundo.getContinentes()[j].getTerritorios()[i].getBase().y*Constantes.constConversaoY)-Constantes.deslocamento2 - 40);
+				
+				if(aux.equals(p)){
+					
+					return mundo.getContinentes()[j].getTerritorios()[i].getExercitos();
+				}
+			}
+		}
+		
+		return -1;
+
+	}
+	
+	public static void addExer(String nome){
+		for(int j=0;j<6;j++){
+			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
+				if(mundo.getContinentes()[j].getTerritorios()[i].getNome().equals(nome)){
+					mundo.getContinentes()[j].getTerritorios()[i].exerMais();
+					System.out.println(mundo.getContinentes()[j].getTerritorios()[i].getExercitos());
+					return;
+				}
+				
+			}
+		}
 	}
 
 }
