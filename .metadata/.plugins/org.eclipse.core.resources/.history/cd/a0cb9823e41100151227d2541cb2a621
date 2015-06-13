@@ -39,6 +39,7 @@ class PopUp extends JPopupMenu implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("Add exer.")){
+			this.getComponent(0);
 			System.out.println("Selected: " + e.getActionCommand() + this.getComponent(0).getName());
 			ControladorMapa.addExer(this.getComponent(0).getName());
 			painel.nExer();
@@ -53,6 +54,7 @@ class PopUp extends JPopupMenu implements ActionListener{
 	public void setPainel(PainelMapa painel) {
 		this.painel = painel;
 	}
+
 
 
 }
