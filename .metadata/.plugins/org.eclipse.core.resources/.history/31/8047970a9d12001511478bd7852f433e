@@ -1,0 +1,63 @@
+package Modelos;
+
+import java.util.ArrayList;
+
+public class Rodada {
+	
+	ArrayList<Turno> turnos;
+	int index;;
+	Turno atual;
+	
+
+	public Rodada(ArrayList<Turno> turnos, Turno atual) {
+		super();
+		this.turnos = turnos;
+		this.atual = atual;
+	}
+
+	public ArrayList<Turno> getTurnos() {
+		return turnos;
+	}
+
+	public void setTurnos(ArrayList<Turno> turnos) {
+		this.turnos = turnos;
+	}
+
+	public Turno getAtual() {
+		return atual;
+	}
+
+	public void setAtual(Turno atual) {
+		this.atual = atual;
+	}
+	
+	public void proxTurno(){
+		atual = this.get(index);
+		index++;
+	}
+	
+    public void turnoAnt(){
+    	index--;
+    	atual = this.get(index);
+		
+	} 
+    
+    public Turno get(int index){
+        if (index == -1)
+        {
+            index = turnos.size()-1;
+        }
+
+        else if (index == turnos.size())
+        {
+            index = 0;
+        }
+
+        return turnos.get(index);
+    }
+	
+	
+
+}
+
+

@@ -8,6 +8,7 @@ public class Territorio {
 	Poligono poligono;
 	Point base;
 	int exercitos;
+	
 	Jogador dono;
 	Simbolo simb;
 	String[] TerritoriosFronteira;

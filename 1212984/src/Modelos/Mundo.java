@@ -1,6 +1,7 @@
 package Modelos;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Mundo {
 
@@ -9,7 +10,7 @@ public class Mundo {
 	Jogador[] jogadores;
 	Dado[] dadosAtaque;
 	Dado[] dadosDefesa;
-	int jogadorDaVez;
+	Rodada r;
 
 	private static Mundo instance;
 	String[] rets;
@@ -28,6 +29,7 @@ public class Mundo {
 		dadosAtaque = new Dado[3];
 		dadosDefesa = new Dado[3];
 		rets = new String[6];
+
 
 		for(int i=0;i<3;i++){
 			dadosAtaque[i] = new Dado();
@@ -327,7 +329,7 @@ public class Mundo {
 		poligono = new Poligono(new Point[]{new Point(637,172),new Point(654,200),new Point(756,200),new Point(770,230),new Point(757,254),new Point(638,253),new Point(610,205),new Point(617,203)});
 		simb = Simbolo.QUADRADO;
 		territoriosFronteira = new String[]{new String("Polonia"), new String("Ucrania"), new String("Suecia"), new String("Estonia"), new String("Turquia"), new String("Cazaquistao"), new String("Russia")};
-		base = new Point(742,252);
+		base = new Point(738,245);
 		territorios[3] = new Territorio(nomeT, poligono, 0, null, simb, territoriosFronteira, base);
 
 		nomeT = "Cazaquistao";
@@ -533,6 +535,16 @@ public class Mundo {
 		this.continentes = continentes;
 	}
 
+
+
+	public Rodada getR() {
+		return r;
+	}
+
+	public void setR(Rodada r) {
+		this.r = r;
+	}
+
 	public void ordenarDados(TipoDado t){
 		if(t == TipoDado.ATAQUE){
 
@@ -593,18 +605,17 @@ public class Mundo {
 	}
 
 	public void proximoJogador(){
-		int i;
-		for(i=0; i<6 && jogadores[i]!=null ;i++);
-		jogadorDaVez = (jogadorDaVez+1)%i;
+
+		r.proxTurno();
 	}
 
 	public void jogadorAnt(){
-		int i;
-		for(i=0; i<6 && jogadores[i]!=null ;i++);
-		jogadorDaVez = (jogadorDaVez-1)%i;
+
+		r.turnoAnt();
 	}
 
 	public int getJogadorDaVez() {
+		int jogadorDaVez = this.r.atual.indexJogador;
 		return jogadorDaVez;
 	}
 
@@ -613,7 +624,7 @@ public class Mundo {
 		int cont=0;
 		int u;
 		for(u=0; u<6 && jogadores[u]!=null ;u++);
-        boolean flag = true;
+		boolean flag = true;
 
 		while(cont<=51){
 			//System.out.printf("while1%d\n", cont);
@@ -652,5 +663,104 @@ public class Mundo {
 		}
 		return 0;
 	}
+
+	public void criaTurnos() {
+		ArrayList<Turno> t = new ArrayList<Turno>();
+
+
+		int u;
+		for(u=0; u<6 && jogadores[u]!=null ;u++){
+			System.out.println(jogadores[u].getTerritoriosPossuidos().size());
+			Turno novo = new Turno(jogadores[u],jogadores[u].getTerritoriosPossuidos().size()/2, u);
+			t.add(novo);
+		}
+		Turno atual = t.get(0);
+		this.r = new Rodada(t,atual);
+
+	}
+
+	public boolean permitido(String name) {
+		for(Territorio t : this.getR().getAtual().getJogador().getTerritoriosPossuidos()){
+			if(t.getNome().equals(name)){
+				if(this.getR().getAtual().getnExercitosDaVez() > 0){
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	public boolean permitidoPassar(String name) {
+
+		if(this.getR().getAtual().getJogador().getNome().equals(name)){
+			if(this.getR().getAtual().getnExercitosDaVez() == 0){
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+
+	public void isFimRodada() {
+		int aux = this.getR().indexTurno;
+		int aux2 = this.getR().getIndexRodada();
+		int u;
+		for(u=0; u<6 && jogadores[u]!=null ;u++);
+
+		//System.out.println("aux2: " + aux2);
+		System.out.println(this.getR().getTurnos().get(aux).indexJogador + "-" + u);
+
+		if(this.getR().getTurnos().get(aux).indexJogador == 0){
+			this.criaTurnos();
+			this.getR().setIndexRodada(++aux2);
+		}
+
+	}
+
+	public boolean permitidoAtacar(String name) {
+		if(this.permitido(name)==true){
+			return false;
+		}
+		
+		for(Territorio t : this.getR().getAtual().getJogador().getTerritoriosPossuidos()){
+			if(t.getNome().equals(name)){
+				if(Rodada.indexRodada > 0){
+					return true;
+				}
+			}
+		}
+
+
+		return false;
+	}
+
+	public boolean permitidoDefender(String name) {
+		if(this.permitido(name)==true){
+			return false;
+		}
+		for(Territorio t : this.getR().getAtual().getJogador().getTerritoriosPossuidos()){
+			if(t.getNome().equals(name)){
+				return false;
+
+			}
+//			for(int j=0;j<t.getTerritoriosFronteira().length;j++){
+//				if(!t.getTerritoriosFronteira()[j].equals(name)){
+//					return false;
+//				}
+//			}
+		}
+
+		if(Rodada.indexRodada > 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+
+	}
+
+
 
 }

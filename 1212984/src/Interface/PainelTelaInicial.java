@@ -118,9 +118,11 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 				}
 
 				ControladorInicial.sortSequencia();	//sorteando a sequencia
-
+                ControladorInicial.sortearTerritorios();
+				ControladorInicial.criaTurnos();
 				ControladorFluxo.criaPainelMapa();
 				ControladorFluxo.irPainelMapa();
+				
 			}
 			else{
 				JOptionPane.showMessageDialog(this, "O número mínimo de jogadores é 3.");

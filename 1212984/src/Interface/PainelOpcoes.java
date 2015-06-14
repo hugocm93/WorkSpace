@@ -3,6 +3,7 @@ package Interface;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,6 +41,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 	private BufferedImage[] imgPinos = new BufferedImage[6];
 	private JLabel nomeJogador;
 	private JLabel[] ordemDosJogadores = new JLabel[6];
+	private JLabel exeRestantes;
 
 
 	public PainelOpcoes(){
@@ -100,6 +102,13 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		nomeJogador.setText(ControladorPainelOpcoes.jogadorAtual("nome"));
 		nomeJogador.setVisible(true);
 		this.add(nomeJogador);
+		
+		exeRestantes = new JLabel();
+		exeRestantes.setForeground(Color.white);
+		exeRestantes.setFont(new Font("default", 25, 15));
+		exeRestantes.setText(ControladorPainelOpcoes.jogadorAtual("Exercitos restantes: " + "exer"));
+		nomeJogador.setVisible(true);
+		this.add(exeRestantes);
 
 		this.setVisible(true);
 		this.repaint();
@@ -113,6 +122,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		g.drawImage(imgJogador, 20, 20, 65, 65 , null);
 
 		nomeJogador.setBounds(20, 88, 150, 20);
+		exeRestantes.setBounds(this.getBounds().width-200, this.getBounds().height-50, 200,50);
 
 		for ( int i = 0, j = 120; i<6 && imgPinos[i]!=null ; i++, j=j+22 ){
 			ordemDosJogadores[i].setBounds(j, 0, 20, 20);			
@@ -131,6 +141,16 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		
 		nomeJogador.setText("");
 		nomeJogador.setText(ControladorPainelOpcoes.jogadorAtual("nome"));
+		
+		exeRestantes.setText("");
+		exeRestantes.setText("Exercitos restantes: " + ControladorPainelOpcoes.jogadorAtual("exer"));
+		
+		if(ControladorPainelOpcoes.permitidoPassar(ControladorPainelOpcoes.jogadorAtual("nome"))){
+			botaoFimDaJogada.setEnabled(true);
+		}
+		else{
+			botaoFimDaJogada.setEnabled(false);
+		}
 
 		for(int i=0;i<6;i++){
 			if(ControladorPainelOpcoes.jogadorAtual("cor") == cores[i]){

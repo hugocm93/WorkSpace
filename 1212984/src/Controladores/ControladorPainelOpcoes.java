@@ -14,6 +14,10 @@ public class ControladorPainelOpcoes {
 		if(param.equals("cor")){
 			return mundo.getJogadores()[mundo.getJogadorDaVez()].getCor();
 		}
+		if(param.equals("exer")){
+			return String.format("%d",mundo.getR().getAtual().getnExercitosDaVez());
+			
+		}
 		return null;
 	}
 	
@@ -33,6 +37,15 @@ public class ControladorPainelOpcoes {
 		}
 
 		return rets;
+	}
+
+	public static void isfimRodada() {
+		mundo.isFimRodada();
+		
+	}
+
+	public static boolean permitidoPassar(String name) {
+		return mundo.permitidoPassar(name);
 	}
 	
 }

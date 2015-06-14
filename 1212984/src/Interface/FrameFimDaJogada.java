@@ -43,6 +43,7 @@ public class FrameFimDaJogada extends JFrame implements ActionListener{
 
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == ok){
+			ControladorPainelOpcoes.isfimRodada();
 			setVisible(false);  
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			dispose(); 

@@ -61,11 +61,7 @@ public class ControladorMapa {
 		return clicado;
 	}
 
-	public static void sortearTerritorios(){
-		mundo.distribuirTerritorios();
-
-	}
-
+	
 	public static ArrayList<Point> colocarBase(String cor, ArrayList<Integer> nExer){
 		int index;
 
@@ -121,12 +117,30 @@ public class ControladorMapa {
 			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
 				if(mundo.getContinentes()[j].getTerritorios()[i].getNome().equals(nome)){
 					mundo.getContinentes()[j].getTerritorios()[i].exerMais();
-					System.out.println(mundo.getContinentes()[j].getTerritorios()[i].getExercitos());
+					int nExercitosDaVez = mundo.getR().getAtual().getnExercitosDaVez()-1;
+					mundo.getR().getAtual().setnExercitosDaVez(nExercitosDaVez);
+					System.out.println(mundo.getR().getAtual().getnExercitosDaVez());
 					return;
 				}
 				
 			}
 		}
 	}
+
+	public static boolean permitido(String name) {
+		return mundo.permitido(name);
+	
+	}
+
+	public static boolean permitidoAtacar(String name) {
+		return mundo.permitidoAtacar(name);
+	}
+
+	public static boolean permitidoDefender(String name) {
+		return mundo.permitidoDefender(name);
+	}
+
+	
+
 
 }

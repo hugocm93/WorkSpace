@@ -10,13 +10,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
 import org.imgscalr.Scalr;
-
 import Controladores.ControladorFluxo;
 import Controladores.ControladorMapa;
 import Controladores.ControladorPainelOpcoes;
@@ -53,8 +49,6 @@ public class PainelMapa extends JPanel implements MouseListener{
 		this.setLayout(new BorderLayout());
 		ControladorFluxo.criaPainelOpcoes();
 		ControladorFluxo.irPainelOpcoes();
-
-		ControladorMapa.sortearTerritorios();
 		
 		this.nExer();
 		
@@ -67,7 +61,6 @@ public class PainelMapa extends JPanel implements MouseListener{
 		this.removeAll();
 //		int j=0;
 		for(int i = 0;i<6;i++){
-			int o=0;
 			ArrayList<Integer> nExerc = new ArrayList<Integer>();
 			ArrayList<Point> pontos = ControladorMapa.colocarBase(cores[i],nExerc);
 			

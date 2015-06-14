@@ -20,4 +20,14 @@ public class ControladorInicial {
 		mundo.listaJogadores();
 	}
 
+	public static void criaTurnos() {
+		mundo.criaTurnos();
+		
+	}
+	
+	public static void sortearTerritorios(){
+		mundo.distribuirTerritorios();
+
+	}
+
 }
