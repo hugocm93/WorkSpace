@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import Interface.Constantes;
 import Modelos.Cor;
 import Modelos.Mundo;
+import Modelos.Rodada;
 import Modelos.Territorio;
 
 public class ControladorMapa {
@@ -61,7 +62,6 @@ public class ControladorMapa {
 		return clicado;
 	}
 
-	
 	public static ArrayList<Point> colocarBase(String cor, ArrayList<Integer> nExer){
 		int index;
 
@@ -128,16 +128,57 @@ public class ControladorMapa {
 	}
 
 	public static boolean permitido(String name) {
-		return mundo.permitido(name);
+		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
+			if(t.getNome().equals(name)){
+				if(mundo.getR().getAtual().getnExercitosDaVez() > 0){
+					return true;
+				}
+			}
+		}
+
+		return false;
 	
 	}
 
 	public static boolean permitidoAtacar(String name) {
-		return mundo.permitidoAtacar(name);
+		if(ControladorMapa.permitido(name)==true){
+			return false;
+		}
+
+		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
+			if(t.getNome().equals(name)){
+				if(Rodada.indexRodada > 0){
+					return true;
+				}
+			}
+		}
+
+
+		return false;
 	}
 
 	public static boolean permitidoDefender(String name) {
-		return mundo.permitidoDefender(name);
+		if(ControladorMapa.permitido(name)==true){
+			return false;
+		}
+		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
+			if(t.getNome().equals(name)){
+				return false;
+
+			}
+			//			for(int j=0;j<t.getTerritoriosFronteira().length;j++){
+			//				if(!t.getTerritoriosFronteira()[j].equals(name)){
+			//					return false;
+			//				}
+			//			}
+		}
+
+		if(Rodada.indexRodada > 0){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 	

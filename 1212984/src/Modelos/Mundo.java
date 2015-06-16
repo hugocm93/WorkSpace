@@ -1,7 +1,6 @@
 package Modelos;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Mundo {
 
@@ -13,7 +12,6 @@ public class Mundo {
 	Rodada r;
 
 	private static Mundo instance;
-	String[] rets;
 
 	public static Mundo getInstance() {
 		if (instance == null)
@@ -28,7 +26,6 @@ public class Mundo {
 		jogadores = new Jogador[6]; 
 		dadosAtaque = new Dado[3];
 		dadosDefesa = new Dado[3];
-		rets = new String[6];
 
 
 		for(int i=0;i<3;i++){
@@ -493,12 +490,6 @@ public class Mundo {
 		return continentes;
 	}
 
-	public void insereNovoJogador(Jogador jogador){
-		int i;
-		for(i=0; jogadores[i]!=null;i++);
-		jogadores[i]=jogador;
-	}
-
 	public Tabela1 getTabTroca() {
 		return tabTroca;
 	}
@@ -535,8 +526,6 @@ public class Mundo {
 		this.continentes = continentes;
 	}
 
-
-
 	public Rodada getR() {
 		return r;
 	}
@@ -544,223 +533,6 @@ public class Mundo {
 	public void setR(Rodada r) {
 		this.r = r;
 	}
-
-	public void ordenarDados(TipoDado t){
-		if(t == TipoDado.ATAQUE){
-
-			int fim=3;
-
-			for(;fim>0;fim--){
-				for(int j=0;j<fim-1;j++){
-					if(dadosAtaque[j].getValor() < dadosAtaque[j+1].getValor()){
-						Dado aux = dadosAtaque[j];
-						dadosAtaque[j] = dadosAtaque[j+1];
-						dadosAtaque[j+1] = aux;
-					}
-				}
-			}
-		}
-		else{
-			int fim=3;
-
-			for(;fim>0;fim--){
-				for(int j=0;j<fim-1;j++){
-					if(dadosDefesa[j].getValor() < dadosDefesa[j+1].getValor()){
-						Dado aux = dadosDefesa[j];
-						dadosDefesa[j] = dadosDefesa[j+1];
-						dadosDefesa[j+1] = aux;
-					}
-				}
-			}
-		}
-	}
-
-	public void desordena(){
-		int i;
-		Jogador[] jogadores2 = new Jogador[]{null,null,null,null,null,null}; 
-		for(i=0; i<6 && jogadores[i]!=null;i++);
-
-		for(int j=0; j<i;){
-			int aux = (int)(Math.random() * 6);
-			if(jogadores[aux]!=null){
-				jogadores2[j] = jogadores[aux];
-				jogadores[aux] = null;
-				j++;
-			}
-		}
-		this.setJogadores(jogadores2);
-	}
-
-	public void listaJogadores(){
-		for(int i=0; i<6 && jogadores[i]!=null ;i++){
-			System.out.println(jogadores[i].getNome());
-		}
-	}
-
-	public String[] coresDosJogadores(){
-		for(int i=0; i<6 && jogadores[i]!=null ;i++){
-			rets[i] = jogadores[i].getCor();
-		}
-		return rets;
-	}
-
-	public void proximoJogador(){
-
-		r.proxTurno();
-	}
-
-	public void jogadorAnt(){
-
-		r.turnoAnt();
-	}
-
-	public int getJogadorDaVez() {
-		int jogadorDaVez = this.r.atual.indexJogador;
-		return jogadorDaVez;
-	}
-
-	public int distribuirTerritorios(){
-		int i=0;
-		int cont=0;
-		int u;
-		for(u=0; u<6 && jogadores[u]!=null ;u++);
-		boolean flag = true;
-
-		while(cont<=51){
-			//System.out.printf("while1%d\n", cont);
-			if(cont==51){
-				break;
-			}
-			for(i=0;i<u;i++){
-				//System.out.printf("while2%d\n", cont);
-				if(cont<51){
-					flag=true;
-				}
-				else{
-					flag=false;
-				}
-				while(flag){
-					//System.out.printf("while3%d\n", cont);
-					if(cont==51){
-						break;
-					}
-
-					int aux1 = (int)(Math.random() * 6);
-					int aux2 = (int)(Math.random() * continentes[aux1].territorios.length);
-					if(continentes[aux1].getTerritorios()[aux2].getDono() == null){
-						continentes[aux1].getTerritorios()[aux2].setDono(jogadores[i]);
-						jogadores[i].getTerritoriosPossuidos().add(continentes[aux1].getTerritorios()[aux2]);
-						//System.out.println(continentes[aux1].getTerritorios()[aux2].getNome() + "->"+ jogadores[i].getNome());
-						cont++;
-						flag=false;
-						break;
-					}
-
-				}
-			}
-
-
-		}
-		return 0;
-	}
-
-	public void criaTurnos() {
-		ArrayList<Turno> t = new ArrayList<Turno>();
-
-
-		int u;
-		for(u=0; u<6 && jogadores[u]!=null ;u++){
-			System.out.println(jogadores[u].getTerritoriosPossuidos().size());
-			Turno novo = new Turno(jogadores[u],jogadores[u].getTerritoriosPossuidos().size()/2, u);
-			t.add(novo);
-		}
-		Turno atual = t.get(0);
-		this.r = new Rodada(t,atual);
-
-	}
-
-	public boolean permitido(String name) {
-		for(Territorio t : this.getR().getAtual().getJogador().getTerritoriosPossuidos()){
-			if(t.getNome().equals(name)){
-				if(this.getR().getAtual().getnExercitosDaVez() > 0){
-					return true;
-				}
-			}
-		}
-
-		return false;
-	}
-
-	public boolean permitidoPassar(String name) {
-
-		if(this.getR().getAtual().getJogador().getNome().equals(name)){
-			if(this.getR().getAtual().getnExercitosDaVez() == 0){
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-
-	public void isFimRodada() {
-		int aux = this.getR().indexTurno;
-		int aux2 = this.getR().getIndexRodada();
-		int u;
-		for(u=0; u<6 && jogadores[u]!=null ;u++);
-
-		//System.out.println("aux2: " + aux2);
-		System.out.println(this.getR().getTurnos().get(aux).indexJogador + "-" + u);
-
-		if(this.getR().getTurnos().get(aux).indexJogador == 0){
-			this.criaTurnos();
-			this.getR().setIndexRodada(++aux2);
-		}
-
-	}
-
-	public boolean permitidoAtacar(String name) {
-		if(this.permitido(name)==true){
-			return false;
-		}
-		
-		for(Territorio t : this.getR().getAtual().getJogador().getTerritoriosPossuidos()){
-			if(t.getNome().equals(name)){
-				if(Rodada.indexRodada > 0){
-					return true;
-				}
-			}
-		}
-
-
-		return false;
-	}
-
-	public boolean permitidoDefender(String name) {
-		if(this.permitido(name)==true){
-			return false;
-		}
-		for(Territorio t : this.getR().getAtual().getJogador().getTerritoriosPossuidos()){
-			if(t.getNome().equals(name)){
-				return false;
-
-			}
-//			for(int j=0;j<t.getTerritoriosFronteira().length;j++){
-//				if(!t.getTerritoriosFronteira()[j].equals(name)){
-//					return false;
-//				}
-//			}
-		}
-
-		if(Rodada.indexRodada > 0){
-			return true;
-		}
-		else{
-			return false;
-		}
-
-	}
-
 
 
 }

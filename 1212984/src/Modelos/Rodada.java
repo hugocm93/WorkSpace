@@ -7,7 +7,7 @@ public class Rodada {
 	ArrayList<Turno> turnos;
 	int indexTurno;
 	Turno atual;
-	static int indexRodada;
+	public static int indexRodada;
 	
 	
 
@@ -52,6 +52,14 @@ public class Rodada {
 
 	public void setIndexRodada(int indexRodada) {
 		Rodada.indexRodada = indexRodada;
+	}
+	
+	public int getIndexTurno() {
+		return indexTurno;
+	}
+
+	public void setIndexTurno(int indexTurno) {
+		this.indexTurno = indexTurno;
 	}
 
 	public Turno get(){

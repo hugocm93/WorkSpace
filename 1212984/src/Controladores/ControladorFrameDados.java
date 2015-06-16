@@ -2,6 +2,7 @@ package Controladores;
 
 import javax.swing.ImageIcon;
 
+import Modelos.Dado;
 import Modelos.Mundo;
 import Modelos.TipoDado;
 
@@ -68,17 +69,49 @@ public class ControladorFrameDados {
 	}
 
 	public static void ordenarDadosDeAtaque() {
-		// TODO Auto-generated method stub
 
-		mundo.ordenarDados(TipoDado.ATAQUE);
+		ControladorFrameDados.ordenarDados(TipoDado.ATAQUE);
 
 	}
 
 	public static void ordenarDadosDeDefesa() {
-		// TODO Auto-generated method stub
 
-		mundo.ordenarDados(TipoDado.DEFESA);
+		ControladorFrameDados.ordenarDados(TipoDado.DEFESA);
 
+	}
+	
+	static void ordenarDados(TipoDado t){
+		if(t == TipoDado.ATAQUE){
+			
+			Dado[] dadosAtaque = mundo.getDadosAtaque();
+
+			int fim=3;
+
+			for(;fim>0;fim--){
+				for(int j=0;j<fim-1;j++){
+					if(dadosAtaque[j].getValor() < dadosAtaque[j+1].getValor()){
+						Dado aux = dadosAtaque[j];
+						dadosAtaque[j] = dadosAtaque[j+1];
+						dadosAtaque[j+1] = aux;
+					}
+				}
+			}
+		}
+		else{
+			int fim=3;
+			
+			Dado[] dadosDefesa = mundo.getDadosDefesa();
+
+			for(;fim>0;fim--){
+				for(int j=0;j<fim-1;j++){
+					if(dadosDefesa[j].getValor() < dadosDefesa[j+1].getValor()){
+						Dado aux = dadosDefesa[j];
+						dadosDefesa[j] = dadosDefesa[j+1];
+						dadosDefesa[j+1] = aux;
+					}
+				}
+			}
+		}
 	}
 
 }
