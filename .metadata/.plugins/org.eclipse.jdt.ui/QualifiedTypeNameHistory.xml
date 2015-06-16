@@ -43,7 +43,8 @@
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="Controladores.ControladorMapa"/>
-<fullyQualifiedTypeName name="Controladores.ControladorPainelOpcoes"/>
 <fullyQualifiedTypeName name="java.awt.Font"/>
 <fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="Modelos.Continente"/>
+<fullyQualifiedTypeName name="Controladores.ControladorPainelOpcoes"/>
 </qualifiedTypeNameHistroy>
