@@ -22,7 +22,7 @@ public class FrameDados extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private String path1 = System.getProperty("user.dir");
-	private String path2 = "/src/zImagens/Dados/";
+	private String path3 = "/src/zImagens/Botoes/";
 	private BufferedImage imgAtaque;
 	private BufferedImage imgDefesa;
 	private JButton botaoLancarDadosAtaque;
@@ -38,10 +38,10 @@ public class FrameDados extends JFrame implements ActionListener{
 		ok = new JButton("OK");
 
 		try {
-			File imgPlayFile = new File(path1 + path2 + "botaoLancarDadosAtaque2.png");
+			File imgPlayFile = new File(path1 + path3 + "botaoLancarDadosAtaque2.png");
 			imgAtaque = ImageIO.read(imgPlayFile);
 
-			File imgPlayFile1 = new File(path1 + path2 + "botaoLancarDadosDefesa2.png");
+			File imgPlayFile1 = new File(path1 + path3 + "botaoLancarDadosDefesa2.png");
 			imgDefesa = ImageIO.read(imgPlayFile1);
 			
 		}

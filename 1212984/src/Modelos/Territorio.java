@@ -98,6 +98,10 @@ public class Territorio {
 	public void exerMais(){
 		this.exercitos++;
 	}
+	
+	public void exerMenos(){
+		this.exercitos--;
+	}
 
 
 }

@@ -6,8 +6,11 @@ public class Turno {
 	int indexJogador;
 	int nExercitosDaVez;
 	
-	Jogador atacante;
-	Jogador defensor;
+	Territorio atacante;
+	Territorio defensor;
+	
+	boolean fimFaseAtaque = false;
+	
 	
 	public Turno(Jogador jogador, int nExercitosDaVez,int index) {
 		super();
@@ -40,20 +43,28 @@ public class Turno {
 		this.indexJogador = indexJogador;
 	}
 
-	public Jogador getAtacante() {
+	public Territorio getAtacante() {
 		return atacante;
 	}
 
-	public void setAtacante(Jogador atacante) {
+	public void setAtacante(Territorio atacante) {
 		this.atacante = atacante;
 	}
 
-	public Jogador getDefensor() {
+	public Territorio getDefensor() {
 		return defensor;
 	}
 
-	public void setDefensor(Jogador defensor) {
+	public void setDefensor(Territorio defensor) {
 		this.defensor = defensor;
+	}
+
+	public boolean isFimFaseAtaque() {
+		return fimFaseAtaque;
+	}
+
+	public void setFimFaseAtaque(boolean fimFaseAtaque) {
+		this.fimFaseAtaque = fimFaseAtaque;
 	}
 	
 	

@@ -1,0 +1,205 @@
+package Interface;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import org.imgscalr.Scalr;
+
+import Controladores.ControladorFluxo;
+import Controladores.ControladorMapa;
+import Controladores.ControladorPainelOpcoes;
+
+public class PainelOpcoes extends JPanel implements ActionListener{
+
+	private static final long serialVersionUID = 1L;
+	private JButton botaoDado = new JButton();
+	private JButton botaoFimDaJogada = new JButton();
+	private JButton botaoFimAtaque = new JButton();
+	private String path1 = System.getProperty("user.dir");
+	private String path2 = "/src/zImagens/Background/";
+	private String path3 = "/src/zImagens/Dados/";
+	private String path4 = "/src/zImagens/Botoes/";
+	private String path5 = "/src/zImagens/Pinos/";
+	private String[] cores = ControladorPainelOpcoes.getNomesDasImagensDosJogadores();
+	private BufferedImage imgFimDaJogada;
+	private BufferedImage imgFundo;
+	private BufferedImage imgDados;
+	private BufferedImage imgSeta;
+	private BufferedImage imgJogador;
+	private BufferedImage imgFimAtaque;
+	private BufferedImage[] imgPinos = new BufferedImage[6];
+	private JLabel nomeJogador;
+	private JLabel[] ordemDosJogadores = new JLabel[6];
+	private JLabel exeRestantes;
+
+
+	public PainelOpcoes(){
+
+		try {
+			File imgMapaFile = new File(path1 + path2 + "war_tabuleiro_fundo3.png");
+			imgFundo = ImageIO.read(imgMapaFile);
+
+			File imgPlayFile = new File(path1 + path3 + "botaoDados2.png");
+			imgDados = ImageIO.read(imgPlayFile);
+
+			File imgPlayFile1 = new File(path1 + path4 + "botaoFimDaJogada.png");
+			imgFimDaJogada = ImageIO.read(imgPlayFile1);
+
+			File imgJogadorFile = new File(path1 + path5 + ControladorPainelOpcoes.jogadorAtual("cor"));
+			imgJogador = ImageIO.read(imgJogadorFile);
+			
+			File imgPlayFile2 = new File(path1 + path3 + "botaoLancarDadosAtaque2.png");
+			imgFimAtaque = ImageIO.read(imgPlayFile2);
+			
+
+			for(int i=0; i<6 && cores[i]!=null ; i++){
+				File imgPinosJogadorFiles = new File(path1 + path5 + cores[i]);
+				imgPinos[i] = ImageIO.read(imgPinosJogadorFiles);
+			}
+		}
+		catch (IOException e) {
+			System.out.println("Imagem não encontrada.");
+		}
+
+		this.setPreferredSize(new Dimension(1024,115));
+		this.setLayout(new FlowLayout());
+
+
+		botaoFimDaJogada.setIcon(new ImageIcon(imgFimDaJogada));
+		botaoFimDaJogada.setOpaque(false);
+		botaoFimDaJogada.setContentAreaFilled(false);
+		botaoFimDaJogada.setBorderPainted(false);
+		botaoFimDaJogada.addActionListener(this);
+		this.add(botaoFimDaJogada);
+		botaoFimDaJogada.setVisible(true);
+		
+		botaoFimAtaque.setIcon(new ImageIcon(imgFimAtaque));
+		botaoFimAtaque.setOpaque(false);
+		botaoFimAtaque.setContentAreaFilled(false);
+		botaoFimAtaque.setBorderPainted(false);
+		botaoFimAtaque.addActionListener(this);
+		this.add(botaoFimAtaque);
+		botaoFimAtaque.setVisible(true);
+
+		botaoDado.setIcon(new ImageIcon(Scalr.resize(imgDados, 50)));
+		botaoDado.setSize(50, 50);
+		botaoDado.setVisible(true);
+		botaoDado.setOpaque(false);
+		botaoDado.setContentAreaFilled(false);
+		botaoDado.setBorderPainted(false);
+		botaoDado.addActionListener(this);
+		this.add(botaoDado);
+		botaoDado.setVisible(true);
+
+		for ( int i = 0; i<6 && imgPinos[i]!=null ; i++ ){
+			ordemDosJogadores[i] = new JLabel();
+			ordemDosJogadores[i].setIcon(new ImageIcon(Scalr.resize(imgPinos[i], 20)));
+			ordemDosJogadores[i].setVisible(true);
+			this.add(ordemDosJogadores[i]);
+		}
+
+		nomeJogador = new JLabel();
+		nomeJogador.setForeground(Color.white);
+		nomeJogador.setText(ControladorPainelOpcoes.jogadorAtual("nome"));
+		nomeJogador.setVisible(true);
+		this.add(nomeJogador);
+		
+		exeRestantes = new JLabel();
+		exeRestantes.setForeground(Color.white);
+		exeRestantes.setFont(new Font("default", 25, 15));
+		exeRestantes.setText(ControladorPainelOpcoes.jogadorAtual("Exercitos restantes: " + "exer"));
+		nomeJogador.setVisible(true);
+		this.add(exeRestantes);
+
+		this.setVisible(true);
+		this.repaint();
+	}
+
+	public void paintComponent(Graphics g) {
+		super.paintComponents(g);
+
+		g.drawImage(imgFundo, 0, 0, Constantes.getLargura(), 200 , null);
+		botaoFimDaJogada.setBounds(Constantes.getLargura() -160,30 ,130, 50);
+		
+		botaoFimAtaque.setBounds(Constantes.getLargura() -300, 30 ,130, 50);
+		
+		g.drawImage(imgJogador, 20, 20, 65, 65 , null);
+
+		nomeJogador.setBounds(20, 88, 150, 20);
+		exeRestantes.setBounds(this.getBounds().width-200, this.getBounds().height-50, 200,50);
+
+		for ( int i = 0, j = 120; i<6 && imgPinos[i]!=null ; i++, j=j+22 ){
+			ordemDosJogadores[i].setBounds(j, 0, 20, 20);			
+		}
+
+		try{
+			File imgSetaFile = new File(path1 + path2 + "seta.png");
+			imgSeta = ImageIO.read(imgSetaFile);
+
+			File imgJogadorFile = new File(path1 + path5 + ControladorPainelOpcoes.jogadorAtual("cor")); 
+			imgJogador = ImageIO.read(imgJogadorFile);
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		
+		nomeJogador.setText("");
+		nomeJogador.setText(ControladorPainelOpcoes.jogadorAtual("nome"));
+		
+		exeRestantes.setText("");
+		exeRestantes.setText("Exercitos restantes: " + ControladorPainelOpcoes.jogadorAtual("exer"));
+		
+		if(ControladorPainelOpcoes.permitidoPassar(ControladorPainelOpcoes.jogadorAtual("nome"))){
+			botaoFimDaJogada.setEnabled(true);
+		}
+		else{
+			botaoFimDaJogada.setEnabled(false);
+		}
+		
+		if(!ControladorMapa.isFimAtaque()){
+			botaoFimAtaque.setEnabled(true);
+		}
+		else{
+			botaoFimAtaque.setEnabled(false);
+		}
+
+		for(int i=0;i<6;i++){
+			if(ControladorPainelOpcoes.jogadorAtual("cor") == cores[i]){
+				g.drawImage(imgSeta, 109 + 22*i, 16, 40, 40, null);
+			}
+		}
+
+		g.finalize();
+	}
+
+
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == botaoDado){
+			ControladorFluxo.novoFrameDados();
+		}
+		if(e.getSource() == botaoFimDaJogada){
+			ControladorFluxo.novoFrameFimDaJogada();
+		}
+		
+		if(e.getSource() == botaoFimAtaque){
+			ControladorPainelOpcoes.fimAtaque();
+			botaoFimAtaque.setEnabled(false);
+		}
+
+	}
+
+}

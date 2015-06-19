@@ -2,6 +2,7 @@ package Controladores;
 
 import Modelos.Jogador;
 import Modelos.Mundo;
+import Modelos.Territorio;
 
 public class ControladorPainelOpcoes {
 
@@ -73,5 +74,44 @@ public class ControladorPainelOpcoes {
 			rets[i] = jogadores[i].getCor();
 		}
 		return rets;
+	}
+
+	public static void setarAtacante(String name) {
+		// TODO Auto-generated method stub
+		
+		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
+			if(t.getNome().equals(name)){
+				mundo.getR().getAtual().setAtacante(t);
+
+			}
+		}
+		
+	}
+
+	public static void setarDefensor(String name) {
+		// TODO Auto-generated method stub
+		
+		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
+			if(t.getNome().equals(name)){
+				mundo.getR().getAtual().setDefensor(t);
+
+			}
+		}
+		
+	}
+
+	public static void fimAtaque() {
+		// TODO Auto-generated method stub
+		
+		mundo.getR().getAtual().setFimFaseAtaque(true);
+		
+	}
+
+	public static boolean isNotPrimeiraRodada() {
+		System.out.println("rodada" + mundo.getR().getIndexRodada());
+		if(mundo.getR().getIndexRodada()>=1){
+			return true;
+		}
+		return false;
 	}
 }

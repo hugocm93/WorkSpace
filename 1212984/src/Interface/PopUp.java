@@ -9,6 +9,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
 import Controladores.ControladorMapa;
+import Controladores.ControladorPainelOpcoes;
 
 class PopUp extends JPopupMenu implements ActionListener{
 	private static final long serialVersionUID = 1L;
@@ -86,10 +87,13 @@ class PopUp extends JPopupMenu implements ActionListener{
 
 		if(e.getActionCommand().equals("Atacante")){
                   // TODO ir no turno atual e setar o jogador como atacante
+			
+			ControladorPainelOpcoes.setarAtacante(this.getComponent(0).getName());
 		}
 
 		if(e.getActionCommand().equals("Defensor")){
 			// TODO ir no turno atual e setar o jogador como defensor
+			ControladorPainelOpcoes.setarDefensor(this.getComponent(0).getName());
 		}
 
 	}

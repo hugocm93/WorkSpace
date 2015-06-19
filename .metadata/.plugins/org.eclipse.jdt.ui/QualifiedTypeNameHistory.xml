@@ -34,7 +34,6 @@
 <fullyQualifiedTypeName name="Controladores.ControladorInicial"/>
 <fullyQualifiedTypeName name="javax.swing.JLabel"/>
 <fullyQualifiedTypeName name="java.awt.Graphics"/>
-<fullyQualifiedTypeName name="java.awt.Image"/>
 <fullyQualifiedTypeName name="javax.swing.JPanel"/>
 <fullyQualifiedTypeName name="java.awt.Point"/>
 <fullyQualifiedTypeName name="Interface.Constantes"/>
@@ -42,9 +41,17 @@
 <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="Controladores.ControladorMapa"/>
 <fullyQualifiedTypeName name="java.awt.Font"/>
 <fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="Modelos.Continente"/>
+<fullyQualifiedTypeName name="java.awt.dnd.DropTargetDropEvent"/>
+<fullyQualifiedTypeName name="javax.swing.DesktopManager"/>
+<fullyQualifiedTypeName name="java.awt.dnd.DropTargetListener"/>
+<fullyQualifiedTypeName name="java.awt.dnd.DropTargetDragEvent"/>
+<fullyQualifiedTypeName name="java.awt.dnd.DropTargetEvent"/>
+<fullyQualifiedTypeName name="java.awt.Cursor"/>
+<fullyQualifiedTypeName name="java.awt.Toolkit"/>
+<fullyQualifiedTypeName name="java.awt.Image"/>
+<fullyQualifiedTypeName name="Controladores.ControladorMapa"/>
 <fullyQualifiedTypeName name="Controladores.ControladorPainelOpcoes"/>
 </qualifiedTypeNameHistroy>

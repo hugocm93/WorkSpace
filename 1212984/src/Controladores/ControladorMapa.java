@@ -78,18 +78,18 @@ public class ControladorMapa {
 			return null;
 		}
 		ArrayList<Point> pontos = new ArrayList<Point>();
-		
+
 		for( Territorio ter :mundo.getJogadores()[index].getTerritoriosPossuidos() )  {  
-			
+
 			Point p = new Point(Math.round(ter.getBase().x*Constantes.constConversaoX-5), Math.round(ter.getBase().y*Constantes.constConversaoY)-Constantes.deslocamento2 - 40);
 			pontos.add(p);
-			
+
 			nExer.add(ter.getExercitos());
-			
+
 		}
 		pontos.add(new Point(-50,-50));
 		nExer.add(-2);
-		
+
 		return pontos;
 
 	}
@@ -100,18 +100,18 @@ public class ControladorMapa {
 			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
 				//System.out.println(mundo.getContinentes()[j].getTerritorios()[i].getBase() + " " +p);
 				Point aux = new Point(Math.round(mundo.getContinentes()[j].getTerritorios()[i].getBase().x*Constantes.constConversaoX-5), Math.round(mundo.getContinentes()[j].getTerritorios()[i].getBase().y*Constantes.constConversaoY)-Constantes.deslocamento2 - 40);
-				
+
 				if(aux.equals(p)){
-					
+
 					return mundo.getContinentes()[j].getTerritorios()[i].getExercitos();
 				}
 			}
 		}
-		
+
 		return -1;
 
 	}
-	
+
 	public static void addExer(String nome){
 		for(int j=0;j<6;j++){
 			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
@@ -122,7 +122,7 @@ public class ControladorMapa {
 					System.out.println(mundo.getR().getAtual().getnExercitosDaVez());
 					return;
 				}
-				
+
 			}
 		}
 	}
@@ -137,7 +137,7 @@ public class ControladorMapa {
 		}
 
 		return false;
-	
+
 	}
 
 	public static boolean permitidoAtacar(String name) {
@@ -171,7 +171,7 @@ public class ControladorMapa {
 			//					return false;
 			//				}
 			//			}
-			
+
 			//TODO verificar se o territorio faz fronteira com o territorio do jogador defensor
 		}
 
@@ -183,7 +183,89 @@ public class ControladorMapa {
 		}
 	}
 
+	public static void retiraExer(String aux) {
+		// TODO Auto-generated method stub
+
+		for(int j=0;j<6;j++){
+			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
+				if(mundo.getContinentes()[j].getTerritorios()[i].getNome().equals(aux)){
+					mundo.getContinentes()[j].getTerritorios()[i].exerMenos();
+					return;
+				}
+
+			}
+		}
+
+	}
+
+	public static void colocaExer(String aux) {
+		// TODO Auto-generated method stub
+
+		for(int j=0;j<6;j++){
+			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
+				if(mundo.getContinentes()[j].getTerritorios()[i].getNome().equals(aux)){
+					mundo.getContinentes()[j].getTerritorios()[i].exerMais();
+					return;
+				}
+
+			}
+		}
+
+	}
+
+	public static boolean permitidoMover(String name) {
+
+		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
+			if(t.getNome().equals(name)){
+				if(t.getExercitos() > 1){
+					return true;
+				}
+
+			}
+		}
+
+
+		return false;
+
+
+	}
+
+	public static boolean permitidoDeixar(String aux) {
+		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
+			if(t.getNome().equals(aux)){
+
+				return true;
+
+			}
+		}
+
+
+
+		return false;
+	}
+	public static boolean fazFronteira(String aux1, String aux2){
+
+		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
+			if(t.getNome().equals(aux1)){
+				for(String s : t.getTerritoriosFronteira()){
+					if(s.equals(aux2)){
+						return true;
+					}
+				}
+
+			}
+		}
+
+
+		return false;
+
+	}
 	
+	public static boolean isFimAtaque(){
+
+		
+       return mundo.getR().getAtual().isFimFaseAtaque();
+	}
 
 
 }
