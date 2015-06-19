@@ -6,9 +6,6 @@ public class Turno {
 	int indexJogador;
 	int nExercitosDaVez;
 	
-	Jogador atacante;
-	Jogador defensor;
-	
 	public Turno(Jogador jogador, int nExercitosDaVez,int index) {
 		super();
 		this.jogador = jogador;
@@ -39,24 +36,6 @@ public class Turno {
 	public void setIndexJogador(int indexJogador) {
 		this.indexJogador = indexJogador;
 	}
-
-	public Jogador getAtacante() {
-		return atacante;
-	}
-
-	public void setAtacante(Jogador atacante) {
-		this.atacante = atacante;
-	}
-
-	public Jogador getDefensor() {
-		return defensor;
-	}
-
-	public void setDefensor(Jogador defensor) {
-		this.defensor = defensor;
-	}
-	
-	
 	
 	
 	

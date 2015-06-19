@@ -115,18 +115,14 @@ public class ControladorFrameDados {
 	}
 	
 	
-	static boolean compararDados(){
-		//TODO compara dado a dado - os dados são vetores ()
-		// TODO mundo.getDadosAtaque()
-		//TODO mundo.getDadosDefesa()
+	static void compararDados(){
+		//compara dado a dado - os dados são vetores ()
+		//mundo.getDadosAtaque()
+		//mundo.getDadosDefesa()
 		
-		//TODO retirar exercitos do territorio correspondente
-		//TODO retirar territorio da lista do jogador defensor e coloca-lo na lista de exercitos do jogador atacante com um exercito
-		//TODO entrar no territorio e trocar o dono dele
-		
-		//TODO se retornar true eh porque conquistou
-		
-		return false;
+		//retirar exercitos do territorio correspondente
+		//retirar territorio da lista do jogador defensor e coloca-lo na lista de exercitos do jogador atacante com um exercito
+		//entrar no territorio e trocar o dono dele
 	}
 
 

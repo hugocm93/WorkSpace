@@ -171,8 +171,6 @@ public class ControladorMapa {
 			//					return false;
 			//				}
 			//			}
-			
-			//TODO verificar se o territorio faz fronteira com o territorio do jogador defensor
 		}
 
 		if(Rodada.indexRodada > 0){

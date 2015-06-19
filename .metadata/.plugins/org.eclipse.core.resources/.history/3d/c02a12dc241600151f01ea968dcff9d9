@@ -28,7 +28,7 @@ class PopUp extends JPopupMenu implements ActionListener{
 		anItem = new JMenuItem("Atacante");
 		add(anItem);
 		anItem.addActionListener(this);
-
+		
 		if(!ControladorMapa.permitidoAtacar(this.getComponent(0).getName())){
 			anItem.setEnabled(false);
 		}
@@ -36,24 +36,24 @@ class PopUp extends JPopupMenu implements ActionListener{
 		anItem = new JMenuItem("Defensor");
 		add(anItem);
 		anItem.addActionListener(this);
-
+		
 		if(!ControladorMapa.permitidoDefender(this.getComponent(0).getName())){
 			anItem.setEnabled(false);
 		}
-
+		
 
 		anItem = new JMenuItem("Add exer.");
 		add(anItem);
 		anItem.addActionListener(this);
-
+		
 		if(!ControladorMapa.permitido(this.getComponent(0).getName())){
 			anItem.setEnabled(false);
 		}
-
+		
 		anItem = new JMenuItem("Add tudo");
 		add(anItem);
 		anItem.addActionListener(this);
-
+		
 		if(!ControladorMapa.permitido(this.getComponent(0).getName())){
 			anItem.setEnabled(false);
 		}
@@ -68,10 +68,10 @@ class PopUp extends JPopupMenu implements ActionListener{
 			ControladorMapa.addExer(this.getComponent(0).getName());
 			painel.nExer();
 		}
-
+		
 		if(e.getActionCommand().equals("Add tudo")){
 			System.out.println("Selected: " + e.getActionCommand() + this.getComponent(0).getName());
-
+			
 			while(true){
 				if(ControladorMapa.permitido(this.getComponent(0).getName())){
 					ControladorMapa.addExer(this.getComponent(0).getName());
@@ -81,15 +81,7 @@ class PopUp extends JPopupMenu implements ActionListener{
 					break;
 				}
 			}
-
-		}
-
-		if(e.getActionCommand().equals("Atacante")){
-                  // TODO ir no turno atual e setar o jogador como atacante
-		}
-
-		if(e.getActionCommand().equals("Defensor")){
-			// TODO ir no turno atual e setar o jogador como defensor
+			
 		}
 
 	}

@@ -85,21 +85,11 @@ public class FrameDados extends JFrame implements ActionListener{
 
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == ok){
-			
-			
-			
-			//TODO chamar a compara dados
-			
-			//TODO pegar o retorno da funcao acima e se for necessario criar uma janela perguntando quantos exercitos ele quer mover, 1 ou 2
-			
-			
 			setVisible(false);  
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			dispose();
 		}
 		if(e.getSource() == botaoLancarDadosAtaque){
-			
-			// TODO o 4 teve ser substituido pelo numero de exercitos
 			ControladorFrameDados.jogarDadosAtaque(4);
 			ControladorFrameDados.ordenarDadosDeAtaque();
 			ImageIcon[] imagensDados = ControladorFrameDados.getNomesDasImagensDosDadosDeAtaque();
@@ -114,11 +104,6 @@ public class FrameDados extends JFrame implements ActionListener{
 			Container cont  = getContentPane();
 			cont.setLayout(null);
 			for(int i=0;i<3;i++){
-				
-				
-				//TODO se o valor do dado for 0, nao faz nada
-				
-				
 				dado = new JLabel();
 				cont.add(dado);
 				BufferedImage aux = null;
@@ -142,8 +127,6 @@ public class FrameDados extends JFrame implements ActionListener{
 			if(defesaPodeJogar == false){
 				return;
 			}
-			//TODO o 4 teve ser substituido pelo numero de exercitos
-			
 			ControladorFrameDados.jogarDadosDefesa(4);
 			ControladorFrameDados.ordenarDadosDeDefesa();
 			ImageIcon[] imagensDados = ControladorFrameDados.getNomesDasImagensDosDadosDeDefesa();
@@ -158,10 +141,6 @@ public class FrameDados extends JFrame implements ActionListener{
 			Container cont  = getContentPane();
 			cont.setLayout(null);
 			for(int i=0;i<3;i++){
-				
-				//TODO se o valor do dado for 0, nao faz nada
-				
-				
 				dado = new JLabel();
 				cont.add(dado);
 				BufferedImage aux = null;
