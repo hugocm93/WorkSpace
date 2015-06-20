@@ -3,7 +3,6 @@ package Interface;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
-
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
@@ -34,7 +33,7 @@ public class PainelMapa extends JPanel implements MouseListener{
 	private BufferedImage[] imgPinos = new BufferedImage[6];
 	private String[] cores = ControladorPainelOpcoes.getNomesDasImagensDosJogadores();
 	private BufferedImage imgMapa;
-
+	
 	private String ultTerritorio;
 
 
@@ -55,11 +54,8 @@ public class PainelMapa extends JPanel implements MouseListener{
 		}
 
 
-
 		this.setLayout(new BorderLayout());
 		ControladorFluxo.criaPainelOpcoes();
-
-
 		ControladorFluxo.irPainelOpcoes();
 
 		this.nExer();
@@ -127,8 +123,7 @@ public class PainelMapa extends JPanel implements MouseListener{
 		g.drawImage(imgMapa, 0, - Constantes.getDeslocamento(), Constantes.getLargura(), Constantes.getAltura() , null);
 
 
-		this.drawline();
-		
+
 		g.finalize();
 	}
 
@@ -139,8 +134,6 @@ public class PainelMapa extends JPanel implements MouseListener{
 				doPop(e,aux);
 			}
 		}
-
-
 	}
 
 	public void mousePressed(MouseEvent e) {
@@ -169,19 +162,15 @@ public class PainelMapa extends JPanel implements MouseListener{
 		if(ControladorMapa.permitidoDeixar(aux) && ControladorMapa.permitidoMover(ultTerritorio)  && ControladorMapa.fazFronteira(aux, ultTerritorio) && ControladorMapa.isFimAtaque()){
 			ControladorMapa.retiraExer(ultTerritorio);
 			ControladorMapa.colocaExer(aux);
-
-
-
+		
 		}
 		else{
-
+			
 			ultTerritorio = null;
 		}
 
 		Cursor cursor = new Cursor(Cursor.DEFAULT_CURSOR);
 		setCursor(cursor);
-
-		
 		this.nExer();  //atualiza os graficos
 	}
 
@@ -193,38 +182,6 @@ public class PainelMapa extends JPanel implements MouseListener{
 		menu.setPainel(this);
 		menu.show(e.getComponent(), e.getX(), e.getY());
 	}
-
-	private void drawArrowLine(Graphics g, double e, double f, double i, double j, int d, int h){
-		double dx = i - e, dy = j - f;
-		double D = Math.sqrt(dx*dx + dy*dy);
-		double xm = D - d, xn = xm, ym = h, yn = -h, x;
-		double sin = dy/D, cos = dx/D;
-
-		x = xm*cos - ym*sin + e;
-		ym = xm*sin + ym*cos + f;
-		xm = x;
-
-		x = xn*cos - yn*sin + e;
-		yn = xn*sin + yn*cos + f;
-		xn = x;
-
-		int[] xpoints = {(int)i , (int) xm, (int) xn};
-		int[] ypoints = {(int) j, (int) ym, (int) yn};
-
-		g.drawLine((int)e, (int)f, (int)i, (int)j);
-
-		g.fillPolygon(xpoints, ypoints, 3);
-	}
-
-	public void drawline() {
-		
-		if(!ControladorMapa.getBaseD().equals(new Point(0,0))){
-			this.drawArrowLine(this.getGraphics(), ControladorMapa.getBaseAT().getX(),ControladorMapa.getBaseAT().getY() , ControladorMapa.getBaseD().getX(),ControladorMapa.getBaseD().getY() , 8, 8);
-		}
-	
-		
-	}
-
 
 
 }

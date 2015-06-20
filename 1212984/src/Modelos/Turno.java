@@ -1,24 +1,13 @@
 package Modelos;
 
-import java.util.ArrayList;
-
-import Interface.Fase;
-
 public class Turno {
 	
 	Jogador jogador;
 	int indexJogador;
 	int nExercitosDaVez;
-	ArrayList<Integer> nExercitosDaVezContinente;
-	
-	
-	
-	int nExercitosDaVezCartas;
 	
 	Territorio atacante;
 	Territorio defensor;
-	
-	Fase f;
 	
 	boolean fimFaseAtaque = false;
 	
@@ -77,33 +66,9 @@ public class Turno {
 	public void setFimFaseAtaque(boolean fimFaseAtaque) {
 		this.fimFaseAtaque = fimFaseAtaque;
 	}
-
-	public Fase getF() {
-		return f;
-	}
-
-	public void setF(Fase f) {
-		this.f = f;
-	}
 	
 	
-	public ArrayList<Integer> getnExercitosDaVezContinente() {
-		return nExercitosDaVezContinente;
-	}
-
-	public void setnExercitosDaVezContinente(
-			ArrayList<Integer> nExercitosDaVezContinente) {
-		this.nExercitosDaVezContinente = nExercitosDaVezContinente;
-	}
-
-	public int getnExercitosDaVezCartas() {
-		return nExercitosDaVezCartas;
-	}
-
-	public void setnExercitosDaVezCartas(int nExercitosDaVezCartas) {
-		this.nExercitosDaVezCartas = nExercitosDaVezCartas;
-	}
-
+	
 	
 	
 }

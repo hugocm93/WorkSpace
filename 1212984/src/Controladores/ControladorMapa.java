@@ -148,9 +148,7 @@ public class ControladorMapa {
 		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
 			if(t.getNome().equals(name)){
 				if(Rodada.indexRodada > 0){
-					if(t.getExercitos()>1){
-						return true;
-					}
+					return true;
 				}
 			}
 		}
@@ -163,38 +161,30 @@ public class ControladorMapa {
 		if(ControladorMapa.permitido(name)==true){
 			return false;
 		}
+		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
+			if(t.getNome().equals(name)){
+				return false;
 
-		Territorio aux = mundo.getR().getAtual().getAtacante();
+			}
+			//			for(int j=0;j<t.getTerritoriosFronteira().length;j++){
+			//				if(!t.getTerritoriosFronteira()[j].equals(name)){
+			//					return false;
+			//				}
+			//			}
 
-		if(aux == null){
+			//TODO verificar se o territorio faz fronteira com o territorio do jogador defensor
+		}
+
+		if(Rodada.indexRodada > 0){
+			return true;
+		}
+		else{
 			return false;
 		}
-
-		for(String s : aux.getTerritoriosFronteira()){
-			if(s.equals(name)){
-				for(Territorio t : mundo.getR().getAtual().getAtacante().getDono().getTerritoriosPossuidos()){
-					if(t.getNome().equals(name)){
-						return false;
-					}
-
-				}
-				if(Rodada.indexRodada > 0){
-					if(aux.getExercitos()>1){
-						return true;
-					}
-				}
-				else{
-					return false;
-				}
-			}
-		}
-		return false;
-
 	}
 
 	public static void retiraExer(String aux) {
-		// TODO Auto-generated method stub
-
+		
 		for(int j=0;j<6;j++){
 			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
 				if(mundo.getContinentes()[j].getTerritorios()[i].getNome().equals(aux)){
@@ -208,8 +198,7 @@ public class ControladorMapa {
 	}
 
 	public static void colocaExer(String aux) {
-		// TODO Auto-generated method stub
-
+		
 		for(int j=0;j<6;j++){
 			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
 				if(mundo.getContinentes()[j].getTerritorios()[i].getNome().equals(aux)){
@@ -220,6 +209,34 @@ public class ControladorMapa {
 			}
 		}
 
+	}
+	
+public static void retiraTerritorio(String aux) {
+		
+		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
+			if(t.getNome().equals(aux)){
+				 mundo.getR().getAtual().getJogador().getTerritoriosPossuidos().remove(t);
+			}
+		}
+
+	}
+
+	public static void colocaTerritorio(String aux) {
+		
+		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
+			if(!t.getNome().equals(aux)){
+				 mundo.getR().getAtual().getJogador().getTerritoriosPossuidos().add(t);
+			}
+		}
+	}
+	
+	public static void modificarDonoTerritorioAtacado(String territorio, String nameJogador) {
+	
+		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
+			if(!t.getDono().equals(nameJogador)){
+				t.setDono(mundo.getR().getAtual().getJogador());
+			}
+		}
 	}
 
 	public static boolean permitidoMover(String name) {
@@ -269,55 +286,11 @@ public class ControladorMapa {
 		return false;
 
 	}
-
+	
 	public static boolean isFimAtaque(){
 
-
-		return mundo.getR().getAtual().isFimFaseAtaque();
-	}
-
-	public static Point getBase(String aux) {
-		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
-			if(t.getNome().equals(aux)){
-				return t.getBase();
-
-			}
-		}
-		return new Point(0,0);
-	}
-
-	public static Point getBaseAT() {
-		// TODO Auto-generated method stub
-
-
-
-		if(mundo.getR().getAtual().getAtacante() != null){
-			Territorio ter = mundo.getR().getAtual().getAtacante();
-			Point p = new Point(Math.round(ter.getBase().x*Constantes.constConversaoX-5), Math.round(ter.getBase().y*Constantes.constConversaoY)-Constantes.deslocamento2 - 40);
-
-			return p;
-		}
-		return new Point(0,0);
-	}
-
-
-	public static Point getBaseD() {
-		// TODO Auto-generated method stub
-
-
-
-		if(mundo.getR().getAtual().getDefensor() != null){
-			Territorio ter = mundo.getR().getAtual().getDefensor();
-			Point p = new Point(Math.round(ter.getBase().x*Constantes.constConversaoX-5), Math.round(ter.getBase().y*Constantes.constConversaoY)-Constantes.deslocamento2 - 40);
-
-			return p;
-		}
-		return new Point(0,0);
-	}
-
-	public static void drawLine() {
-		// TODO Auto-generated method stub
-
+		
+       return mundo.getR().getAtual().isFimFaseAtaque();
 	}
 
 

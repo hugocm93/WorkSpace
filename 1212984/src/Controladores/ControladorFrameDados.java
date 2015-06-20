@@ -115,7 +115,31 @@ public class ControladorFrameDados {
 	}
 	
 	
-	static boolean compararDados(){
+	public static boolean compararDados(){
+		
+		Dado[] dadosDefesa = mundo.getDadosDefesa();
+		Dado[] dadosAtaque = mundo.getDadosAtaque();
+		
+		for(int i=0, j=0; i<4 || j<4; i++, j++){
+		    if(dadosDefesa[i].getValor() >= dadosAtaque[j].getValor()){
+				ControladorMapa.retiraExer(mundo.getR().getAtual().getAtacante().getNome());
+				if(mundo.getR().getAtual().getAtacante().getExercitos() == 0){
+					ControladorMapa.retiraTerritorio(mundo.getR().getAtual().getAtacante().getNome());
+					ControladorMapa.colocaTerritorio(mundo.getR().getAtual().getDefensor().getNome());
+					ControladorMapa.modificarDonoTerritorioAtacado(mundo.getR().getAtual().getDefensor().getNome(), mundo.getR().getAtual().getDefensor().getDono().getNome());
+					return true;
+				}
+			}
+		    else{
+		    	ControladorMapa.retiraExer(mundo.getR().getAtual().getDefensor().getNome());
+		    	if(mundo.getR().getAtual().getDefensor().getExercitos() == 0){
+					ControladorMapa.retiraTerritorio(mundo.getR().getAtual().getDefensor().getNome());
+					ControladorMapa.colocaTerritorio(mundo.getR().getAtual().getAtacante().getNome());
+					ControladorMapa.modificarDonoTerritorioAtacado(mundo.getR().getAtual().getAtacante().getNome(), mundo.getR().getAtual().getAtacante().getDono().getNome());
+					return true;
+				}
+		    }
+		}
 		//TODO compara dado a dado - os dados são vetores ()
 		// TODO mundo.getDadosAtaque()
 		//TODO mundo.getDadosDefesa()

@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 import Interface.Constantes;
+import Interface.FrameConquistouTerritorio;
 import Interface.FrameDados;
 import Interface.FrameFimDaJogada;
 import Interface.PainelMapa;
@@ -16,6 +17,7 @@ public class ControladorFluxo {
 	private static JFrame janela;
 	private static FrameDados frameDados;
 	private static FrameFimDaJogada frameFimDaJogada;
+	private static FrameConquistouTerritorio frameConquistouTerritorio;
 	private static PainelTelaInicial painelTelaInicial;
 	private static PainelMapa painelMapa;
 	private static PainelOpcoes painelOpcoes;
@@ -100,6 +102,20 @@ public class ControladorFluxo {
 		frameFimDaJogada.setBounds((int)janela.getLocation().getX()+janela.getWidth()/2-110,(int)janela.getLocation().getY()+janela.getHeight()/2-50,220,100);
 		frameFimDaJogada.setVisible(true);
 		frameFimDaJogada.setResizable(false);
+	}
+	
+	public static void novoFrameConquistouTerritorio(){
+
+		if(frameConquistouTerritorio==null){
+			frameConquistouTerritorio = new FrameConquistouTerritorio();
+		}
+		else if(frameConquistouTerritorio.isVisible() == false){
+			frameConquistouTerritorio = new FrameConquistouTerritorio();
+		}
+
+		frameConquistouTerritorio.setBounds((int)janela.getLocation().getX()+janela.getWidth()/2-100,(int)janela.getLocation().getY()+janela.getHeight()/2-110,200,220);
+		frameConquistouTerritorio.setVisible(true);
+		frameConquistouTerritorio.setResizable(false);
 	}
 
 
