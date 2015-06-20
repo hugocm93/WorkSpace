@@ -52,7 +52,7 @@
 <fullyQualifiedTypeName name="java.awt.BorderLayout"/>
 <fullyQualifiedTypeName name="Interface.Fase"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="Controladores.ControladorPainelOpcoes"/>
 <fullyQualifiedTypeName name="Modelos.Continente"/>
 <fullyQualifiedTypeName name="Controladores.ControladorMapa"/>
+<fullyQualifiedTypeName name="Controladores.ControladorPainelOpcoes"/>
 </qualifiedTypeNameHistroy>

@@ -225,6 +225,13 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		else{
 			botaoFimAtaque.setEnabled(false);
 		}
+		
+		if(ControladorPainelOpcoes.getFase()==Fase.ATAQUE){
+			botaoDado.setEnabled(true);
+		}
+		else{
+			botaoDado.setEnabled(false);
+		}
 
 		for(int i=0;i<6;i++){
 			if(ControladorPainelOpcoes.jogadorAtual("cor") == cores[i]){
