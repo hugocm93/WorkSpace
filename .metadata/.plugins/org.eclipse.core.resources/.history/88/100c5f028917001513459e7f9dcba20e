@@ -183,5 +183,5 @@ public class PainelMapa extends JPanel implements MouseListener{
 		menu.show(e.getComponent(), e.getX(), e.getY());
 	}
 
-//
+
 }
