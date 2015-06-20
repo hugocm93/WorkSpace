@@ -1,5 +1,6 @@
 package Interface;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -44,6 +45,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 	private JLabel nomeJogador;
 	private JLabel[] ordemDosJogadores = new JLabel[6];
 	private JLabel exeRestantes;
+	private JLabel helpText;
 
 
 	public PainelOpcoes(){
@@ -60,10 +62,10 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 
 			File imgJogadorFile = new File(path1 + path5 + ControladorPainelOpcoes.jogadorAtual("cor"));
 			imgJogador = ImageIO.read(imgJogadorFile);
-			
+
 			File imgPlayFile2 = new File(path1 + path4 + "fimAtaque.png");
 			imgFimAtaque = ImageIO.read(imgPlayFile2);
-			
+
 
 			for(int i=0; i<6 && cores[i]!=null ; i++){
 				File imgPinosJogadorFiles = new File(path1 + path5 + cores[i]);
@@ -85,7 +87,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		botaoFimDaJogada.addActionListener(this);
 		this.add(botaoFimDaJogada);
 		botaoFimDaJogada.setVisible(true);
-		
+
 		botaoFimAtaque.setIcon(new ImageIcon(imgFimAtaque));
 		botaoFimAtaque.setOpaque(false);
 		botaoFimAtaque.setContentAreaFilled(false);
@@ -116,13 +118,23 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		nomeJogador.setText(ControladorPainelOpcoes.jogadorAtual("nome"));
 		nomeJogador.setVisible(true);
 		this.add(nomeJogador);
-		
+
 		exeRestantes = new JLabel();
 		exeRestantes.setForeground(Color.white);
 		exeRestantes.setFont(new Font("default", 25, 15));
 		exeRestantes.setText(ControladorPainelOpcoes.jogadorAtual("Exercitos restantes: " + "exer"));
-		nomeJogador.setVisible(true);
+		exeRestantes.setVisible(true);
 		this.add(exeRestantes);
+
+
+		helpText = new JLabel();
+
+		helpText.setForeground(Color.white);
+		helpText.setFont(new Font("default", 20, 12));
+		helpText.setText("Dica:");
+		helpText.setVisible(true);
+
+		this.add(helpText, BorderLayout.CENTER);
 
 		this.setVisible(true);
 		this.repaint();
@@ -133,13 +145,15 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 
 		g.drawImage(imgFundo, 0, 0, Constantes.getLargura(), 200 , null);
 		botaoFimDaJogada.setBounds(Constantes.getLargura() -160,30 ,130, 50);
-		
+
 		botaoFimAtaque.setBounds(Constantes.getLargura() -300, 30 ,130, 50);
-		
+
 		g.drawImage(imgJogador, 20, 20, 65, 65 , null);
 
 		nomeJogador.setBounds(20, 88, 150, 20);
 		exeRestantes.setBounds(this.getBounds().width-200, this.getBounds().height-50, 200,50);
+		helpText.setBounds(this.getBounds().width-750, this.getBounds().height-130, 400,50);
+		botaoDado.setBounds(this.getBounds().width-400, this.getBounds().height-90, 50, 50);
 
 		for ( int i = 0, j = 120; i<6 && imgPinos[i]!=null ; i++, j=j+22 ){
 			ordemDosJogadores[i].setBounds(j, 0, 20, 20);			
@@ -155,20 +169,56 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 
 			e.printStackTrace();
 		}
-		
+
 		nomeJogador.setText("");
 		nomeJogador.setText(ControladorPainelOpcoes.jogadorAtual("nome"));
-		
+
 		exeRestantes.setText("");
 		exeRestantes.setText("Exercitos restantes: " + ControladorPainelOpcoes.jogadorAtual("exer"));
-		
+
+		Fase f = ControladorPainelOpcoes.getFase();
+		switch(f){
+
+		case RECEBENDO:
+			helpText.setText("Dica: recebendo exercitos");
+			break;
+
+		case ATAQUE:
+			helpText.setText("Dica: atacando");
+			break;
+		case ATAQUEDESLOCAMENTO:
+			helpText.setText("Dica: deslocando no ataque");
+			break;
+		case CARTA:
+			helpText.setText("Dica: pegando carta");
+			break;
+		case DESLOCAMENTO:
+			helpText.setText("Dica: deslocando exercitos entre territorios fronteiricos");
+			break;
+
+		case PRIM:
+			helpText.setText("Dica: distribuindo exercitos");
+
+			break;
+			
+		case FIM:
+			helpText.setText("Dica: finalize a jogada");
+			break;
+
+		default:
+			break;
+
+		}
+
+
+
 		if(ControladorPainelOpcoes.permitidoPassar(ControladorPainelOpcoes.jogadorAtual("nome"))){
 			botaoFimDaJogada.setEnabled(true);
 		}
 		else{
 			botaoFimDaJogada.setEnabled(false);
 		}
-		
+
 		if(!ControladorMapa.isFimAtaque() && ControladorPainelOpcoes.permitidoPassar(ControladorPainelOpcoes.jogadorAtual("nome")) && ControladorPainelOpcoes.isNotPrimeiraRodada()){
 			botaoFimAtaque.setEnabled(true);
 		}
@@ -193,7 +243,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		if(e.getSource() == botaoFimDaJogada){
 			ControladorFluxo.novoFrameFimDaJogada();
 		}
-		
+
 		if(e.getSource() == botaoFimAtaque){
 			ControladorPainelOpcoes.fimAtaque();
 			botaoFimAtaque.setEnabled(false);

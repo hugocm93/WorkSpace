@@ -1,5 +1,7 @@
 package Controladores;
 
+import Interface.Fase;
+import Modelos.Continente;
 import Modelos.Jogador;
 import Modelos.Mundo;
 import Modelos.Territorio;
@@ -66,10 +68,10 @@ public class ControladorPainelOpcoes {
 
 		return false;
 	}
-	
+
 	public static String[] coresDosJogadores(){
 		Jogador[] jogadores = mundo.getJogadores();
-		
+
 		for(int i=0; i<6 && jogadores[i]!=null ;i++){
 			rets[i] = jogadores[i].getCor();
 		}
@@ -78,40 +80,67 @@ public class ControladorPainelOpcoes {
 
 	public static void setarAtacante(String name) {
 		// TODO Auto-generated method stub
-		
+
 		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
 			if(t.getNome().equals(name)){
 				mundo.getR().getAtual().setAtacante(t);
 
 			}
 		}
-		
+
 	}
 
 	public static void setarDefensor(String name) {
 		// TODO Auto-generated method stub
-		
 		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
 			if(t.getNome().equals(name)){
-				mundo.getR().getAtual().setDefensor(t);
 
 			}
 		}
-		
+		for(Continente c : mundo.getContinentes()){
+			for(Territorio s : c.getTerritorios()){
+				if(s.getNome().equals(name)){
+					mundo.getR().getAtual().setDefensor(s);
+					System.out.println(s.getBase());
+				}
+			}
+		}
+
 	}
 
 	public static void fimAtaque() {
 		// TODO Auto-generated method stub
-		
+
 		mundo.getR().getAtual().setFimFaseAtaque(true);
-		
+
 	}
 
 	public static boolean isNotPrimeiraRodada() {
-		System.out.println("rodada" + mundo.getR().getIndexRodada());
+		//System.out.println("rodada" + mundo.getR().getIndexRodada());
 		if(mundo.getR().getIndexRodada()>=1){
 			return true;
 		}
 		return false;
+	}
+
+
+
+	public static Fase getFase() {
+		if(mundo.getR().getAtual().getnExercitosDaVez() > 0){
+			mundo.getR().getAtual().setF(Fase.RECEBENDO);
+		}
+		if(mundo.getR().getAtual().getnExercitosDaVez() == 0 && mundo.getR().getIndexRodada() == 0){
+			mundo.getR().getAtual().setF(Fase.FIM);
+		}
+		if(mundo.getR().getAtual().getnExercitosDaVez() == 0 && mundo.getR().getIndexRodada() >= 1){
+			mundo.getR().getAtual().setF(Fase.ATAQUE);
+		}
+		if(mundo.getR().getAtual().isFimFaseAtaque()){
+			mundo.getR().getAtual().setF(Fase.DESLOCAMENTO);
+		}
+
+
+
+		return mundo.getR().getAtual().getF();
 	}
 }

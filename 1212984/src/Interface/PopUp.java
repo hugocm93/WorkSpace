@@ -94,6 +94,8 @@ class PopUp extends JPopupMenu implements ActionListener{
 		if(e.getActionCommand().equals("Defensor")){
 			// TODO ir no turno atual e setar o jogador como defensor
 			ControladorPainelOpcoes.setarDefensor(this.getComponent(0).getName());
+			System.out.println("defensor");
+			painel.drawline();
 		}
 
 	}

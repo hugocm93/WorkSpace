@@ -19,7 +19,6 @@
 <fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
 <fullyQualifiedTypeName name="Modelos.Territorio"/>
 <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
-<fullyQualifiedTypeName name="java.awt.BorderLayout"/>
 <fullyQualifiedTypeName name="java.awt.Dimension"/>
 <fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.ws.api.server.Container"/>
@@ -40,10 +39,8 @@
 <fullyQualifiedTypeName name="Interface.ShadowLabel"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.awt.Font"/>
 <fullyQualifiedTypeName name="java.awt.Color"/>
-<fullyQualifiedTypeName name="Modelos.Continente"/>
 <fullyQualifiedTypeName name="java.awt.dnd.DropTargetDropEvent"/>
 <fullyQualifiedTypeName name="javax.swing.DesktopManager"/>
 <fullyQualifiedTypeName name="java.awt.dnd.DropTargetListener"/>
@@ -52,6 +49,10 @@
 <fullyQualifiedTypeName name="java.awt.Cursor"/>
 <fullyQualifiedTypeName name="java.awt.Toolkit"/>
 <fullyQualifiedTypeName name="java.awt.Image"/>
-<fullyQualifiedTypeName name="Controladores.ControladorMapa"/>
+<fullyQualifiedTypeName name="java.awt.BorderLayout"/>
+<fullyQualifiedTypeName name="Interface.Fase"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="Controladores.ControladorPainelOpcoes"/>
+<fullyQualifiedTypeName name="Modelos.Continente"/>
+<fullyQualifiedTypeName name="Controladores.ControladorMapa"/>
 </qualifiedTypeNameHistroy>
