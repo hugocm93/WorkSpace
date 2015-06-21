@@ -193,8 +193,7 @@ public class ControladorMapa {
 	}
 
 	public static void retiraExer(String aux) {
-		// TODO Auto-generated method stub
-
+	
 		for(int j=0;j<6;j++){
 			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
 				if(mundo.getContinentes()[j].getTerritorios()[i].getNome().equals(aux)){
@@ -208,8 +207,7 @@ public class ControladorMapa {
 	}
 
 	public static void colocaExer(String aux) {
-		// TODO Auto-generated method stub
-
+		
 		for(int j=0;j<6;j++){
 			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
 				if(mundo.getContinentes()[j].getTerritorios()[i].getNome().equals(aux)){
@@ -221,6 +219,36 @@ public class ControladorMapa {
 		}
 
 	}
+	
+	public static void retiraTerritorioDoDefensor(String aux) {
+		
+		for(Territorio t : mundo.getR().getAtual().getDefensor().getDono().getTerritoriosPossuidos()){
+			if(t.getNome().equals(aux)){
+				 mundo.getR().getAtual().getDefensor().getDono().getTerritoriosPossuidos().remove(t);
+			}
+		}
+	}
+
+	public static void colocaTerritorioNoAtacante(String aux) {
+		
+		retiraTerritorioDoDefensor(aux);
+		for(Territorio t : mundo.getR().getAtual().getAtacante().getDono().getTerritoriosPossuidos()){
+			if(!t.getNome().equals(aux)){
+				 mundo.getR().getAtual().getAtacante().getDono().getTerritoriosPossuidos().add(t);
+				 colocaExer(t.getNome());
+			}
+		}
+	}
+	
+	public static void modificarDonoTerritorio(String territorio, String nameJogador) {
+		
+		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
+			if(!t.getDono().equals(nameJogador)){
+				t.setDono(mundo.getR().getAtual().getJogador());
+			}
+		}
+	}
+
 
 	public static boolean permitidoMover(String name) {
 
@@ -232,11 +260,7 @@ public class ControladorMapa {
 
 			}
 		}
-
-
 		return false;
-
-
 	}
 
 	public static boolean permitidoDeixar(String aux) {
@@ -247,11 +271,9 @@ public class ControladorMapa {
 
 			}
 		}
-
-
-
 		return false;
 	}
+	
 	public static boolean fazFronteira(String aux1, String aux2){
 
 		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
@@ -287,10 +309,7 @@ public class ControladorMapa {
 	}
 
 	public static Point getBaseAT() {
-		// TODO Auto-generated method stub
-
-
-
+	
 		if(mundo.getR().getAtual().getAtacante() != null){
 			Territorio ter = mundo.getR().getAtual().getAtacante();
 			Point p = new Point(Math.round(ter.getBase().x*Constantes.constConversaoX-5), Math.round(ter.getBase().y*Constantes.constConversaoY)-Constantes.deslocamento2 - 40);
@@ -302,10 +321,7 @@ public class ControladorMapa {
 
 
 	public static Point getBaseD() {
-		// TODO Auto-generated method stub
-
-
-
+	
 		if(mundo.getR().getAtual().getDefensor() != null){
 			Territorio ter = mundo.getR().getAtual().getDefensor();
 			Point p = new Point(Math.round(ter.getBase().x*Constantes.constConversaoX-5), Math.round(ter.getBase().y*Constantes.constConversaoY)-Constantes.deslocamento2 - 40);
@@ -316,8 +332,7 @@ public class ControladorMapa {
 	}
 
 	public static void drawLine() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 

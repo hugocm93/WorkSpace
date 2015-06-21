@@ -55,4 +55,5 @@
 <fullyQualifiedTypeName name="Modelos.Continente"/>
 <fullyQualifiedTypeName name="Controladores.ControladorMapa"/>
 <fullyQualifiedTypeName name="Controladores.ControladorPainelOpcoes"/>
+<fullyQualifiedTypeName name="Interface.PainelMapa"/>
 </qualifiedTypeNameHistroy>
