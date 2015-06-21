@@ -1,9 +1,0 @@
-import Controladores.ControladorFluxo;
-
-public class Jogo {
-
-	public static void main(String[] args) {
-		ControladorFluxo.criaJanela();
-	}
-
-}
