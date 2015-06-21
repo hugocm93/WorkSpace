@@ -193,7 +193,6 @@ public class ControladorMapa {
 	}
 
 	public static void retiraExer(String aux) {
-		// TODO Auto-generated method stub
 
 		for(int j=0;j<6;j++){
 			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
@@ -208,7 +207,6 @@ public class ControladorMapa {
 	}
 
 	public static void colocaExer(String aux) {
-		// TODO Auto-generated method stub
 
 		for(int j=0;j<6;j++){
 			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
@@ -222,6 +220,7 @@ public class ControladorMapa {
 
 	}
 
+
 	public static boolean permitidoMover(String name) {
 
 		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
@@ -232,11 +231,7 @@ public class ControladorMapa {
 
 			}
 		}
-
-
 		return false;
-
-
 	}
 
 	public static boolean permitidoDeixar(String aux) {
@@ -247,11 +242,9 @@ public class ControladorMapa {
 
 			}
 		}
-
-
-
 		return false;
 	}
+
 	public static boolean fazFronteira(String aux1, String aux2){
 
 		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
@@ -287,9 +280,6 @@ public class ControladorMapa {
 	}
 
 	public static Point getBaseAT() {
-		// TODO Auto-generated method stub
-
-
 
 		if(mundo.getR().getAtual().getAtacante() != null){
 			Territorio ter = mundo.getR().getAtual().getAtacante();
@@ -302,9 +292,6 @@ public class ControladorMapa {
 
 
 	public static Point getBaseD() {
-		// TODO Auto-generated method stub
-
-
 
 		if(mundo.getR().getAtual().getDefensor() != null){
 			Territorio ter = mundo.getR().getAtual().getDefensor();
@@ -315,10 +302,6 @@ public class ControladorMapa {
 		return new Point(0,0);
 	}
 
-	public static void drawLine() {
-		// TODO Auto-generated method stub
-
-	}
 
 
 }

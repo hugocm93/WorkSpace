@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 
 import Modelos.Dado;
 import Modelos.Mundo;
+import Modelos.Territorio;
 import Modelos.TipoDado;
 
 public class ControladorFrameDados {
@@ -79,10 +80,10 @@ public class ControladorFrameDados {
 		ControladorFrameDados.ordenarDados(TipoDado.DEFESA);
 
 	}
-	
+
 	static void ordenarDados(TipoDado t){
 		if(t == TipoDado.ATAQUE){
-			
+
 			Dado[] dadosAtaque = mundo.getDadosAtaque();
 
 			int fim=3;
@@ -99,7 +100,7 @@ public class ControladorFrameDados {
 		}
 		else{
 			int fim=3;
-			
+
 			Dado[] dadosDefesa = mundo.getDadosDefesa();
 
 			for(;fim>0;fim--){
@@ -113,20 +114,51 @@ public class ControladorFrameDados {
 			}
 		}
 	}
-	
-	
-	static boolean compararDados(){
+
+
+	public static boolean compararDados(){
+
+		Dado[] dadosDefesa = mundo.getDadosDefesa();
+		Dado[] dadosAtaque = mundo.getDadosAtaque();
+
+		for(int i=0; i<3 &&  dadosDefesa[i].getValor()!=0 && dadosAtaque[i].getValor()!=0 ; i++){
+			if(dadosDefesa[i].getValor() >= dadosAtaque[i].getValor()){
+				ControladorMapa.retiraExer(mundo.getR().getAtual().getAtacante().getNome());
+
+			}
+			else{
+				ControladorMapa.retiraExer(mundo.getR().getAtual().getDefensor().getNome());
+				if(mundo.getR().getAtual().getDefensor().getExercitos() == 0){
+					ControladorFrameDados.colocaTerritorioNoAtacante(mundo.getR().getAtual().getDefensor().getNome());
+					return true;
+				}	
+			}
+		}
+
+
+		return false;
 		//TODO compara dado a dado - os dados são vetores ()
 		// TODO mundo.getDadosAtaque()
 		//TODO mundo.getDadosDefesa()
-		
 		//TODO retirar exercitos do territorio correspondente
 		//TODO retirar territorio da lista do jogador defensor e coloca-lo na lista de exercitos do jogador atacante com um exercito
 		//TODO entrar no territorio e trocar o dono dele
-		
 		//TODO se retornar true eh porque conquistou
-		
-		return false;
+	}
+
+	public static void colocaTerritorioNoAtacante(String aux) {
+		for(Territorio t : mundo.getR().getAtual().getDefensor().getDono().getTerritoriosPossuidos()){
+			if(t.getNome().equals(aux)){
+				mundo.getR().getAtual().getDefensor().getDono().getTerritoriosPossuidos().remove(t);
+				mundo.getR().getAtual().getAtacante().getDono().getTerritoriosPossuidos().add(t);
+				t.setDono(mundo.getR().getAtual().getAtacante().getDono());
+				mundo.getR().getAtual().getAtacante().exerMenos();
+				t.exerMais();
+
+				return ;
+			}
+		}
+
 	}
 
 

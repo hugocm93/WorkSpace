@@ -2,37 +2,24 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="Argelia" key="selection"/>
+		<item value="colo" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="argelia"/>
-			<item value="arro"/>
-			<item value="botaodado"/>
-			<item value="cor"/>
-			<item value="inserenovo"/>
-			<item value="crianovo"/>
-			<item value="let"/>
-			<item value="667"/>
+			<item value="colo"/>
+			<item value="coloca"/>
+			<item value="janela"/>
 		</list>
 		<list key="replacehistory">
-			<item value="u"/>
-			<item value="c"/>
-			<item value="Africa"/>
-			<item value="o"/>
-			<item value="e"/>
-			<item value="I"/>
-			<item value="i"/>
-			<item value="a"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="265" key="DIALOG_WIDTH"/>
 		<item value="1|.Helvetica Neue DeskInterface|11.0|0|COCOA|1|.HelveticaNeueDeskInterface-Regular" key="DIALOG_FONT_NAME"/>
 		<item value="399" key="DIALOG_HEIGHT"/>
-		<item value="71" key="DIALOG_Y_ORIGIN"/>
-		<item value="782" key="DIALOG_X_ORIGIN"/>
+		<item value="954" key="DIALOG_X_ORIGIN"/>
+		<item value="82" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
