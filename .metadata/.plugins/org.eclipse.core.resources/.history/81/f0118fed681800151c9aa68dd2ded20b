@@ -84,7 +84,6 @@ public class FrameDados extends JFrame implements ActionListener{
 		botaoLancarDadosDefesa.setEnabled(false);
 
 		ok.setVisible(true);
-		ok.setEnabled(false);
 	}
 	
 
@@ -160,7 +159,6 @@ public class FrameDados extends JFrame implements ActionListener{
 			}
 
 			botaoLancarDadosDefesa.setVisible(false);
-			ok.setEnabled(true);
 
 			JLabel dado;
 			Container cont  = getContentPane();
