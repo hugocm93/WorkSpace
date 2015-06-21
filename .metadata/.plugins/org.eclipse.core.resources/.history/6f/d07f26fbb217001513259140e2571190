@@ -1,7 +1,6 @@
 package Modelos;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Mundo {
 
@@ -13,7 +12,6 @@ public class Mundo {
 	Rodada r;
 
 	private static Mundo instance;
-	String[] rets;
 
 	public static Mundo getInstance() {
 		if (instance == null)
@@ -28,8 +26,7 @@ public class Mundo {
 		jogadores = new Jogador[6]; 
 		dadosAtaque = new Dado[3];
 		dadosDefesa = new Dado[3];
-		rets = new String[6];
-		
+
 
 		for(int i=0;i<3;i++){
 			dadosAtaque[i] = new Dado();
@@ -177,7 +174,7 @@ public class Mundo {
 		nomeT = "Argelia";
 		poligono = new Poligono(new Point[]{new Point(455,372),new Point(494,373),new Point(501,386),new Point(513,386),new Point(520,399),new Point(563,399),new Point(536,447),new Point(444,448),new Point(426,422)});
 		simb = Simbolo.CIRCULO;
-		territoriosFronteira = new String[]{new String("Espanha"),new String("Italia"),new String("Egito"),new String("Nigeria")};
+		territoriosFronteira = new String[]{new String("Espanha"),new String("Italia"),new String("Egito"),new String("Nigeria"),new String("Brasil")};
 		base = new Point(459,404);
 		territorios[0] = new Territorio(nomeT, poligono, 0, null, simb, territoriosFronteira, base);
 
@@ -329,7 +326,7 @@ public class Mundo {
 		poligono = new Poligono(new Point[]{new Point(637,172),new Point(654,200),new Point(756,200),new Point(770,230),new Point(757,254),new Point(638,253),new Point(610,205),new Point(617,203)});
 		simb = Simbolo.QUADRADO;
 		territoriosFronteira = new String[]{new String("Polonia"), new String("Ucrania"), new String("Suecia"), new String("Estonia"), new String("Turquia"), new String("Cazaquistao"), new String("Russia")};
-		base = new Point(742,252);
+		base = new Point(738,245);
 		territorios[3] = new Territorio(nomeT, poligono, 0, null, simb, territoriosFronteira, base);
 
 		nomeT = "Cazaquistao";
@@ -493,12 +490,6 @@ public class Mundo {
 		return continentes;
 	}
 
-	public void insereNovoJogador(Jogador jogador){
-		int i;
-		for(i=0; jogadores[i]!=null;i++);
-		jogadores[i]=jogador;
-	}
-
 	public Tabela1 getTabTroca() {
 		return tabTroca;
 	}
@@ -534,8 +525,6 @@ public class Mundo {
 	public void setContinentes(Continente[] continentes) {
 		this.continentes = continentes;
 	}
-	
-	
 
 	public Rodada getR() {
 		return r;
@@ -545,140 +534,5 @@ public class Mundo {
 		this.r = r;
 	}
 
-	public void ordenarDados(TipoDado t){
-		if(t == TipoDado.ATAQUE){
-
-			int fim=3;
-
-			for(;fim>0;fim--){
-				for(int j=0;j<fim-1;j++){
-					if(dadosAtaque[j].getValor() < dadosAtaque[j+1].getValor()){
-						Dado aux = dadosAtaque[j];
-						dadosAtaque[j] = dadosAtaque[j+1];
-						dadosAtaque[j+1] = aux;
-					}
-				}
-			}
-		}
-		else{
-			int fim=3;
-
-			for(;fim>0;fim--){
-				for(int j=0;j<fim-1;j++){
-					if(dadosDefesa[j].getValor() < dadosDefesa[j+1].getValor()){
-						Dado aux = dadosDefesa[j];
-						dadosDefesa[j] = dadosDefesa[j+1];
-						dadosDefesa[j+1] = aux;
-					}
-				}
-			}
-		}
-	}
-
-	public void desordena(){
-		int i;
-		Jogador[] jogadores2 = new Jogador[]{null,null,null,null,null,null}; 
-		for(i=0; i<6 && jogadores[i]!=null;i++);
-
-		for(int j=0; j<i;){
-			int aux = (int)(Math.random() * 6);
-			if(jogadores[aux]!=null){
-				jogadores2[j] = jogadores[aux];
-				jogadores[aux] = null;
-				j++;
-			}
-		}
-		this.setJogadores(jogadores2);
-	}
-
-	public void listaJogadores(){
-		for(int i=0; i<6 && jogadores[i]!=null ;i++){
-			System.out.println(jogadores[i].getNome());
-		}
-	}
-
-	public String[] coresDosJogadores(){
-		for(int i=0; i<6 && jogadores[i]!=null ;i++){
-			rets[i] = jogadores[i].getCor();
-		}
-		return rets;
-	}
-
-	public void proximoJogador(){
-		
-		r.proxTurno();
-	}
-
-	public void jogadorAnt(){
-		
-		r.turnoAnt();
-	}
-
-	public int getJogadorDaVez() {
-		int jogadorDaVez = this.r.atual.indexJogador;
-		return jogadorDaVez;
-	}
-
-	public int distribuirTerritorios(){
-		int i=0;
-		int cont=0;
-		int u;
-		for(u=0; u<6 && jogadores[u]!=null ;u++);
-        boolean flag = true;
-
-		while(cont<=51){
-			//System.out.printf("while1%d\n", cont);
-			if(cont==51){
-				break;
-			}
-			for(i=0;i<u;i++){
-				//System.out.printf("while2%d\n", cont);
-				if(cont<51){
-					flag=true;
-				}
-				else{
-					flag=false;
-				}
-				while(flag){
-					//System.out.printf("while3%d\n", cont);
-					if(cont==51){
-						break;
-					}
-
-					int aux1 = (int)(Math.random() * 6);
-					int aux2 = (int)(Math.random() * continentes[aux1].territorios.length);
-					if(continentes[aux1].getTerritorios()[aux2].getDono() == null){
-						continentes[aux1].getTerritorios()[aux2].setDono(jogadores[i]);
-						jogadores[i].getTerritoriosPossuidos().add(continentes[aux1].getTerritorios()[aux2]);
-						//System.out.println(continentes[aux1].getTerritorios()[aux2].getNome() + "->"+ jogadores[i].getNome());
-						cont++;
-						flag=false;
-						break;
-					}
-
-				}
-			}
-
-
-		}
-		return 0;
-	}
-
-	public void criaTurnos() {
-		ArrayList<Turno> t = new ArrayList<Turno>();
-		
-		
-		int u;
-		for(u=0; u<6 && jogadores[u]!=null ;u++){
-            System.out.println(jogadores[u].getTerritoriosPossuidos().size());
-			Turno novo = new Turno(jogadores[u],jogadores[u].getTerritoriosPossuidos().size()/2, u);
-			t.add(novo);
-		}
-		Turno atual = t.get(0);
-		this.r = new Rodada(t,atual);
-		
-	}
-	
-	
 
 }
