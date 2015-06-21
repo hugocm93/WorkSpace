@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import Interface.Constantes;
 import Modelos.Cor;
 import Modelos.Mundo;
+import Modelos.Rodada;
 import Modelos.Territorio;
 
 public class ControladorMapa {
@@ -146,7 +147,7 @@ public class ControladorMapa {
 
 		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
 			if(t.getNome().equals(name)){
-				if(ControladorPainelOpcoes.isNotPrimeiraRodada()){
+				if(Rodada.indexRodada > 0){
 					if(t.getExercitos()>1){
 						return true;
 					}

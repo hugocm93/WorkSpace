@@ -122,7 +122,7 @@ public class ControladorPainelOpcoes {
 //		}
 //		return false;
 		
-		return true;
+		retun true;
 	}
 
 
@@ -131,10 +131,10 @@ public class ControladorPainelOpcoes {
 		if(mundo.getR().getAtual().getnExercitosDaVez() > 0){
 			mundo.getR().getAtual().setF(Fase.RECEBENDO);
 		}
-		if(mundo.getR().getAtual().getnExercitosDaVez() == 0 && !ControladorPainelOpcoes.isNotPrimeiraRodada()){
+		if(mundo.getR().getAtual().getnExercitosDaVez() == 0 && mundo.getR().getIndexRodada() == 0){
 			mundo.getR().getAtual().setF(Fase.FIM);
 		}
-		if(mundo.getR().getAtual().getnExercitosDaVez() == 0 && ControladorPainelOpcoes.isNotPrimeiraRodada()){
+		if(mundo.getR().getAtual().getnExercitosDaVez() == 0 && mundo.getR().getIndexRodada() >= 1){
 			mundo.getR().getAtual().setF(Fase.ATAQUE);
 		}
 		if(mundo.getR().getAtual().isFimFaseAtaque()){
