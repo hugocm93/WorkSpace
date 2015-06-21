@@ -145,7 +145,7 @@ public class ControladorPainelOpcoes {
 	}
 
 	public static boolean podeAtacar() {
-		if(mundo.getR().getAtual().getAtacante() != null && mundo.getR().getAtual().getDefensor() != null){
+		if(mundo.getR().getAtual().getAtacante() != null && mundo.getR().getAtual().getDefensor()){
 			return true;
 		}
 		return false;

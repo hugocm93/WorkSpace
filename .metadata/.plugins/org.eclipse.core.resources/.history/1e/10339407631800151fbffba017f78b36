@@ -61,9 +61,6 @@ public class FrameConquistouTerritorio extends JFrame implements ActionListener 
 	public void actionPerformed(ActionEvent e){
 		if (b1.isSelected()){
 			b1.setSelected(true);
-			
-			mundo.getR().getAtual().setAtacante(null);
-			mundo.getR().getAtual().setDefensor(null);
 		}
 		else if (b2.isSelected()){
 			b2.setSelected(true);
@@ -73,9 +70,6 @@ public class FrameConquistouTerritorio extends JFrame implements ActionListener 
 				ControladorMapa.retiraExer(mundo.getR().getAtual().getAtacante().getNome());
 			}
 			ControladorFluxo.painelMapa.nExer();
-			
-			mundo.getR().getAtual().setAtacante(null);
-			mundo.getR().getAtual().setDefensor(null);
 		}
 		else if (b3.isSelected()){
 			b3.setSelected(true);
@@ -91,9 +85,6 @@ public class FrameConquistouTerritorio extends JFrame implements ActionListener 
 			}
 
 			ControladorFluxo.painelMapa.nExer();
-			
-			mundo.getR().getAtual().setAtacante(null);
-			mundo.getR().getAtual().setDefensor(null);
 
 		}
 		setVisible(false);

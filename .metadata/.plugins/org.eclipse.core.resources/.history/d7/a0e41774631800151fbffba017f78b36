@@ -302,15 +302,6 @@ public class ControladorMapa {
 		return new Point(0,0);
 	}
 
-	public static void resetaAtaque() {
-		// TODO Auto-generated method stub
-		
-		
-		mundo.getR().getAtual().setAtacante(null);
-		mundo.getR().getAtual().setDefensor(null);
-		
-	}
-
 
 
 }

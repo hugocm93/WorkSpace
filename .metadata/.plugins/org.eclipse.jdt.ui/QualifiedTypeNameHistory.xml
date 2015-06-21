@@ -53,9 +53,9 @@
 <fullyQualifiedTypeName name="Interface.Fase"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="Modelos.Continente"/>
-<fullyQualifiedTypeName name="Controladores.ControladorPainelOpcoes"/>
 <fullyQualifiedTypeName name="Interface.PainelMapa"/>
 <fullyQualifiedTypeName name="Controladores.ControladorFrameDados"/>
 <fullyQualifiedTypeName name="Controladores.ControladorFluxo"/>
+<fullyQualifiedTypeName name="Controladores.ControladorPainelOpcoes"/>
 <fullyQualifiedTypeName name="Controladores.ControladorMapa"/>
 </qualifiedTypeNameHistroy>

@@ -18,7 +18,6 @@ import org.imgscalr.Scalr;
 
 import Controladores.ControladorFluxo;
 import Controladores.ControladorFrameDados;
-import Controladores.ControladorMapa;
 import Modelos.Mundo;
 
 public class FrameDados extends JFrame implements ActionListener{
@@ -92,9 +91,6 @@ public class FrameDados extends JFrame implements ActionListener{
 			
 			if(ControladorFrameDados.compararDados() == true){
 				ControladorFluxo.novoFrameConquistouTerritorio();
-			}
-			else{
-				ControladorMapa.resetaAtaque();
 			}
 			//TODO chamar a compara dados
 			//TODO pegar o retorno da funcao acima e se for necessario criar uma janela perguntando quantos exercitos ele quer mover, 1 ou 2

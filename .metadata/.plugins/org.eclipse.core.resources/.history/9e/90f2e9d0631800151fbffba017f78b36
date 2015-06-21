@@ -152,7 +152,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 
 		nomeJogador.setBounds(20, 88, 150, 20);
 		exeRestantes.setBounds(this.getBounds().width-200, this.getBounds().height-50, 200,50);
-		helpText.setBounds(this.getBounds().width-750, this.getBounds().height-130, 600,50);
+		helpText.setBounds(this.getBounds().width-750, this.getBounds().height-130, 400,50);
 		botaoDado.setBounds(this.getBounds().width-400, this.getBounds().height-90, 50, 50);
 
 		for ( int i = 0, j = 120; i<6 && imgPinos[i]!=null ; i++, j=j+22 ){
@@ -180,11 +180,11 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		switch(f){
 
 		case RECEBENDO:
-			helpText.setText("Dica: recebendo exercitos (clique no territorio para add.)");
+			helpText.setText("Dica: recebendo exercitos");
 			break;
 
 		case ATAQUE:
-			helpText.setText("Dica: atacando (clique nos territorios participantes)");
+			helpText.setText("Dica: atacando");
 			break;
 		case ATAQUEDESLOCAMENTO:
 			helpText.setText("Dica: deslocando no ataque");
@@ -193,11 +193,11 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 			helpText.setText("Dica: pegando carta");
 			break;
 		case DESLOCAMENTO:
-			helpText.setText("Dica: deslocando exercitos entre territorios fronteiricos (arraste de um para o outro)");
+			helpText.setText("Dica: deslocando exercitos entre territorios fronteiricos");
 			break;
 
 		case PRIM:
-			helpText.setText("Dica: distribuindo exercitos (clique no territorio para add.)");
+			helpText.setText("Dica: distribuindo exercitos");
 
 			break;
 			
@@ -209,6 +209,8 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 			break;
 
 		}
+
+
 
 		if(ControladorPainelOpcoes.permitidoPassar(ControladorPainelOpcoes.jogadorAtual("nome"))){
 			botaoFimDaJogada.setEnabled(true);
