@@ -92,13 +92,13 @@ public class FrameDados extends JFrame implements ActionListener{
 		if(e.getSource() == ok){
 			
 			if(ControladorFrameDados.compararDados() == true){
+				if(mundo.getR().getAtual().getAtacante().getExercitos() >= 2){
 				ControladorFluxo.novoFrameConquistouTerritorio();
+				}
 			}
 			else{
 				ControladorMapa.resetaAtaque();
 			}
-			//TODO chamar a compara dados
-			//TODO pegar o retorno da funcao acima e se for necessario criar uma janela perguntando quantos exercitos ele quer mover, 1 ou 2
 			
 			ControladorFluxo.painelMapa.nExer();
 			
@@ -108,7 +108,6 @@ public class FrameDados extends JFrame implements ActionListener{
 		}
 		if(e.getSource() == botaoLancarDadosAtaque){
 			
-			// TODO o 4 teve ser substituido pelo numero de exercitos
 			ControladorFrameDados.jogarDadosAtaque(mundo.getR().getAtual().getAtacante().getExercitos());
 			ControladorFrameDados.ordenarDadosDeAtaque();
 			ImageIcon[] imagensDados = ControladorFrameDados.getNomesDasImagensDosDadosDeAtaque();
@@ -124,7 +123,6 @@ public class FrameDados extends JFrame implements ActionListener{
 			cont.setLayout(null);
 			for(int i=0;i<3;i++){
 				if(!(mundo.getDadosAtaque()[i].getValor() == 0)){
-				//TODO se o valor do dado for 0, nao faz nada
 				dado = new JLabel();
 				cont.add(dado);
 				BufferedImage aux = null;
@@ -149,7 +147,6 @@ public class FrameDados extends JFrame implements ActionListener{
 			if(defesaPodeJogar == false){
 				return;
 			}
-			//TODO o 4 teve ser substituido pelo numero de exercitos
 			
 			ControladorFrameDados.jogarDadosDefesa(mundo.getR().getAtual().getDefensor().getExercitos());
 			ControladorFrameDados.ordenarDadosDeDefesa();
@@ -167,7 +164,6 @@ public class FrameDados extends JFrame implements ActionListener{
 			cont.setLayout(null);
 			for(int i=0;i<3;i++){
 				if(!(mundo.getDadosDefesa()[i].getValor() == 0)){
-				//TODO se o valor do dado for 0, nao faz nada
 				dado = new JLabel();
 				cont.add(dado);
 				BufferedImage aux = null;

@@ -80,7 +80,7 @@ public class ControladorFrameDados {
 		ControladorFrameDados.ordenarDados(TipoDado.DEFESA);
 
 	}
-
+	
 	static void ordenarDados(TipoDado t){
 		if(t == TipoDado.ATAQUE){
 
@@ -134,16 +134,7 @@ public class ControladorFrameDados {
 				}	
 			}
 		}
-
-
 		return false;
-		//TODO compara dado a dado - os dados são vetores ()
-		// TODO mundo.getDadosAtaque()
-		//TODO mundo.getDadosDefesa()
-		//TODO retirar exercitos do territorio correspondente
-		//TODO retirar territorio da lista do jogador defensor e coloca-lo na lista de exercitos do jogador atacante com um exercito
-		//TODO entrar no territorio e trocar o dono dele
-		//TODO se retornar true eh porque conquistou
 	}
 
 	public static void colocaTerritorioNoAtacante(String aux) {

@@ -309,6 +309,11 @@ public class ControladorMapa {
 		mundo.getR().getAtual().setDefensor(null);
 		
 	}
+	
+	public static int quantExercitos(){
+		
+		return mundo.getR().getAtual().getAtacante().getExercitos();
+	}
 
 
 

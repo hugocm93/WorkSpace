@@ -53,9 +53,14 @@ public class FrameConquistouTerritorio extends JFrame implements ActionListener 
 		b2.addActionListener(this);
 		b3.addActionListener(this);
 		add(b1);add(b2);add(b3);
-
+		
+		if (ControladorMapa.quantExercitos() == 2){
+			b3.setVisible(false);
+		}
+		
 		setSize(500,100);
 		setVisible(true);
+		
 	}
 
 	public void actionPerformed(ActionEvent e){
