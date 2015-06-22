@@ -469,7 +469,7 @@ public class Mundo {
 		nomeT = "Australia";
 		poligono = new Poligono(new Point[]{new Point(913,583),new Point(925,583),new Point(960,644),new Point(950,658),new Point(957,670),new Point(941,696),new Point(928,698),new Point(917,720),new Point(883,722),new Point(874,704),new Point(859,704),new Point(853,690)});
 		simb = Simbolo.TRIANGULO;
-		territoriosFronteira = new String[]{new String("Indonesia"), new String("Nova Zelandia")};
+		territoriosFronteira = new String[]{new String("Indonesia"), new String("Nova Zelandia"), new String("Perth")};
 		base = new Point(914,648);
 		territorios[2] = new Territorio(nomeT, poligono, 0, null, simb, territoriosFronteira, base);
 
