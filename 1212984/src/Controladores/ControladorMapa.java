@@ -17,28 +17,33 @@ public class ControladorMapa {
 	private static Territorio clicado ;
 
 	public static String detectaTerritorio(MouseEvent e, BufferedImage imgMapa){
-		int packedInt = imgMapa.getRGB(Math.round(e.getX()*Constantes.getConstConversao2()), Math.round((e.getY() + Constantes.getDeslocamento())*Constantes.getConstConversao() - Constantes.getDeslocamento()/2));
-		Color color = new Color(packedInt, true);
+		try{
+			int packedInt = imgMapa.getRGB(Math.round(e.getX()*Constantes.getConstConversao2()), Math.round((e.getY() + Constantes.getDeslocamento())*Constantes.getConstConversao() - Constantes.getDeslocamento()/2));
+			Color color = new Color(packedInt, true);
 
-		//      System.out.printf("(%d,%d,%d)\n", color.getRed(),color.getGreen(),color.getBlue());
-		//System.out.printf("new Point(%d,%d),", Math.round(e.getX()*Constantes.constConversaoX), Math.round(e.getY()*Constantes.constConversaoY));
+			//      System.out.printf("(%d,%d,%d)\n", color.getRed(),color.getGreen(),color.getBlue());
+			//System.out.printf("new Point(%d,%d),", Math.round(e.getX()*Constantes.constConversaoX), Math.round(e.getY()*Constantes.constConversaoY));
 
-		int j;
-		for(j=0 ; j<6 && mundo.getContinentes()[j].getCor().equals(new Cor(color.getRed(),color.getGreen(),color.getBlue())) == false;j++){
-			//			System.out.printf("%d %d %d - %d %d %d\n", mundo.getContinentes()[j].getCor().getR(),mundo.getContinentes()[j].getCor().getG(),mundo.getContinentes()[j].getCor().getB(),color.getRed(),color.getGreen(),color.getBlue());
-		}
+			int j;
+			for(j=0 ; j<6 && mundo.getContinentes()[j].getCor().equals(new Cor(color.getRed(),color.getGreen(),color.getBlue())) == false;j++){
+				//			System.out.printf("%d %d %d - %d %d %d\n", mundo.getContinentes()[j].getCor().getR(),mundo.getContinentes()[j].getCor().getG(),mundo.getContinentes()[j].getCor().getB(),color.getRed(),color.getGreen(),color.getBlue());
+			}
 
-		if(j<6 && mundo.getContinentes()[j].getCor().equals(new Cor(color.getRed(),color.getGreen(),color.getBlue())) == true){
-			return ControladorMapa.percorre(e, j);
-		}
+			if(j<6 && mundo.getContinentes()[j].getCor().equals(new Cor(color.getRed(),color.getGreen(),color.getBlue())) == true){
+				return ControladorMapa.percorre(e, j);
+			}
 
-		else{
-			for(int k=0 ; k<mundo.getContinentes().length ; k++){
-				String aux = ControladorMapa.percorre(e, k);
-				if(aux != null){
-					return aux;
+			else{
+				for(int k=0 ; k<mundo.getContinentes().length ; k++){
+					String aux = ControladorMapa.percorre(e, k);
+					if(aux != null){
+						return aux;
+					}
 				}
 			}
+		}
+		catch(Exception e1){
+			System.out.println("Coordenada invalida");
 		}
 
 		return null;
@@ -303,15 +308,15 @@ public class ControladorMapa {
 
 	public static void resetaAtaque() {
 		// TODO Auto-generated method stub
-		
-		
+
+
 		mundo.getR().getAtual().setAtacante(null);
 		mundo.getR().getAtual().setDefensor(null);
-		
+
 	}
-	
+
 	public static int quantExercitos(){
-		
+
 		return mundo.getR().getAtual().getAtacante().getExercitos();
 	}
 
