@@ -4,11 +4,9 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import Controladores.ControladorFluxo;
 import Controladores.ControladorMapa;
 import Modelos.Mundo;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,7 +20,6 @@ public class FrameConquistouTerritorio extends JFrame implements ActionListener 
 
 	public FrameConquistouTerritorio(){
 		super("Adicionar");
-
 
 		Container cont  = getContentPane();
 		cont.setLayout(new FlowLayout());
@@ -103,5 +100,4 @@ public class FrameConquistouTerritorio extends JFrame implements ActionListener 
 		}
 		setVisible(false);
 	} 
-
 }

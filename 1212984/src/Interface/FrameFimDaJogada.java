@@ -54,8 +54,5 @@ public class FrameFimDaJogada extends JFrame implements ActionListener{
 			dispose(); 
 			ControladorPainelOpcoes.anterior();
 		}
-		
 	}
-
-
 }

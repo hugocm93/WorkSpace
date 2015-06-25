@@ -1,7 +1,6 @@
 package Controladores;
 
 import javax.swing.ImageIcon;
-
 import Modelos.Dado;
 import Modelos.Mundo;
 import Modelos.Territorio;
@@ -80,7 +79,7 @@ public class ControladorFrameDados {
 		ControladorFrameDados.ordenarDados(TipoDado.DEFESA);
 
 	}
-	
+
 	static void ordenarDados(TipoDado t){
 		if(t == TipoDado.ATAQUE){
 
@@ -149,8 +148,5 @@ public class ControladorFrameDados {
 				return ;
 			}
 		}
-
 	}
-
-
 }

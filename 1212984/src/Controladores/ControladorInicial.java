@@ -1,7 +1,6 @@
 package Controladores;
 
 import java.util.ArrayList;
-
 import Modelos.Continente;
 import Modelos.Jogador;
 import Modelos.Mundo;
@@ -13,7 +12,6 @@ public class ControladorInicial {
 	private static Mundo mundo = Mundo.getInstance();
 	
 	public static void criaNovoJogador(String nome, String cor){
-		
 		Jogador jogador = new Jogador(nome, cor, null, null, null, null);
 		Jogador[] jogadores = mundo.getJogadores();
 		int i;
@@ -36,7 +34,6 @@ public class ControladorInicial {
 			}
 		}
 		mundo.setJogadores(jogadores2);
-		
 	}
 	
 	public static void imprime(){
@@ -53,7 +50,6 @@ public class ControladorInicial {
 		ArrayList<Turno> t = new ArrayList<Turno>();
 		int u;
 		for(u=0; u<6 && jogadores[u]!=null ;u++){
-			System.out.println(jogadores[u].getTerritoriosPossuidos().size());
 			Turno novo = new Turno(jogadores[u],jogadores[u].getTerritoriosPossuidos().size()/2, u);
 			t.add(novo);
 		}
@@ -72,12 +68,10 @@ public class ControladorInicial {
 		boolean flag = true;
 
 		while(cont<=51){
-			//System.out.printf("while1%d\n", cont);
 			if(cont==51){
 				break;
 			}
 			for(i=0;i<u;i++){
-				//System.out.printf("while2%d\n", cont);
 				if(cont<51){
 					flag=true;
 				}
@@ -85,7 +79,6 @@ public class ControladorInicial {
 					flag=false;
 				}
 				while(flag){
-					//System.out.printf("while3%d\n", cont);
 					if(cont==51){
 						break;
 					}
@@ -95,7 +88,6 @@ public class ControladorInicial {
 					if(continentes[aux1].getTerritorios()[aux2].getDono() == null){
 						continentes[aux1].getTerritorios()[aux2].setDono(jogadores[i]);
 						jogadores[i].getTerritoriosPossuidos().add(continentes[aux1].getTerritorios()[aux2]);
-						//System.out.println(continentes[aux1].getTerritorios()[aux2].getNome() + "->"+ jogadores[i].getNome());
 						cont++;
 						flag=false;
 						break;
@@ -103,11 +95,8 @@ public class ControladorInicial {
 
 				}
 			}
-
-
 		}
 		return;
-
 	}
 
 }

@@ -236,7 +236,6 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 				g.drawImage(imgSeta, 109 + 22*i, 16, 40, 40, null);
 			}
 		}
-
 		g.finalize();
 	}
 

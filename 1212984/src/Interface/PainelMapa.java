@@ -3,7 +3,6 @@ package Interface;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
-
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
@@ -27,17 +26,13 @@ import Controladores.ControladorPainelOpcoes;
 public class PainelMapa extends JPanel implements MouseListener{
 
 	private static final long serialVersionUID = 1L;
-
 	private String path1 = System.getProperty("user.dir");
 	private String path2 = "/src/zImagens/Mapas/";
 	private String path5 = "/src/zImagens/Pinos/";
 	private BufferedImage[] imgPinos = new BufferedImage[6];
 	private String[] cores = ControladorPainelOpcoes.getNomesDasImagensDosJogadores();
 	private BufferedImage imgMapa;
-
 	private String ultTerritorio;
-
-
 
 
 	public PainelMapa(){
@@ -54,24 +49,17 @@ public class PainelMapa extends JPanel implements MouseListener{
 			System.out.println("Imagem n�o encontrada.");
 		}
 
-
-
 		this.setLayout(new BorderLayout());
 		ControladorFluxo.criaPainelOpcoes();
-
-
 		ControladorFluxo.irPainelOpcoes();
 
 		this.nExer();
-
 		this.repaint();
-
-
 	}
 
 	public void nExer(){
 		this.removeAll();
-		//		int j=0;
+
 		for(int i = 0;i<6;i++){
 			ArrayList<Integer> nExerc = new ArrayList<Integer>();
 			ArrayList<Point> pontos = ControladorMapa.colocarBase(cores[i],nExerc);
@@ -79,42 +67,21 @@ public class PainelMapa extends JPanel implements MouseListener{
 			if(pontos==null){
 				break;
 			}
-
 			Integer[] intt = nExerc.toArray(new Integer[nExerc.size()]);
 			Point[] pointt = pontos.toArray(new Point[pontos.size()]);
 
-
-			//for(Point p : pontos){
 			for(int y=0 ;y<pontos.size();y++){
-
-				//			    JLabel b = (JLabel)this.getComponentAt(pointt[y].x+12, pointt[y].y+4);
-				//			    if(b!=null){
-				//			    	this.remove(b);
-				//			         b.setEnabled(false);
-				//			    }
-
 				ShadowLabel pins = new ShadowLabel(String.format("%d",intt[y]), JLabel.CENTER);
 				pins.setForeground(Color.white);
-
 				pins.setBounds(pointt[y].x+8, pointt[y].y, 30, 30);	
-				//System.out.println(p.x + " " + p.y + "->" + j++);
 				pins.setVisible(true);
-
 				this.add(pins);
-
 				pins = new ShadowLabel();
-
 				pins.setIcon(new ImageIcon(Scalr.resize(imgPinos[i], 20)));
-
 				pins.setBounds(pointt[y].x, pointt[y].y, 30, 30);	
-				//System.out.println(p.x + " " + p.y + "->" + j++);
 				pins.setVisible(true);
-
 				this.add(pins); 
-
-
 			}
-
 		}
 		this.repaint();
 	}
@@ -122,31 +89,35 @@ public class PainelMapa extends JPanel implements MouseListener{
 	public void paintComponent(Graphics g) {
 		super.paintComponents(g);
 
-		//System.out.println("Painting");
+		System.out.println("Paint");
 
 		g.drawImage(imgMapa, 0, - Constantes.getDeslocamento(), Constantes.getLargura(), Constantes.getAltura() , null);
-
-
 		this.drawline();
-		
 		g.finalize();
 	}
 
 	public void mouseClicked(MouseEvent e) {
+		Fase f = ControladorPainelOpcoes.getFase();
+
+		if(f == Fase.DESLOCAMENTO){
+			return;
+		}
 		if (e.isPopupTrigger() == false){
 			String aux = ControladorMapa.detectaTerritorio(e, imgMapa);
 			if(aux!=null){
 				doPop(e,aux);
 			}
 		}
-
-
 	}
 
 	public void mousePressed(MouseEvent e) {
+		Fase f = ControladorPainelOpcoes.getFase();
+
+		if(f != Fase.DESLOCAMENTO){
+			return;
+		}
 		String aux = ControladorMapa.detectaTerritorio(e, imgMapa);
 		if(ControladorMapa.permitidoMover(aux) && ControladorMapa.isFimAtaque()){
-			//ControladorMapa.retiraExer(aux);
 			ultTerritorio = aux;
 
 			int i=0;
@@ -155,22 +126,23 @@ public class PainelMapa extends JPanel implements MouseListener{
 					break;
 				}
 			}
-
 			Toolkit toolkit = Toolkit.getDefaultToolkit();
 			Image image = new ImageIcon(Scalr.resize(imgPinos[i], 20)).getImage();
-			Cursor c = toolkit.createCustomCursor(image , new Point(this.getX(),
-					this.getY()), "img");
+			Cursor c = toolkit.createCustomCursor(image , new Point(this.getX(),this.getY()), "img");
 			this.setCursor (c);
 		}
 	}
 
 	public void mouseReleased(MouseEvent e) {
+		Fase f = ControladorPainelOpcoes.getFase();
+
+		if(f != Fase.DESLOCAMENTO){
+			return;
+		}
 		String aux = ControladorMapa.detectaTerritorio(e, imgMapa);
 		if(ControladorMapa.permitidoDeixar(aux) && ControladorMapa.permitidoMover(ultTerritorio)  && ControladorMapa.fazFronteira(aux, ultTerritorio) && ControladorMapa.isFimAtaque()){
 			ControladorMapa.retiraExer(ultTerritorio);
 			ControladorMapa.colocaExer(aux);
-
-
 
 		}
 		else{
@@ -181,10 +153,8 @@ public class PainelMapa extends JPanel implements MouseListener{
 		Cursor cursor = new Cursor(Cursor.DEFAULT_CURSOR);
 		setCursor(cursor);
 
-		
-		this.nExer();  //atualiza os graficos
+		this.nExer(); 
 	}
-
 	public void mouseEntered(MouseEvent e) {}
 	public void mouseExited(MouseEvent e) {}
 
@@ -212,19 +182,12 @@ public class PainelMapa extends JPanel implements MouseListener{
 		int[] ypoints = {(int) j, (int) ym, (int) yn};
 
 		g.drawLine((int)e, (int)f, (int)i, (int)j);
-
 		g.fillPolygon(xpoints, ypoints, 3);
 	}
 
 	public void drawline() {
-		
 		if(!ControladorMapa.getBaseD().equals(new Point(0,0))){
 			this.drawArrowLine(this.getGraphics(), ControladorMapa.getBaseAT().getX(),ControladorMapa.getBaseAT().getY() , ControladorMapa.getBaseD().getX(),ControladorMapa.getBaseD().getY() , 8, 8);
 		}
-	
-		
 	}
-
-
-
 }

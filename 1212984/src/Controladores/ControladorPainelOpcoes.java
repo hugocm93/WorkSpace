@@ -49,8 +49,6 @@ public class ControladorPainelOpcoes {
 		int aux2 = mundo.getR().getIndexRodada();
 		int u;
 		for(u=0; u<6 && jogadores[u]!=null ;u++);
-
-		//System.out.println("aux2: " + aux2);
 		System.out.println(mundo.getR().getTurnos().get(aux).getIndexJogador() + "-" + u);
 
 		if(mundo.getR().getTurnos().get(aux).getIndexJogador() == 0){
@@ -79,19 +77,14 @@ public class ControladorPainelOpcoes {
 	}
 
 	public static void setarAtacante(String name) {
-		// TODO Auto-generated method stub
-
 		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
 			if(t.getNome().equals(name)){
 				mundo.getR().getAtual().setAtacante(t);
-
 			}
 		}
-
 	}
 
 	public static void setarDefensor(String name) {
-		// TODO Auto-generated method stub
 		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
 			if(t.getNome().equals(name)){
 
@@ -109,8 +102,6 @@ public class ControladorPainelOpcoes {
 	}
 
 	public static void fimAtaque() {
-		// TODO Auto-generated method stub
-
 		mundo.getR().getAtual().setFimFaseAtaque(true);
 
 	}
@@ -121,11 +112,8 @@ public class ControladorPainelOpcoes {
 //			return true;
 //		}
 //		return false;
-		
 		return true;
 	}
-
-
 
 	public static Fase getFase() {
 		if(mundo.getR().getAtual().getnExercitosDaVez() > 0){
@@ -140,8 +128,6 @@ public class ControladorPainelOpcoes {
 		if(mundo.getR().getAtual().isFimFaseAtaque()){
 			mundo.getR().getAtual().setF(Fase.DESLOCAMENTO);
 		}
-
-
 
 		return mundo.getR().getAtual().getF();
 	}

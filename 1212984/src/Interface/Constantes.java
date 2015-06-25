@@ -2,27 +2,22 @@ package Interface;
 
 public abstract class Constantes {
 
-	private static int largura = 1024;
-	private static int altura = 768;
-	public static int constMagica = 10;
-
 	//public static int largura = 1067;
 	//public static int altura = 800;
 	//public static int constMagica = 0;
-
-
-	private static int largImg = 2133;
-	private static int altImg = 1600;
-
-	private static float constConversao = (float)altImg/altura;
-	private static float constConversao2 = (float)largImg/largura;
+	public static int largura = 1024;
+	public static int altura = 768;
+	public static int constMagica = 10;
+	public static int largImg = 2133;
+	public static int altImg = 1600;
+	public static float constConversao = (float)altImg/altura;
+	public static float constConversao2 = (float)largImg/largura;
 	public static float constConversaoX = (float)largura/1067;
 	public static float constConversaoY = (float)altura/800;
-	//private static int deslocamento2 = 0;
 	public static int deslocamento2 = 80;
 	public static int deslocamento = Math.round(deslocamento2*constConversaoY);
-	
-	
+
+
 	public static int getLargura() {
 		return largura;
 	}
@@ -56,6 +51,5 @@ public abstract class Constantes {
 	public static int getDeslocamento2() {
 		return deslocamento2;
 	}
-
 
 }

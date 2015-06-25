@@ -1,9 +1,7 @@
 package Controladores;
 
 import java.awt.BorderLayout;
-
 import javax.swing.JFrame;
-
 import Interface.Constantes;
 import Interface.FrameConquistouTerritorio;
 import Interface.FrameDados;
@@ -14,12 +12,12 @@ import Interface.PainelTelaInicial;
 
 public class ControladorFluxo {
 	
-	public static JFrame janela;
+	public static  JFrame janela;
 	private static FrameDados frameDados;
 	private static FrameFimDaJogada frameFimDaJogada;
 	private static FrameConquistouTerritorio frameConquistouTerritorio;
 	private static PainelTelaInicial painelTelaInicial;
-	public static PainelMapa painelMapa;
+	public static  PainelMapa painelMapa;
 	private static PainelOpcoes painelOpcoes;
 	
 	public static void criaJanela(){
@@ -29,12 +27,8 @@ public class ControladorFluxo {
 		janela.setVisible(true);
 		janela.setResizable(false);
 
-
 		ControladorFluxo.criaPainelTelaInicial();
 		ControladorFluxo.irPainelTelaInicial();
-		//ControladorFluxo.criaPainelMapa();
-		//ControladorFluxo.irPainelMapa();
-
 	}
 
 	public static void criaPainelMapa(){
@@ -117,6 +111,4 @@ public class ControladorFluxo {
 		frameConquistouTerritorio.setVisible(true);
 		frameConquistouTerritorio.setResizable(false);
 	}
-
-
 }
