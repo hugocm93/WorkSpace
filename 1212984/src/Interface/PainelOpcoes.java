@@ -76,7 +76,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 			System.out.println("Imagem não encontrada.");
 		}
 
-		this.setPreferredSize(new Dimension(1024,115));
+		this.setPreferredSize(new Dimension(1024,Constantes.alturaPainel));
 		this.setLayout(new FlowLayout());
 
 

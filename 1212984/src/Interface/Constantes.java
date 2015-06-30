@@ -5,6 +5,7 @@ public abstract class Constantes {
 	//public static int largura = 1067;
 	//public static int altura = 800;
 	//public static int constMagica = 0;
+	public static int alturaPainel = 115;
 	public static int largura = 1024;
 	public static int altura = 768;
 	public static int constMagica = 10;
@@ -51,5 +52,21 @@ public abstract class Constantes {
 	public static int getDeslocamento2() {
 		return deslocamento2;
 	}
+	public static void setLargura(int largura) {
+		Constantes.largura = largura;
+	}
+	public static void setAltura(int altura) {
+		Constantes.altura = altura;
+	}
+	public static void setConstMagica(int constMagica) {
+		Constantes.constMagica = constMagica;
+	}
+	public static int getAlturaPainel() {
+		return alturaPainel;
+	}
+	public static void setAlturaPainel(int alturaPainel) {
+		Constantes.alturaPainel = alturaPainel;
+	}
+	
 
 }

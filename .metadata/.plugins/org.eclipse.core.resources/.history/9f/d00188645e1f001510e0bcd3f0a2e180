@@ -1,0 +1,10 @@
+import Controladores.ControladorFluxo;
+
+public class Jogo {
+
+	public static void main(String[] args) {
+		OSValidator.detectOS();
+		ControladorFluxo.criaJanela();
+	}
+
+}

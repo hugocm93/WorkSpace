@@ -1,0 +1,28 @@
+import Controladores.ControladorFluxo;
+import Interface.Constantes;
+
+public class Jogo {
+
+	public static void main(String[] args) {
+		String aux = OSValidator.detectOS();
+		
+		switch(aux){
+		case "Windows":
+			break;
+			
+		case "Mac":
+			Constantes.setConstMagica(0);
+			break;
+			
+		case "Linux":
+			break;
+			
+		}
+		ControladorFluxo.criaJanela();
+	}
+
+}
+
+//public static int largura = 1067;
+	//public static int altura = 800;
+	//public static int constMagica = 0;

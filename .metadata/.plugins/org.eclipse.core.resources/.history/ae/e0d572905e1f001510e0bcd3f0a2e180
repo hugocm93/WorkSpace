@@ -1,0 +1,22 @@
+import Controladores.ControladorFluxo;
+
+public class Jogo {
+
+	public static void main(String[] args) {
+		String aux = OSValidator.detectOS();
+		
+		switch(aux){
+		case "Windows":
+			break;
+			
+		case "Mac":
+			break;
+			
+		case "Linux":
+			break;
+			
+		}
+		ControladorFluxo.criaJanela();
+	}
+
+}
