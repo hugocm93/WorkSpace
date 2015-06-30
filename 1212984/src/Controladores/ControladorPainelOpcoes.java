@@ -1,7 +1,6 @@
 package Controladores;
 
 import Interface.Fase;
-import Modelos.Continente;
 import Modelos.Jogador;
 import Modelos.Mundo;
 import Modelos.Territorio;
@@ -75,27 +74,26 @@ public class ControladorPainelOpcoes {
 	}
 
 	public static void setarAtacante(String name) {
-		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
-			if(t.getNome().equals(name)){
-				mundo.getR().getAtual().setAtacante(t);
-			}
+		Territorio t = mundo.getTerritorios().get(name);
+		if(t==null){
+			return ;
+		}
+
+		if(t.getDono().getNome().equals(mundo.getR().getAtual().getJogador().getNome())){
+
+			mundo.getR().getAtual().setAtacante(t);
+
 		}
 	}
 
 	public static void setarDefensor(String name) {
-		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
-			if(t.getNome().equals(name)){
+		Territorio t = mundo.getTerritorios().get(name);
+		if(t==null){
+			return ;
+		}
+		mundo.getR().getAtual().setDefensor(t);
+		System.out.println("Base do defensor" + t.getBase());
 
-			}
-		}
-		for(Continente c : mundo.getContinentes()){
-			for(Territorio s : c.getTerritorios()){
-				if(s.getNome().equals(name)){
-					mundo.getR().getAtual().setDefensor(s);
-					System.out.println(s.getBase());
-				}
-			}
-		}
 
 	}
 
@@ -105,11 +103,11 @@ public class ControladorPainelOpcoes {
 	}
 
 	public static boolean isNotPrimeiraRodada() {
-		
-//		if(mundo.getR().getIndexRodada()>=1){
-//			return true;
-//		}
-//		return false;
+
+		//		if(mundo.getR().getIndexRodada()>=1){
+		//			return true;
+		//		}
+		//		return false;
 		return true;
 	}
 

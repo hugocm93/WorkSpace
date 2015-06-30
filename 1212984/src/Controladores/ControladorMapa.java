@@ -96,26 +96,29 @@ public class ControladorMapa {
 	}
 
 	public static void addExer(String nome){
-		for(int j=0;j<6;j++){
-			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
-				if(mundo.getContinentes()[j].getTerritorios()[i].getNome().equals(nome)){
-					mundo.getContinentes()[j].getTerritorios()[i].exerMais();
-					int nExercitosDaVez = mundo.getR().getAtual().getnExercitosDaVez()-1;
-					mundo.getR().getAtual().setnExercitosDaVez(nExercitosDaVez);
-					return;
-				}
-			}
+
+		Territorio t = mundo.getTerritorios().get(nome);
+		if(t==null){
+			return ;
 		}
+
+		t.exerMais();
+		int nExercitosDaVez = mundo.getR().getAtual().getnExercitosDaVez()-1;
+		mundo.getR().getAtual().setnExercitosDaVez(nExercitosDaVez);
+		return;
 	}
 
 	public static boolean permitido(String name) {
-		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
-			if(t.getNome().equals(name)){
-				if(mundo.getR().getAtual().getnExercitosDaVez() > 0){
-					return true;
-				}
+		Territorio t = mundo.getTerritorios().get(name);
+		if(t==null){
+			return false;
+		}
+		if(t.getDono().getNome().equals(mundo.getR().getAtual().getJogador().getNome())){
+			if(mundo.getR().getAtual().getnExercitosDaVez() > 0){
+				return true;
 			}
 		}
+
 		return false;
 	}
 
@@ -123,16 +126,19 @@ public class ControladorMapa {
 		if(ControladorMapa.permitido(name)==true){
 			return false;
 		}
-		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
-			if(t.getNome().equals(name)){
-				if(ControladorPainelOpcoes.isNotPrimeiraRodada()){
-					if(t.getExercitos()>1){
-						return true;
-					}
+
+		Territorio t = mundo.getTerritorios().get(name);
+		if(t==null){
+			return false;
+		}
+
+		if(t.getDono().equals(mundo.getR().getAtual().getJogador())){
+			if(ControladorPainelOpcoes.isNotPrimeiraRodada()){
+				if(t.getExercitos()>1){
+					return true;
 				}
 			}
 		}
-
 
 		return false;
 	}
@@ -170,57 +176,55 @@ public class ControladorMapa {
 	}
 
 	public static void retiraExer(String aux) {
-		for(int j=0;j<6;j++){
-			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
-				if(mundo.getContinentes()[j].getTerritorios()[i].getNome().equals(aux)){
-					mundo.getContinentes()[j].getTerritorios()[i].exerMenos();
-					return;
-				}
-			}
+		Territorio t = mundo.getTerritorios().get(aux);
+		if(t==null){
+			return ;
 		}
+		t.exerMenos();
 	}
 
 	public static void colocaExer(String aux) {
-		for(int j=0;j<6;j++){
-			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
-				if(mundo.getContinentes()[j].getTerritorios()[i].getNome().equals(aux)){
-					mundo.getContinentes()[j].getTerritorios()[i].exerMais();
-					return;
-				}
-			}
+		Territorio t = mundo.getTerritorios().get(aux);
+		if(t==null){
+			return ;
 		}
+		t.exerMais();
 	}
 
 
 	public static boolean permitidoMover(String name) {
-		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
-			if(t.getNome().equals(name)){
-				if(t.getExercitos() > 1){
-					return true;
-				}
-			}
+		Territorio t = mundo.getTerritorios().get(name);
+		if(t==null){
+			return false;
 		}
-		return false;
-	}
-
-	public static boolean permitidoDeixar(String aux) {
-		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
-			if(t.getNome().equals(aux)){
-
+		if(t.getDono().getNome().equals(mundo.getR().getAtual().getJogador().getNome())){
+			if(t.getExercitos() > 1){
 				return true;
 			}
 		}
 		return false;
 	}
 
+	public static boolean permitidoDeixar(String aux) {
+		Territorio t = mundo.getTerritorios().get(aux);
+		if(t==null){
+			return false;
+		}
+		if(t.getDono().getNome().equals(mundo.getR().getAtual().getJogador().getNome())){
+			return true;
+		}
+		return false;
+	}
+
 	public static boolean fazFronteira(String aux1, String aux2){
-		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
-			if(t.getNome().equals(aux1)){
-				for(String s : t.getTerritoriosFronteira()){
-					if(s.equals(aux2)){
-						return true;
-					}
-				}
+		Territorio t = mundo.getTerritorios().get(aux1);
+		if(t==null){
+			return false;
+		}
+
+		for(String s : t.getTerritoriosFronteira()){
+			if(s.equals(aux2)){
+				return true;
 			}
 		}
 		return false;
@@ -231,12 +235,15 @@ public class ControladorMapa {
 	}
 
 	public static Point getBase(String aux) {
-		for(Territorio t : mundo.getR().getAtual().getJogador().getTerritoriosPossuidos()){
-			if(t.getNome().equals(aux)){
-				return t.getBase();
-
-			}
+		Territorio t = mundo.getTerritorios().get(aux);
+		if(t==null){
+			return new Point(0,0);
 		}
+
+		if(t.getDono().getNome().equals(mundo.getR().getAtual().getJogador().getNome())){
+			return t.getBase();
+		}
+
 		return new Point(0,0);
 	}
 

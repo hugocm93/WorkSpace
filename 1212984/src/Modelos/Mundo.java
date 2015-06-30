@@ -1,6 +1,7 @@
 package Modelos;
 
 import java.awt.*;
+import java.util.HashMap;
 
 public class Mundo {
 
@@ -11,7 +12,7 @@ public class Mundo {
 	Dado[] dadosAtaque;
 	Dado[] dadosDefesa;
 	Rodada r;
-	
+	HashMap<String, Territorio> territorios;
 
 	private static Mundo instance;
 
@@ -28,6 +29,7 @@ public class Mundo {
 		jogadores = new Jogador[6]; 
 		dadosAtaque = new Dado[3];
 		dadosDefesa = new Dado[3];
+		territorios = new HashMap<String, Territorio>();
 
 
 		for(int i=0;i<3;i++){
@@ -485,7 +487,31 @@ public class Mundo {
 		continentes[5] = new Continente(nome, territorios, cor, null, exercitosTabela);
 
 		////////
+		
+		for(int j=0;j<6;j++){
+			for(int i=0 ; i<this.getContinentes()[j].getTerritorios().length ; i++){
+				this.territorios.put(this.getContinentes()[j].getTerritorios()[i].getNome(), this.getContinentes()[j].getTerritorios()[i]);
+			}
+		}
 
+	}
+	
+	
+
+	public int getnJogadores() {
+		return nJogadores;
+	}
+
+	public void setnJogadores(int nJogadores) {
+		this.nJogadores = nJogadores;
+	}
+
+	public HashMap<String, Territorio> getTerritorios() {
+		return territorios;
+	}
+
+	public void setTerritorios(HashMap<String, Territorio> territorios) {
+		this.territorios = territorios;
 	}
 
 	public Continente[] getContinentes() {

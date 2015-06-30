@@ -75,13 +75,13 @@ class PopUp extends JPopupMenu implements ActionListener{
 
 			while(true){
 				if(ControladorMapa.permitido(this.getComponent(0).getName())){
-					ControladorMapa.addExer(this.getComponent(0).getName());
-					painel.nExer();
+					ControladorMapa.addExer(this.getComponent(0).getName());	
 				}
 				else{
 					break;
 				}
 			}
+			painel.nExer();
 
 		}
 

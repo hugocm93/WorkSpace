@@ -58,4 +58,5 @@
 <fullyQualifiedTypeName name="Controladores.ControladorMapa"/>
 <fullyQualifiedTypeName name="Controladores.ControladorPainelOpcoes"/>
 <fullyQualifiedTypeName name="Controladores.ControladorInicial"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
 </qualifiedTypeNameHistroy>

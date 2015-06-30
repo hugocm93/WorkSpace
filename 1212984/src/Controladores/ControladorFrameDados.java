@@ -137,16 +137,23 @@ public class ControladorFrameDados {
 	}
 
 	public static void colocaTerritorioNoAtacante(String aux) {
-		for(Territorio t : mundo.getR().getAtual().getDefensor().getDono().getTerritoriosPossuidos()){
-			if(t.getNome().equals(aux)){
-				mundo.getR().getAtual().getDefensor().getDono().getTerritoriosPossuidos().remove(t);
-				mundo.getR().getAtual().getAtacante().getDono().getTerritoriosPossuidos().add(t);
-				t.setDono(mundo.getR().getAtual().getAtacante().getDono());
-				mundo.getR().getAtual().getAtacante().exerMenos();
-				t.exerMais();
+		Territorio t = mundo.getTerritorios().get(aux);
+		if(t==null){
+			return ;
+		}
 
-				return ;
-			}
+		if(t.getDono().getNome().equals(mundo.getR().getAtual().getDefensor().getDono().getNome())){
+
+			mundo.getR().getAtual().getDefensor().getDono().getTerritoriosPossuidos().remove(t);
+			mundo.getR().getAtual().getAtacante().getDono().getTerritoriosPossuidos().add(t);
+			t.setDono(mundo.getR().getAtual().getAtacante().getDono());
+			mundo.getR().getAtual().getAtacante().exerMenos();
+			t.exerMais();
+
+			return ;
+
 		}
 	}
+
+
 }
