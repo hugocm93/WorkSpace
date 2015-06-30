@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="253" key="DIALOG_WIDTH"/>
-		<item value="82" key="DIALOG_Y_ORIGIN"/>
-		<item value="954" key="DIALOG_X_ORIGIN"/>
-		<item value="417" key="DIALOG_HEIGHT"/>
+		<item value="257" key="DIALOG_WIDTH"/>
+		<item value="141" key="DIALOG_Y_ORIGIN"/>
+		<item value="429" key="DIALOG_HEIGHT"/>
+		<item value="966" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Noto Sans|9.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="detec" key="selection"/>
+		<item value="reseta" key="selection"/>
 		<list key="findhistory">
+			<item value="reseta"/>
+			<item value="paint"/>
+			<item value="jogadores"/>
+			<item value="System"/>
 			<item value="detec"/>
 			<item value="australia"/>
 			<item value="isn"/>
 			<item value="is"/>
-			<item value="help"/>
-			<item value="colo"/>
-			<item value="coloca"/>
-			<item value="janela"/>
 		</list>
 		<list key="replacehistory">
 		</list>

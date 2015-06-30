@@ -1,6 +1,0 @@
-package Interface;
-
-public enum Fase {
-	RECEBENDO, ATAQUE, ATAQUEDESLOCAMENTO,DESLOCAMENTO, CARTA
-
-}

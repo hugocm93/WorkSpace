@@ -7,9 +7,11 @@ public class Mundo {
 	Continente[] continentes;
 	Tabela1 tabTroca;
 	Jogador[] jogadores;
+	int nJogadores;
 	Dado[] dadosAtaque;
 	Dado[] dadosDefesa;
 	Rodada r;
+	
 
 	private static Mundo instance;
 
@@ -532,6 +534,17 @@ public class Mundo {
 
 	public void setR(Rodada r) {
 		this.r = r;
+	}
+	
+	public void calculaNumeroJogadores(){
+		int u;
+		for(u=0; u<6 && this.getJogadores()[u]!=null ;u++);
+		
+		nJogadores = u;
+	}
+	
+	public int getNJogadores(){
+		return nJogadores;
 	}
 
 

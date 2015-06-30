@@ -21,10 +21,9 @@ public class ControladorInicial {
 
 	public static void sortSequencia() {
 		Jogador[] jogadores = mundo.getJogadores();
-		int i;
+		int i = mundo.getNJogadores();
 		Jogador[] jogadores2 = new Jogador[]{null,null,null,null,null,null}; 
-		for(i=0; i<6 && jogadores[i]!=null;i++);
-
+		
 		for(int j=0; j<i;){
 			int aux = (int)(Math.random() * 6);
 			if(jogadores[aux]!=null){
@@ -63,8 +62,7 @@ public class ControladorInicial {
 		Continente[] continentes = mundo.getContinentes();
 		int i=0;
 		int cont=0;
-		int u;
-		for(u=0; u<6 && jogadores[u]!=null ;u++);
+		int u = mundo.getNJogadores();
 		boolean flag = true;
 
 		while(cont<=51){
@@ -97,6 +95,11 @@ public class ControladorInicial {
 			}
 		}
 		return;
+	}
+	
+	public static void calculaJogadores() {
+		mundo.calculaNumeroJogadores();
+		
 	}
 
 }

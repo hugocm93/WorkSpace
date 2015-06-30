@@ -91,9 +91,7 @@ public class FrameDados extends JFrame implements ActionListener{
 					ControladorFluxo.novoFrameConquistouTerritorio();
 				}
 			}
-			else{
-				ControladorMapa.resetaAtaque();
-			}
+			ControladorMapa.resetaAtaque();
 
 			ControladorFluxo.painelMapa.nExer();
 

@@ -30,7 +30,6 @@
 <fullyQualifiedTypeName name="Modelos.TipoDado"/>
 <fullyQualifiedTypeName name="javax.swing.JPopupMenu"/>
 <fullyQualifiedTypeName name="javax.swing.JMenuItem"/>
-<fullyQualifiedTypeName name="Controladores.ControladorInicial"/>
 <fullyQualifiedTypeName name="javax.swing.JLabel"/>
 <fullyQualifiedTypeName name="java.awt.Graphics"/>
 <fullyQualifiedTypeName name="javax.swing.JPanel"/>
@@ -58,4 +57,5 @@
 <fullyQualifiedTypeName name="Controladores.ControladorFluxo"/>
 <fullyQualifiedTypeName name="Controladores.ControladorMapa"/>
 <fullyQualifiedTypeName name="Controladores.ControladorPainelOpcoes"/>
+<fullyQualifiedTypeName name="Controladores.ControladorInicial"/>
 </qualifiedTypeNameHistroy>

@@ -44,11 +44,9 @@ public class ControladorPainelOpcoes {
 	}
 
 	public static void isfimRodada() {
-		Jogador[] jogadores = mundo.getJogadores();
 		int aux = mundo.getR().getIndexTurno();
 		int aux2 = mundo.getR().getIndexRodada();
-		int u;
-		for(u=0; u<6 && jogadores[u]!=null ;u++);
+		int u = mundo.getNJogadores();
 		System.out.println(mundo.getR().getTurnos().get(aux).getIndexJogador() + "-" + u);
 
 		if(mundo.getR().getTurnos().get(aux).getIndexJogador() == 0){

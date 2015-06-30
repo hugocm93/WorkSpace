@@ -35,6 +35,7 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 
 	public PainelTelaInicial(){
 
+
 		try {
 			File imgMapaFile = new File(path1 + path2 + "war_tabuleiro_fundo.png");
 			imgMapa = ImageIO.read(imgMapaFile);
@@ -116,13 +117,13 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 						ControladorInicial.criaNovoJogador(jogadoresTexto[i].getText(), cores[i]);
 					}	
 				}
-
+				ControladorInicial.calculaJogadores();
 				ControladorInicial.sortSequencia();	//sorteando a sequencia
-                ControladorInicial.sortearTerritorios();
+				ControladorInicial.sortearTerritorios();
 				ControladorInicial.criaTurnos();
 				ControladorFluxo.criaPainelMapa();
 				ControladorFluxo.irPainelMapa();
-				
+
 			}
 			else{
 				JOptionPane.showMessageDialog(this, "O número mínimo de jogadores é 3.");
@@ -134,22 +135,22 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 
 		if(e.getSource() == jogadoresTexto[0]){
 			jogadoresTexto[0].setText(" ");
-        }
+		}
 		if(e.getSource() == jogadoresTexto[1]){
 			jogadoresTexto[1].setText(" ");
-        }
+		}
 		if(e.getSource() == jogadoresTexto[2]){
 			jogadoresTexto[2].setText(" ");
-        }
+		}
 		if(e.getSource() == jogadoresTexto[3]){
 			jogadoresTexto[3].setText(" ");
-        }
+		}
 		if(e.getSource() == jogadoresTexto[4]){
 			jogadoresTexto[4].setText(" ");
-        }
+		}
 		if(e.getSource() == jogadoresTexto[5]){
 			jogadoresTexto[5].setText(" ");
-        }
+		}
 	}
 
 	public void focusLost(FocusEvent e) {
