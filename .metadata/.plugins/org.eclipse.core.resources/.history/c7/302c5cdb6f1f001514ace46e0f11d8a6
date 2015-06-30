@@ -92,7 +92,8 @@ class PopUp extends JPopupMenu implements ActionListener{
 		if(e.getActionCommand().equals("Defensor")){
 			ControladorPainelOpcoes.setarDefensor(this.getComponent(0).getName());
 			System.out.println("defensor");
-			painel.drawline();
+			painel.repaint();
+			//painel.drawline();
 		}
 
 	}
