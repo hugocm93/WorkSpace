@@ -1,0 +1,9 @@
+package Modelos;
+
+public class Baralho {
+	
+	Carta[] cartas;
+	String tipo;
+	int qtd;
+
+}

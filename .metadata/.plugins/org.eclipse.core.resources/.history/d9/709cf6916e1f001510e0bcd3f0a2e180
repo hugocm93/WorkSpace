@@ -13,7 +13,7 @@ public class Mundo {
 	Dado[] dadosDefesa;
 	Rodada r;
 	HashMap<String, Territorio> territorios;
-	String[] cartasObjetivo;
+	Baralho cartasObjetivo;
 	Baralho cartasTroca;
 
 	private static Mundo instance;
@@ -540,23 +540,6 @@ public class Mundo {
 		cartas[40] = new Carta(null, "war_carta_coringa.png", null);
 		
 		cartasTroca = new Baralho(cartas, "Troca", 53);
-		
-		cartasObjetivo = new String[14];
-		cartasObjetivo[0] = "Destruir totalmente os exercitos azuis.\n Se voce é quem possui os exercitos azuis,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
-		cartasObjetivo[1] = "Destruir totalmente os exercitos verdes.\n Se voce é quem possui os exercitos verdes,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
-		cartasObjetivo[2] = "Destruir totalmente os exercitos amarelos.\n Se voce é quem possui os exercitos amarelos,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
-		cartasObjetivo[3] = "Destruir totalmente os exercitos vermelhos.\n Se voce é quem possui os exercitos vermelhos,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
-		cartasObjetivo[4] = "Destruir totalmente os exercitos brancos.\n Se voce é quem possui os exercitos brancos,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
-		cartasObjetivo[5] = "Destruir totalmente os exercitos pretos.\n Se voce é quem possui os exercitos pretos,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
-		cartasObjetivo[6] = "Conquistar na totalidade a Europa, Oceania\n e mais um continente à sua escolha";
-		cartasObjetivo[7] = "Conquistar na totalidade\n a Ásia e a África";
-		cartasObjetivo[8] = "Conquistar na totalidade\n a América do Norte e a Oceania";
-		cartasObjetivo[9] = "Conquistar na totalidade a Europa,\n a América do Sul e mais um\n continete à sua escolha";
-		cartasObjetivo[10] = "Conquistar na totalidade a Ásia\n e a América do Sul";
-		cartasObjetivo[11] = "Conquistar 24 territórios\n à sua escolha";
-		cartasObjetivo[12] = "Conquistar na totalidade a\n América do Norte e a África";
-		cartasObjetivo[13] = "Conquistar 18 territórios e ocupar\n cada um deles com pelo menos 2 exércitos";
-	
 		
 
 		////////

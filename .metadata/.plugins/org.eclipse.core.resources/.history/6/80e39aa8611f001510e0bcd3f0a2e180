@@ -6,7 +6,7 @@ public class Carta {
 	String imgNome;
 	Territorio territorio;
 	
-	public Carta(Jogador dono, String imgNome, Territorio territorio) {
+	public Carta(Jogador dono, String[] imgNome, Territorio territorio) {
 		super();
 		this.dono = dono;
 		this.imgNome = imgNome;
@@ -21,11 +21,11 @@ public class Carta {
 		this.dono = dono;
 	}
 
-	public String getImgNome() {
+	public String[] getImgNome() {
 		return imgNome;
 	}
 
-	public void setImgNome(String imgNome) {
+	public void setImgNome(String[] imgNome) {
 		this.imgNome = imgNome;
 	}
 

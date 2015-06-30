@@ -34,10 +34,10 @@ public class Jogador {
 	public void setCor(String cor) {
 		this.cor = cor;
 	}
-	public String getObj() {
+	public Objetivo getObj() {
 		return obj;
 	}
-	public void setObj(String obj) {
+	public void setObj(Objetivo obj) {
 		this.obj = obj;
 	}
 	public ArrayList<Carta> getCartas() {

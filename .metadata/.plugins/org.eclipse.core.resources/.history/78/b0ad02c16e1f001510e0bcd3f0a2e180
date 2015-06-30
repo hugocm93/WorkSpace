@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Jogador {
 	private String nome;
 	private String cor;
-	private String obj;
+	private Objetivo obj;
 	private ArrayList< Carta > cartas = new ArrayList< Carta >();
 	private ArrayList< Territorio > territoriosPossuidos = new ArrayList< Territorio >();
 	private ArrayList<Continente> continentesPossuidos = new ArrayList<Continente>();
@@ -13,7 +13,7 @@ public class Jogador {
 	
 	
 	
-	public Jogador(String nome, String cor, String obj, ArrayList<Carta> cartas, ArrayList<Territorio> territoriosPossuidos, ArrayList<Continente> continentesPossuidos) {
+	public Jogador(String nome, String cor, Objetivo obj, ArrayList<Carta> cartas, ArrayList<Territorio> territoriosPossuidos, ArrayList<Continente> continentesPossuidos) {
 		super();
 		this.nome = nome;
 		this.cor = cor;
@@ -34,10 +34,10 @@ public class Jogador {
 	public void setCor(String cor) {
 		this.cor = cor;
 	}
-	public String getObj() {
+	public Objetivo getObj() {
 		return obj;
 	}
-	public void setObj(String obj) {
+	public void setObj(Objetivo obj) {
 		this.obj = obj;
 	}
 	public ArrayList<Carta> getCartas() {
