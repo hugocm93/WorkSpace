@@ -1,6 +1,7 @@
 package Modelos;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Mundo {
@@ -15,6 +16,7 @@ public class Mundo {
 	HashMap<String, Territorio> territorios;
 	String[] cartasObjetivo;
 	Baralho cartasTroca;
+	ArrayList<String> objDisponiveis = new ArrayList<String>();
 
 	private static Mundo instance;
 
@@ -90,7 +92,7 @@ public class Mundo {
 		nomeT = "Vancouver";
 		poligono = new Poligono(new Point[]{new Point(133,167),new Point(153,206),new Point(233,206),new Point(241,221),new Point(225,249),new Point(113,250),new Point(108,242),new Point(126,212),new Point(118,195)});
 		simb = Simbolo.TRIANGULO;
-		territoriosFronteira = new String[]{new String("Alasca"),new String("Calgary'"),new String("Quebec"),new String("Texas"),new String("California")};
+		territoriosFronteira = new String[]{new String("Alasca"),new String("Calgary"),new String("Quebec"),new String("Texas"),new String("California")};
 		base = new Point(131,220);
 		territorios[3] = new Territorio(nomeT, poligono, 0, null, simb, territoriosFronteira, base);
 		cartas[14] = new Carta(null, "war_carta_an_vancouver.png", territorios[3]);
@@ -556,6 +558,10 @@ public class Mundo {
 		cartasObjetivo[11] = "Conquistar 24 territórios\n à sua escolha";
 		cartasObjetivo[12] = "Conquistar na totalidade a\n América do Norte e a África";
 		cartasObjetivo[13] = "Conquistar 18 territórios e ocupar\n cada um deles com pelo menos 2 exércitos";
+		
+		for(int i = 0; i<14 ; i++){
+			objDisponiveis.add(cartasObjetivo[i]);
+		}
 	
 		
 
@@ -646,5 +652,22 @@ public class Mundo {
 		return nJogadores;
 	}
 
+	public String[] getCartasObjetivo() {
+		return cartasObjetivo;
+	}
+
+	public void setCartasObjetivo(String[] cartasObjetivo) {
+		this.cartasObjetivo = cartasObjetivo;
+	}
+
+	public ArrayList<String> getObjDisponiveis() {
+		return objDisponiveis;
+	}
+
+	public void setObjDisponiveis(ArrayList<String> objDisponiveis) {
+		this.objDisponiveis = objDisponiveis;
+	}
+
+	
 
 }

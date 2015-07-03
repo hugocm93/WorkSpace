@@ -119,6 +119,7 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 				}
 				ControladorInicial.calculaJogadores();
 				ControladorInicial.sortSequencia();	//sorteando a sequencia
+				ControladorInicial.distribuiObjetivos();
 				ControladorInicial.sortearTerritorios();
 				ControladorInicial.criaTurnos();
 				ControladorFluxo.criaPainelMapa();

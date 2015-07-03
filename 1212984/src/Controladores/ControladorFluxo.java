@@ -1,25 +1,29 @@
 package Controladores;
 
 import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
+
 import Interface.Constantes;
 import Interface.FrameConquistouTerritorio;
 import Interface.FrameDados;
 import Interface.FrameFimDaJogada;
+import Interface.FrameObjetivo;
 import Interface.PainelMapa;
 import Interface.PainelOpcoes;
 import Interface.PainelTelaInicial;
 
 public class ControladorFluxo {
-	
+
 	public static  JFrame janela;
 	private static FrameDados frameDados;
 	private static FrameFimDaJogada frameFimDaJogada;
+	private static FrameObjetivo frameObjetivo;
 	private static FrameConquistouTerritorio frameConquistouTerritorio;
 	private static PainelTelaInicial painelTelaInicial;
 	public static  PainelMapa painelMapa;
 	private static PainelOpcoes painelOpcoes;
-	
+
 	public static void criaJanela(){
 
 		janela = new JFrame("War");
@@ -97,7 +101,7 @@ public class ControladorFluxo {
 		frameFimDaJogada.setVisible(true);
 		frameFimDaJogada.setResizable(false);
 	}
-	
+
 	public static void novoFrameConquistouTerritorio(){
 
 		if(frameConquistouTerritorio==null){
@@ -110,5 +114,12 @@ public class ControladorFluxo {
 		frameConquistouTerritorio.setBounds((int)janela.getLocation().getX()+janela.getWidth()/2-100,(int)janela.getLocation().getY()+janela.getHeight()/2-110,500,100);
 		frameConquistouTerritorio.setVisible(true);
 		frameConquistouTerritorio.setResizable(false);
+	}
+
+	public static void novoFrameObjetivo(){
+		frameObjetivo = new FrameObjetivo();
+		frameObjetivo.setBounds(0, 0, 440, 725);
+		frameObjetivo.setVisible(true);
+		frameObjetivo.setResizable(false);
 	}
 }

@@ -1,6 +1,7 @@
 package Modelos;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import Interface.Fase;
 
@@ -10,6 +11,8 @@ public class Turno {
 	int indexJogador;
 	int nExercitosDaVez;
 	ArrayList<Integer> nExercitosDaVezContinente;
+	
+	HashMap<String, Integer> snap;
 	
 	
 	
@@ -102,6 +105,14 @@ public class Turno {
 
 	public void setnExercitosDaVezCartas(int nExercitosDaVezCartas) {
 		this.nExercitosDaVezCartas = nExercitosDaVezCartas;
+	}
+
+	public HashMap<String, Integer> getSnap() {
+		return snap;
+	}
+
+	public void setSnap(HashMap<String, Integer> snap) {
+		this.snap = snap;
 	}
 
 	

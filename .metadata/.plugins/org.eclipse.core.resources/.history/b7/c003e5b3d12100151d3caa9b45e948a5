@@ -1,0 +1,66 @@
+package Interface;
+
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import Modelos.Mundo;
+
+public class FrameObjetivo extends JFrame implements ActionListener{
+
+	private static final long serialVersionUID = 1L;
+	private static Mundo mundo = Mundo.getInstance();
+	private String path1 = System.getProperty("user.dir");
+	private String path3 = "/src/zImagens/Cartas/";
+	private BufferedImage imgFundo;
+	private JButton ok;
+
+	public FrameObjetivo(){
+		super("Objetivo");
+
+		ok = new JButton("OK");
+
+		try {
+			File imgFundoF = new File(path1 + path3 + "war_carta_verso.png");
+			imgFundo = ImageIO.read(imgFundoF);
+		}
+
+		catch (IOException e) {
+			System.out.println("Imagem n�o encontrada.");
+		}
+
+
+		ok.setSize(45,20);
+		Container cont  = getContentPane();
+		cont.setLayout(new FlowLayout());
+		cont.add(ok);
+		ok.addActionListener(this);  
+		ok.setVisible(true);
+		ok.setEnabled(false);
+	}
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponents(g);
+
+		g.drawImage(imgFundo, 0, 0, 440, 725 , null);
+		
+		g.finalize();
+	}
+
+
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == ok){
+			setVisible(false);  
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			dispose();
+		}
+		
+	}
+}

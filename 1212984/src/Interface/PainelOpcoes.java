@@ -30,6 +30,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 	private JButton botaoDado = new JButton();
 	private JButton botaoFimDaJogada = new JButton();
 	private JButton botaoFimAtaque = new JButton();
+	private JButton botaoObjetivo = new JButton();
 	private String path1 = System.getProperty("user.dir");
 	private String path2 = "/src/zImagens/Background/";
 	private String path4 = "/src/zImagens/Botoes/";
@@ -41,6 +42,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 	private BufferedImage imgSeta;
 	private BufferedImage imgJogador;
 	private BufferedImage imgFimAtaque;
+	private BufferedImage imgAlvo;
 	private BufferedImage[] imgPinos = new BufferedImage[6];
 	private JLabel nomeJogador;
 	private JLabel[] ordemDosJogadores = new JLabel[6];
@@ -65,6 +67,9 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 
 			File imgPlayFile2 = new File(path1 + path4 + "fimAtaque.png");
 			imgFimAtaque = ImageIO.read(imgPlayFile2);
+			
+			File imgObj = new File(path1 + path4 + "obj.png");
+			imgAlvo = ImageIO.read(imgObj);
 
 
 			for(int i=0; i<6 && cores[i]!=null ; i++){
@@ -95,6 +100,14 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		botaoFimAtaque.addActionListener(this);
 		this.add(botaoFimAtaque);
 		botaoFimAtaque.setVisible(true);
+		
+		botaoObjetivo.setIcon(new ImageIcon(Scalr.resize(imgAlvo, 50)));
+		botaoObjetivo.setOpaque(false);
+		botaoObjetivo.setContentAreaFilled(false);
+		botaoObjetivo.setBorderPainted(false);
+		botaoObjetivo.addActionListener(this);
+		this.add(botaoObjetivo);
+		botaoObjetivo.setVisible(true);
 
 		botaoDado.setIcon(new ImageIcon(Scalr.resize(imgDados, 50)));
 		botaoDado.setSize(50, 50);
@@ -104,7 +117,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		botaoDado.setBorderPainted(false);
 		botaoDado.addActionListener(this);
 		this.add(botaoDado);
-		botaoDado.setVisible(true);
+
 
 		for ( int i = 0; i<6 && imgPinos[i]!=null ; i++ ){
 			ordemDosJogadores[i] = new JLabel();
@@ -154,6 +167,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		exeRestantes.setBounds(this.getBounds().width-200, this.getBounds().height-50, 200,50);
 		helpText.setBounds(this.getBounds().width-750, this.getBounds().height-130, 600,50);
 		botaoDado.setBounds(this.getBounds().width-400, this.getBounds().height-90, 50, 50);
+		botaoObjetivo.setBounds(this.getBounds().width-500, this.getBounds().height-90, 50, 50);
 
 		for ( int i = 0, j = 120; i<6 && imgPinos[i]!=null ; i++, j=j+22 ){
 			ordemDosJogadores[i].setBounds(j, 0, 20, 20);			
@@ -251,6 +265,13 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		if(e.getSource() == botaoFimAtaque){
 			ControladorPainelOpcoes.fimAtaque();
 			botaoFimAtaque.setEnabled(false);
+			
+			ControladorPainelOpcoes.snapShot();
+		}
+		
+		if(e.getSource() == botaoObjetivo){
+			System.out.println("Objetivo");
+			ControladorFluxo.novoFrameObjetivo();
 		}
 
 	}

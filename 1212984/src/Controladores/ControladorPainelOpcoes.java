@@ -1,5 +1,7 @@
 package Controladores;
 
+import java.util.HashMap;
+
 import Interface.Fase;
 import Modelos.Jogador;
 import Modelos.Mundo;
@@ -19,6 +21,10 @@ public class ControladorPainelOpcoes {
 		}
 		if(param.equals("exer")){
 			return String.format("%d",mundo.getR().getAtual().getnExercitosDaVez());
+
+		}
+		if(param.equals("Objetivo")){
+			return String.format("<html>"+mundo.getJogadores()[mundo.getR().getAtual().getIndexJogador()].getObj()+"</html>");
 
 		}
 		return null;
@@ -133,5 +139,18 @@ public class ControladorPainelOpcoes {
 			return true;
 		}
 		return false;
+	}
+
+	public static void snapShot() {
+		HashMap <String, Integer> snap = new HashMap<String, Integer>();
+		
+		for(int j=0;j<6;j++){
+			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
+				snap.put(mundo.getContinentes()[j].getTerritorios()[i].getNome(), mundo.getContinentes()[j].getTerritorios()[i].getExercitos());
+			}
+		}
+		
+		mundo.getR().getAtual().setSnap(snap);
+		
 	}
 }

@@ -8,9 +8,9 @@ import Modelos.Rodada;
 import Modelos.Turno;
 
 public class ControladorInicial {
-	
+
 	private static Mundo mundo = Mundo.getInstance();
-	
+
 	public static void criaNovoJogador(String nome, String cor){
 		Jogador jogador = new Jogador(nome, cor, null, null, null, null);
 		Jogador[] jogadores = mundo.getJogadores();
@@ -23,7 +23,7 @@ public class ControladorInicial {
 		Jogador[] jogadores = mundo.getJogadores();
 		int i = mundo.getNJogadores();
 		Jogador[] jogadores2 = new Jogador[]{null,null,null,null,null,null}; 
-		
+
 		for(int j=0; j<i;){
 			int aux = (int)(Math.random() * 6);
 			if(jogadores[aux]!=null){
@@ -34,10 +34,10 @@ public class ControladorInicial {
 		}
 		mundo.setJogadores(jogadores2);
 	}
-	
+
 	public static void imprime(){
 		Jogador[] jogadores = mundo.getJogadores();
-		
+
 		for(int i=0; i<6 && jogadores[i]!=null ;i++){
 			System.out.println(jogadores[i].getNome());
 		}
@@ -54,9 +54,9 @@ public class ControladorInicial {
 		}
 		Turno atual = t.get(0);
 		mundo.setR(new Rodada(t,atual));
-		
+
 	}
-	
+
 	public static void sortearTerritorios(){
 		Jogador[] jogadores = mundo.getJogadores();
 		Continente[] continentes = mundo.getContinentes();
@@ -96,10 +96,34 @@ public class ControladorInicial {
 		}
 		return;
 	}
-	
+
 	public static void calculaJogadores() {
 		mundo.calculaNumeroJogadores();
-		
+
+	}
+
+	public static void distribuiObjetivos() {
+		Jogador[] jogadores = mundo.getJogadores();
+		int u;
+		int index = 0;
+		String aux = "";
+		for(u=0; u<6 && jogadores[u]!=null ;u++){
+
+			index = (int)(Math.random() * mundo.getObjDisponiveis().size());
+
+			try{
+				aux = mundo.getObjDisponiveis().get(index);
+	
+			}
+			catch(Exception e){
+				System.out.println("Erro!!!");
+			}
+			jogadores[u].setObj(aux);
+			mundo.getObjDisponiveis().remove(index);
+			System.out.println(aux);
+		}
+
+
 	}
 
 }

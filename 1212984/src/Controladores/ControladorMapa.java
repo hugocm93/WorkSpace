@@ -199,10 +199,33 @@ public class ControladorMapa {
 		}
 		if(t.getDono().getNome().equals(mundo.getR().getAtual().getJogador().getNome())){
 			if(t.getExercitos() > 1){
-				return true;
+				      return true;
 			}
 		}
 		return false;
+	}
+	
+	public static boolean permitidoMover2(String name) {
+		Territorio t = mundo.getTerritorios().get(name);
+		if(t==null){
+			return false;
+		}
+		if(t.getDono().getNome().equals(mundo.getR().getAtual().getJogador().getNome())){
+			if(t.getExercitos() > 1){
+				if(mundo.getR().getAtual().getSnap().get(name).intValue() != 0){
+					
+				      return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public static void moveu(String name){
+		Integer i = mundo.getR().getAtual().getSnap().get(name).intValue() - 1;
+		
+		mundo.getR().getAtual().getSnap().remove(name);
+		mundo.getR().getAtual().getSnap().put(name, i);
 	}
 
 	public static boolean permitidoDeixar(String aux) {

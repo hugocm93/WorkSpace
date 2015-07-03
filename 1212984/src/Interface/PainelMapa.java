@@ -87,7 +87,7 @@ public class PainelMapa extends JPanel implements MouseListener{
 	}
 
 	public void paintComponent(Graphics g) {
-		super.paintComponents(g);
+		super.paintComponent(g);
 
 		System.out.println("Paint");
 		
@@ -117,9 +117,8 @@ public class PainelMapa extends JPanel implements MouseListener{
 			return;
 		}
 		String aux = ControladorMapa.detectaTerritorio(e, imgMapa);
-		if(ControladorMapa.permitidoMover(aux) && ControladorMapa.isFimAtaque()){
-			ultTerritorio = aux;
-
+		ultTerritorio = aux;
+		if(ControladorMapa.permitidoMover(aux) && ControladorMapa.isFimAtaque() && ControladorMapa.permitidoMover2(aux)){
 			int i=0;
 			for(;i<6;i++){
 				if(cores[i].equals(ControladorPainelOpcoes.jogadorAtual("cor"))){
@@ -141,9 +140,10 @@ public class PainelMapa extends JPanel implements MouseListener{
 			return;
 		}
 		String aux = ControladorMapa.detectaTerritorio(e, imgMapa);
-		if(ControladorMapa.permitidoDeixar(aux) && ControladorMapa.permitidoMover(ultTerritorio)  && ControladorMapa.fazFronteira(aux, ultTerritorio) && ControladorMapa.isFimAtaque()){
+		if(ControladorMapa.permitidoDeixar(aux) && ControladorMapa.permitidoMover(ultTerritorio)  && ControladorMapa.fazFronteira(aux, ultTerritorio) && ControladorMapa.isFimAtaque() && ControladorMapa.permitidoMover2(ultTerritorio)){
 			ControladorMapa.retiraExer(ultTerritorio);
 			ControladorMapa.colocaExer(aux);
+			ControladorMapa.moveu(ultTerritorio);
 			this.nExer();
 
 		}
