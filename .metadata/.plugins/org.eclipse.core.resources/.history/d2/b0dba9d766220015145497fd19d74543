@@ -304,7 +304,6 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 			ControladorFluxo.novoFrameDados();
 		}
 		if(e.getSource() == botaoFimDaJogada){
-			ControladorPainelOpcoes.verificaGanhador();
 			ControladorInicial.daCarta();
 			ControladorFluxo.novoFrameFimDaJogada();
 		}

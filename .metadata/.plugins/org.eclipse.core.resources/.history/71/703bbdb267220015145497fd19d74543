@@ -95,14 +95,6 @@ public class ControladorPainelOpcoes {
 	public static boolean permitidoPassar(String name) {
 		if(mundo.getR().getAtual().getJogador().getNome().equals(name)){
 			if(mundo.getR().getAtual().getnExercitosDaVez() == 0){
-				ListIterator<Continente> li = mundo.getR().getAtual().getJogador().getContinentesPossuidos().listIterator();
-				
-				while(li.hasNext()){
-					if(mundo.getR().getAtual().getnExercitosDaVezContinente().get(li.next().getNome()) != 0){
-						return false;
-					}
-				}
-				
 				return true;
 			}
 		}
@@ -378,8 +370,6 @@ public class ControladorPainelOpcoes {
 		cartasObjetivo[13] = "Conquistar 18 territórios e ocupar\n cada um deles com pelo menos 2 exércitos";
 
 		String aux = mundo.getR().getAtual().getJogador().getObj();
-		System.out.println(aux);
-		ControladorInicial.verificaContinentes();
 
 		if(aux.equals(cartasObjetivo[0])){
 			if(mundo.getR().getAtual().getJogador().getCor().equals("azul.png")){
