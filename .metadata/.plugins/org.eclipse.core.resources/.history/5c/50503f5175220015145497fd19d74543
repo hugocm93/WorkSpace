@@ -385,7 +385,6 @@ public class ControladorPainelOpcoes {
 			if(mundo.getR().getAtual().getJogador().getCor().equals("azul.png")){
 				if(mundo.getR().getAtual().getJogador().getTerritoriosPossuidos().size() > 23){
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
 				}
 				boolean flag = false;
 				for(int i=0 ; mundo.getJogadores()[i] == null ;i++){
@@ -395,7 +394,6 @@ public class ControladorPainelOpcoes {
 				}
 				if(flag == false){
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
 				}
 			}
 		}
@@ -403,7 +401,6 @@ public class ControladorPainelOpcoes {
 			if(mundo.getR().getAtual().getJogador().getCor().equals("verde.png")){
 				if(mundo.getR().getAtual().getJogador().getTerritoriosPossuidos().size() > 23){
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
 				}
 				boolean flag = false;
 				for(int i=0 ; mundo.getJogadores()[i] == null ;i++){
@@ -413,7 +410,6 @@ public class ControladorPainelOpcoes {
 				}
 				if(flag == false){
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
 				}
 			}
 
@@ -422,7 +418,6 @@ public class ControladorPainelOpcoes {
 			if(mundo.getR().getAtual().getJogador().getCor().equals("amarelo.png")){
 				if(mundo.getR().getAtual().getJogador().getTerritoriosPossuidos().size() > 23){
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
 				}
 				boolean flag = false;
 				for(int i=0 ; mundo.getJogadores()[i] == null ;i++){
@@ -432,7 +427,6 @@ public class ControladorPainelOpcoes {
 				}
 				if(flag == false){
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
 				}
 			}
 
@@ -441,7 +435,6 @@ public class ControladorPainelOpcoes {
 			if(mundo.getR().getAtual().getJogador().getCor().equals("vermelho.png")){
 				if(mundo.getR().getAtual().getJogador().getTerritoriosPossuidos().size() > 23){
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
 				}
 				boolean flag = false;
 				for(int i=0 ; mundo.getJogadores()[i] == null ;i++){
@@ -451,7 +444,6 @@ public class ControladorPainelOpcoes {
 				}
 				if(flag == false){
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
 				}
 			}
 
@@ -460,7 +452,6 @@ public class ControladorPainelOpcoes {
 			if(mundo.getR().getAtual().getJogador().getCor().equals("branco.png")){
 				if(mundo.getR().getAtual().getJogador().getTerritoriosPossuidos().size() > 23){
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
 				}
 				boolean flag = false;
 				for(int i=0 ; mundo.getJogadores()[i] == null ;i++){
@@ -470,7 +461,6 @@ public class ControladorPainelOpcoes {
 				}
 				if(flag == false){
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
 				}
 			}
 
@@ -479,7 +469,6 @@ public class ControladorPainelOpcoes {
 			if(mundo.getR().getAtual().getJogador().getCor().equals("preto.png")){
 				if(mundo.getR().getAtual().getJogador().getTerritoriosPossuidos().size() > 23){
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
 				}
 				boolean flag = false;
 				for(int i=0 ; mundo.getJogadores()[i] == null ;i++){
@@ -489,7 +478,6 @@ public class ControladorPainelOpcoes {
 				}
 				if(flag == false){
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
 				}
 			}
 
@@ -498,28 +486,24 @@ public class ControladorPainelOpcoes {
 
 			if(ControladorPainelOpcoes.pertenceAoAtual("Europa") && ControladorPainelOpcoes.pertenceAoAtual("Oceania") && mundo.getR().getAtual().getJogador().getContinentesPossuidos().size() >= 3){
 				System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-				ControladorFluxo.novoFrameGanhouOJogo();
 			}
 
 		}
 		else if(aux.equals(cartasObjetivo[7])){
 			if(ControladorPainelOpcoes.pertenceAoAtual("Asia") && ControladorPainelOpcoes.pertenceAoAtual("Africa")){
 				System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-				ControladorFluxo.novoFrameGanhouOJogo();
 			}
 
 		}
 		else if(aux.equals(cartasObjetivo[8])){
 			if(ControladorPainelOpcoes.pertenceAoAtual("America do Norte") && ControladorPainelOpcoes.pertenceAoAtual("Oceania")){
 				System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-				ControladorFluxo.novoFrameGanhouOJogo();
 			}
 
 		}
 		else if(aux.equals(cartasObjetivo[9])){
 			if(ControladorPainelOpcoes.pertenceAoAtual("Europa") && ControladorPainelOpcoes.pertenceAoAtual("America do Sul") && mundo.getR().getAtual().getJogador().getContinentesPossuidos().size() >= 3){
 				System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-				ControladorFluxo.novoFrameGanhouOJogo();
 			}
 
 
@@ -527,21 +511,18 @@ public class ControladorPainelOpcoes {
 		else if(aux.equals(cartasObjetivo[10])){
 			if(ControladorPainelOpcoes.pertenceAoAtual("Asia") && ControladorPainelOpcoes.pertenceAoAtual("America do Sul")){
 				System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-				ControladorFluxo.novoFrameGanhouOJogo();
 			}
 
 		}
 		else if(aux.equals(cartasObjetivo[11])){
 			if(mundo.getR().getAtual().getJogador().getTerritoriosPossuidos().size() > 23){
 				System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-				ControladorFluxo.novoFrameGanhouOJogo();
 			}
 
 		}
 		else if(aux.equals(cartasObjetivo[12])){
 			if(ControladorPainelOpcoes.pertenceAoAtual("Africa") && ControladorPainelOpcoes.pertenceAoAtual("America do Norte")){
 				System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-				ControladorFluxo.novoFrameGanhouOJogo();
 			}
 
 		}
@@ -557,7 +538,6 @@ public class ControladorPainelOpcoes {
 				}
 				if(flag==false){
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
 				}
 			}
 		}

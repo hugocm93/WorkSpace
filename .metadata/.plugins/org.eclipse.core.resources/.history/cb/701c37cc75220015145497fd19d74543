@@ -124,8 +124,6 @@ public class ControladorFluxo {
 		frameFimDoJogo.setBounds((int)janela.getLocation().getX()+janela.getWidth()/2-100,(int)janela.getLocation().getY()+janela.getHeight()/2-110,500,100);
 		frameFimDoJogo.setVisible(true);
 		frameFimDoJogo.setResizable(false);
-		janela.setEnabled(false);
-		frameFimDaJogada.setVisible(false);
 	}
 
 	public static void novoFrameObjetivo(){

@@ -1,6 +1,8 @@
 package Modelos;
 
 import java.util.HashMap;
+
+import Controladores.ControladorInicial;
 import Interface.Fase;
 
 public class Turno {

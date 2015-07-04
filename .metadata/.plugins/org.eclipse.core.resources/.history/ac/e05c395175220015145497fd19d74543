@@ -8,7 +8,6 @@ import Interface.Constantes;
 import Interface.FrameConquistouTerritorio;
 import Interface.FrameDados;
 import Interface.FrameFimDaJogada;
-import Interface.FrameFimDoJogo;
 import Interface.FrameObjetivo;
 import Interface.PainelMapa;
 import Interface.PainelOpcoes;
@@ -19,7 +18,6 @@ public class ControladorFluxo {
 	public static  JFrame janela;
 	private static FrameDados frameDados;
 	private static FrameFimDaJogada frameFimDaJogada;
-	private static FrameFimDoJogo frameFimDoJogo;
 	private static FrameObjetivo frameObjetivo;
 	private static FrameConquistouTerritorio frameConquistouTerritorio;
 	private static PainelTelaInicial painelTelaInicial;
@@ -116,16 +114,6 @@ public class ControladorFluxo {
 		frameConquistouTerritorio.setBounds((int)janela.getLocation().getX()+janela.getWidth()/2-100,(int)janela.getLocation().getY()+janela.getHeight()/2-110,500,100);
 		frameConquistouTerritorio.setVisible(true);
 		frameConquistouTerritorio.setResizable(false);
-	}
-
-	public static void novoFrameGanhouOJogo(){
-		frameFimDoJogo = new FrameFimDoJogo();
-
-		frameFimDoJogo.setBounds((int)janela.getLocation().getX()+janela.getWidth()/2-100,(int)janela.getLocation().getY()+janela.getHeight()/2-110,500,100);
-		frameFimDoJogo.setVisible(true);
-		frameFimDoJogo.setResizable(false);
-		janela.setEnabled(false);
-		frameFimDaJogada.setVisible(false);
 	}
 
 	public static void novoFrameObjetivo(){

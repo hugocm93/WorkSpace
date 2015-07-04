@@ -1,0 +1,37 @@
+package Interface;
+
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import Modelos.Mundo;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class FrameFimDoJogo extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
+	private static Mundo mundo = Mundo.getInstance();
+
+	public FrameFimDoJogo(){
+		super("Fim do Jogo");
+
+		Container cont  = getContentPane();
+		cont.setLayout(new FlowLayout());
+
+		JLabel frase = new JLabel(mundo.getR().getAtual().getJogador().getNome() + " ganhou o jogo!") ;
+
+		cont.add(frase);
+
+
+		frase.setVisible(true);
+
+		setSize(500,100);
+		setVisible(true);
+		
+	}
+
+	public void actionPerformed(ActionEvent e){
+		setVisible(false);
+	} 
+}
