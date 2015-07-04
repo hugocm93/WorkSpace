@@ -15,6 +15,8 @@ public class Continente {
 		this.cor = cor;
 		this.dono = dono;
 		this.exercitosTabela = exercitosTabela;
+		
+		this.preencher();
 	}
 
 	public Jogador getDono() {
@@ -57,6 +59,11 @@ public class Continente {
 		this.territorios = territorios;
 	}
 	
+	private void preencher(){
+		for(int i = 0; i<territorios.length ;i++){
+			territorios[i].setCont(this);
+		}
+	}
 	
 
 }

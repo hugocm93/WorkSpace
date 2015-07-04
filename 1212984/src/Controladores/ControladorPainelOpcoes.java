@@ -27,6 +27,11 @@ public class ControladorPainelOpcoes {
 			return String.format("<html>"+mundo.getJogadores()[mundo.getR().getAtual().getIndexJogador()].getObj()+"</html>");
 
 		}
+
+		if(param.equals("America do Norte")){
+			return String.format("%d",mundo.getR().getAtual().getnExercitosDaVezContinente().get(param).intValue());
+
+		}
 		return null;
 	}
 
@@ -58,6 +63,8 @@ public class ControladorPainelOpcoes {
 			ControladorInicial.criaTurnos();
 			mundo.getR().setIndexRodada(++aux2);
 		}
+
+		ControladorInicial.verificaContinentes();
 	}
 
 	public static boolean permitidoPassar(String name) {
@@ -69,6 +76,7 @@ public class ControladorPainelOpcoes {
 
 		return false;
 	}
+
 
 	public static String[] coresDosJogadores(){
 		Jogador[] jogadores = mundo.getJogadores();
@@ -118,9 +126,7 @@ public class ControladorPainelOpcoes {
 	}
 
 	public static Fase getFase() {
-		if(mundo.getR().getAtual().getnExercitosDaVez() > 0){
-			mundo.getR().getAtual().setF(Fase.RECEBENDO);
-		}
+		
 		if(mundo.getR().getAtual().getnExercitosDaVez() == 0 && !ControladorPainelOpcoes.isNotPrimeiraRodada()){
 			mundo.getR().getAtual().setF(Fase.FIM);
 		}
@@ -129,6 +135,57 @@ public class ControladorPainelOpcoes {
 		}
 		if(mundo.getR().getAtual().isFimFaseAtaque()){
 			mundo.getR().getAtual().setF(Fase.DESLOCAMENTO);
+		}
+		try{
+			if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("America do Norte").intValue() > 0){
+				mundo.getR().getAtual().setF(Fase.RECEBENDOAM);
+			}
+		}
+		catch(Exception e){
+
+		}
+		try{
+			if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("America do Sul").intValue() > 0){
+				mundo.getR().getAtual().setF(Fase.RECEBENDOAS);
+			}
+		}
+		catch(Exception e){
+
+		}
+		try{
+			if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("Africa").intValue() > 0){
+				mundo.getR().getAtual().setF(Fase.RECEBENDOA);
+			}
+		}
+		catch(Exception e){
+
+		}
+		try{
+			if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("Europa").intValue() > 0){
+				mundo.getR().getAtual().setF(Fase.RECEBENDOEU);
+			}
+		}
+		catch(Exception e){
+
+		}
+		try{
+			if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("Asia").intValue() > 0){
+				mundo.getR().getAtual().setF(Fase.RECEBENDOASI);
+			}
+		}
+		catch(Exception e){
+
+		}
+		try{
+			if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("Oceania").intValue() > 0){
+				mundo.getR().getAtual().setF(Fase.RECEBENDOOC);
+			}
+		}
+		catch(Exception e){
+
+		}
+		if(mundo.getR().getAtual().getnExercitosDaVez() > 0){
+			mundo.getR().getAtual().setF(Fase.RECEBENDO);
 		}
 
 		return mundo.getR().getAtual().getF();
@@ -143,14 +200,14 @@ public class ControladorPainelOpcoes {
 
 	public static void snapShot() {
 		HashMap <String, Integer> snap = new HashMap<String, Integer>();
-		
+
 		for(int j=0;j<6;j++){
 			for(int i=0 ; i<mundo.getContinentes()[j].getTerritorios().length ; i++){
 				snap.put(mundo.getContinentes()[j].getTerritorios()[i].getNome(), mundo.getContinentes()[j].getTerritorios()[i].getExercitos());
 			}
 		}
-		
+
 		mundo.getR().getAtual().setSnap(snap);
-		
+
 	}
 }

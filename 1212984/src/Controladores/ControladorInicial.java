@@ -1,10 +1,13 @@
 package Controladores;
 
 import java.util.ArrayList;
+
 import Modelos.Continente;
 import Modelos.Jogador;
 import Modelos.Mundo;
 import Modelos.Rodada;
+import Modelos.Tabela1;
+import Modelos.Territorio;
 import Modelos.Turno;
 
 public class ControladorInicial {
@@ -113,7 +116,7 @@ public class ControladorInicial {
 
 			try{
 				aux = mundo.getObjDisponiveis().get(index);
-	
+
 			}
 			catch(Exception e){
 				System.out.println("Erro!!!");
@@ -121,6 +124,52 @@ public class ControladorInicial {
 			jogadores[u].setObj(aux);
 			mundo.getObjDisponiveis().remove(index);
 			System.out.println(aux);
+		}
+
+
+	}
+
+	public static void verificaContinentes()  {
+		Jogador[] jogadores = mundo.getJogadores();
+		Continente[] conts = mundo.getContinentes();
+		
+		int u;
+		for(u=0; u<6 && jogadores[u]!=null ;u++){
+			int[] AA = {0,0,0,0,0,0};
+			ArrayList<Territorio> aux = jogadores[u].getTerritoriosPossuidos();
+			java.util.ListIterator<Territorio> novaLi = aux.listIterator();
+			while(novaLi.hasNext()){
+
+				String aux1 = "";
+				aux1 = novaLi.next().getCont().getNome();
+
+				if(aux1.equals("America do Norte")){
+					AA[0]++;
+				}
+				if(aux1.equals("America do Sul")){
+					AA[1]++;
+				}
+				if(aux1.equals("Africa")){
+					AA[2]++;
+				}
+				if(aux1.equals("Europa")){
+					AA[3]++;
+				}
+				if(aux1.equals("Asia")){
+					AA[4]++;
+				}
+				if(aux1.equals("Oceania")){
+					AA[5]++;
+				}
+			}
+
+			for(int j=0;j<6;j++){
+				if(conts[j].getTerritorios().length == AA[j]){
+					jogadores[u].getContinentesPossuidos().add(conts[j]);
+					System.out.println(conts[j].getNome() + " foi dominado.");
+					mundo.getR().getAtual().getnExercitosDaVezContinente().put(conts[j].getNome(),conts[j].getExercitosTabela());
+				} 
+			}
 		}
 
 

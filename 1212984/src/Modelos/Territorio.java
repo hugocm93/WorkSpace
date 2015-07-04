@@ -8,6 +8,7 @@ public class Territorio {
 	Poligono poligono;
 	Point base;
 	int exercitos;
+	Continente cont;
 	
 	Jogador dono;
 	Simbolo simb;
@@ -103,5 +104,16 @@ public class Territorio {
 		this.exercitos--;
 	}
 
+
+	public Continente getCont() {
+		return cont;
+	}
+
+
+	public void setCont(Continente cont) {
+		this.cont = cont;
+	}
+
+	
 
 }

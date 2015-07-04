@@ -123,6 +123,7 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 				ControladorInicial.sortearTerritorios();
 				ControladorInicial.criaTurnos();
 				ControladorFluxo.criaPainelMapa();
+				ControladorInicial.verificaContinentes();
 				ControladorFluxo.irPainelMapa();
 
 			}

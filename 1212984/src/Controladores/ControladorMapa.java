@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+
 import Interface.Constantes;
 import Modelos.Cor;
 import Modelos.Mundo;
@@ -299,5 +300,18 @@ public class ControladorMapa {
 
 	public static int quantExercitos(){
 		return mundo.getR().getAtual().getAtacante().getExercitos();
+	}
+
+	public static void force(String name) {
+		Territorio t = mundo.getTerritorios().get(name);
+		if(t==null){
+			return ;
+		}
+		t.getDono().getTerritoriosPossuidos().remove(t);
+		t.setDono(mundo.getR().getAtual().getJogador());
+		mundo.getR().getAtual().getJogador().getTerritoriosPossuidos().add(t);
+		
+		ControladorInicial.verificaContinentes();
+		
 	}
 }

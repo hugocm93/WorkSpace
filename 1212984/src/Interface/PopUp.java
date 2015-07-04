@@ -59,6 +59,10 @@ class PopUp extends JPopupMenu implements ActionListener{
 			anItem.setEnabled(false);
 		}
 
+		anItem = new JMenuItem("Force setDono");
+		add(anItem);
+		anItem.addActionListener(this);
+
 
 	}
 
@@ -93,6 +97,12 @@ class PopUp extends JPopupMenu implements ActionListener{
 			ControladorPainelOpcoes.setarDefensor(this.getComponent(0).getName());
 			System.out.println("defensor");
 			painel.drawline();
+		}
+		
+		if(e.getActionCommand().equals("Force setDono")){
+			System.out.println("Selected: " + e.getActionCommand() + this.getComponent(0).getName());
+			ControladorMapa.force(this.getComponent(0).getName());
+			painel.nExer();
 		}
 
 	}

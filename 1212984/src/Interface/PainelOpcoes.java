@@ -244,6 +244,10 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		else{
 			botaoDado.setEnabled(false);
 		}
+		if(ControladorPainelOpcoes.getFase()==Fase.RECEBENDOA && !ControladorPainelOpcoes.jogadorAtual("exer").equals("0")){
+			exeRestantes.setText("Exercitos restantes: " + ControladorPainelOpcoes.jogadorAtual("Africa"));
+			helpText.setText("Dica: recebendo exercitos para a Africa");
+		}
 
 		for(int i=0;i<6;i++){
 			if(ControladorPainelOpcoes.jogadorAtual("cor") == cores[i]){
