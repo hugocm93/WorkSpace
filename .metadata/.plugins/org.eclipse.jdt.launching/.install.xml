@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <dirs>
 <entry loc="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.75-2.5.4.2.fc20.x86_64" stamp="1425300918000"/>
-<entry loc="/usr/lib/jvm/java-7-oracle/jre" stamp="1433812259000"/>
 <entry loc="/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home" stamp="1423632415000"/>
+<entry loc="/usr/lib/jvm/java-7-oracle/jre" stamp="1433812259000"/>
 <entry loc="/usr/lib/jvm/java-7-oracle" stamp="1433812259000"/>
 <entry loc="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.75-2.5.4.2.fc20.x86_64/jre" stamp="1425300909000"/>
-<entry loc="N:\Download\eclipse-java-luna-SR2-win32-x86_64\eclipse" stamp="1434929663400"/>
 <entry loc="/usr/lib/jvm/java-7-openjdk-armhf" stamp="1433090261000"/>
+<entry loc="N:\Download\eclipse-java-luna-SR2-win32-x86_64\eclipse" stamp="1434929663400"/>
 </dirs>

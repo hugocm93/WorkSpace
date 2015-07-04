@@ -1,0 +1,99 @@
+package Interface;
+
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import org.imgscalr.Scalr;
+
+public class FrameTerritorio extends JFrame{
+
+	private static final long serialVersionUID = 1L;
+
+	public FrameTerritorio(){
+		super("Cartas");
+		
+		this.setLayout(new FlowLayout());
+		this.setBounds(0, 0, 440, 725);
+	}
+
+}
+
+class PainelCartas extends JPanel implements ActionListener{
+
+	private static final long serialVersionUID = 1L;
+	private String path1 = System.getProperty("user.dir");
+	private String path2 = "/src/zImagens/Botoes/";
+	private JButton botaoSetaDireita;
+	private JButton botaoSetaEsquerda;
+	private BufferedImage imgSetaDireita;
+	private BufferedImage imgSetaEsquerda;
+
+	public PainelCartas(){
+
+		botaoSetaDireita = new JButton();
+		botaoSetaEsquerda = new JButton();
+
+		try{
+			File imgSetaDireitaFile = new File(path1 + path2 + "setaDireita.png");
+			imgSetaDireita = ImageIO.read(imgSetaDireitaFile);
+
+			File imgSetaEsquerdaFile = new File(path1 + path2 + "setaEsquerda.png"); 
+			imgSetaEsquerda = ImageIO.read(imgSetaEsquerdaFile);
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+
+		botaoSetaEsquerda.setIcon(new ImageIcon(Scalr.resize(imgSetaEsquerda, 50,50)));
+		botaoSetaEsquerda.setLocation(0, 450);
+		botaoSetaEsquerda.setOpaque(false);
+		botaoSetaEsquerda.setContentAreaFilled(false);
+		botaoSetaEsquerda.setBorderPainted(false);
+		botaoSetaEsquerda.addActionListener(this);
+		this.add(botaoSetaEsquerda);
+		botaoSetaEsquerda.setVisible(true);
+
+		botaoSetaDireita.setIcon(new ImageIcon(Scalr.resize(imgSetaDireita, 50,50)));
+		botaoSetaDireita.setOpaque(false);
+		botaoSetaDireita.setContentAreaFilled(false);
+		botaoSetaDireita.setBorderPainted(false);
+		botaoSetaDireita.addActionListener(this);
+		this.add(botaoSetaDireita);
+		botaoSetaDireita.setVisible(true);
+	}
+
+	public void paintComponent(Graphics g) {
+		super.paintComponents(g);
+
+		botaoSetaEsquerda.setBounds(0,600,50, 50);
+		botaoSetaDireita.setBounds(390,600,50, 50);
+
+		g.finalize();
+	}
+
+	public void actionPerformed(ActionEvent e) {
+
+		if(e.getSource() == botaoSetaDireita){
+		}
+
+		if(e.getSource() == botaoSetaEsquerda){
+
+		}
+
+	}
+
+
+}

@@ -13,6 +13,7 @@ import Interface.FrameObjetivo;
 import Interface.PainelMapa;
 import Interface.PainelOpcoes;
 import Interface.PainelTelaInicial;
+import Interface.FrameTerritorio;
 
 public class ControladorFluxo {
 
@@ -25,7 +26,8 @@ public class ControladorFluxo {
 	private static PainelTelaInicial painelTelaInicial;
 	public static  PainelMapa painelMapa;
 	private static PainelOpcoes painelOpcoes;
-
+	private static FrameTerritorio frameTerritorio;
+	
 	public static void criaJanela(){
 
 		janela = new JFrame("War");
@@ -133,5 +135,19 @@ public class ControladorFluxo {
 		frameObjetivo.setBounds(0, 0, 440, 725);
 		frameObjetivo.setVisible(true);
 		frameObjetivo.setResizable(false);
+	}
+	
+	public static void novoFrameTerritorio(){
+
+		if(frameTerritorio==null){
+			frameTerritorio = new FrameTerritorio();
+		}
+		else if(frameTerritorio.isVisible() == false){
+			frameTerritorio = new FrameTerritorio();
+		}
+
+		frameTerritorio.setBounds(0,0,440,725);
+		frameTerritorio.setVisible(true);
+		frameTerritorio.setResizable(false);
 	}
 }

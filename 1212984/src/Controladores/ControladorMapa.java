@@ -548,4 +548,16 @@ public class ControladorMapa {
 
 	}
 
+	public static String[] getImagensAtuais() {
+		ListIterator<Carta> li = mundo.getR().getAtual().getJogador().getCartas().listIterator();
+		String[] s = new String[mundo.getR().getAtual().getJogador().getCartas().size()];
+		int i=0;
+		while(li.hasNext()){
+			s[i] = li.next().getImgNome();
+			i++;
+		}
+		
+		return s;
+	}
+
 }

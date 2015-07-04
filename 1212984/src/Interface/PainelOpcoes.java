@@ -51,6 +51,8 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 	private JLabel[] ordemDosJogadores = new JLabel[6];
 	private JLabel exeRestantes;
 	private JLabel helpText;
+	private JButton botaoTerritorio = new JButton();
+	private BufferedImage imgTerritorio;
 
 
 	public PainelOpcoes(){
@@ -70,12 +72,15 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 
 			File imgPlayFile2 = new File(path1 + path4 + "fimAtaque.png");
 			imgFimAtaque = ImageIO.read(imgPlayFile2);
-			
+
 			File imgObj = new File(path1 + path4 + "obj.png");
 			imgAlvo = ImageIO.read(imgObj);
-			
+
 			File imgTrocaF = new File(path1 + path4 + "troca.png");
 			imgTroca = ImageIO.read(imgTrocaF);
+
+			File imgTerritorioFile = new File(path1 + path4 + "botao_territorios.png");
+			imgTerritorio = ImageIO.read(imgTerritorioFile);
 
 
 			for(int i=0; i<6 && cores[i]!=null ; i++){
@@ -99,6 +104,14 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		this.add(botaoFimDaJogada);
 		botaoFimDaJogada.setVisible(true);
 
+		botaoTerritorio.setIcon(new ImageIcon(Scalr.resize(imgTerritorio, 50)));
+		botaoTerritorio.setOpaque(false);
+		botaoTerritorio.setContentAreaFilled(false);
+		botaoTerritorio.setBorderPainted(false);
+		botaoTerritorio.addActionListener(this);
+		this.add(botaoTerritorio);
+		botaoTerritorio.setVisible(true);
+
 		botaoFimAtaque.setIcon(new ImageIcon(imgFimAtaque));
 		botaoFimAtaque.setOpaque(false);
 		botaoFimAtaque.setContentAreaFilled(false);
@@ -106,7 +119,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		botaoFimAtaque.addActionListener(this);
 		this.add(botaoFimAtaque);
 		botaoFimAtaque.setVisible(true);
-		
+
 		botaoObjetivo.setIcon(new ImageIcon(Scalr.resize(imgAlvo, 50)));
 		botaoObjetivo.setOpaque(false);
 		botaoObjetivo.setContentAreaFilled(false);
@@ -114,7 +127,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		botaoObjetivo.addActionListener(this);
 		this.add(botaoObjetivo);
 		botaoObjetivo.setVisible(true);
-		
+
 		botaoTroca.setIcon(new ImageIcon(Scalr.resize(imgTroca, 50)));
 		botaoTroca.setOpaque(false);
 		botaoTroca.setContentAreaFilled(false);
@@ -184,6 +197,8 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		botaoObjetivo.setBounds(this.getBounds().width-500, this.getBounds().height-90, 50, 50);
 		botaoTroca.setBounds(this.getBounds().width-600, this.getBounds().height-90, 50, 50);
 
+		botaoTerritorio.setBounds(this.getBounds().width-700, this.getBounds().height-90, 50, 50);
+
 		for ( int i = 0, j = 120; i<6 && imgPinos[i]!=null ; i++, j=j+22 ){
 			ordemDosJogadores[i].setBounds(j, 0, 20, 20);			
 		}
@@ -229,7 +244,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 			helpText.setText("Dica: distribuindo exercitos (clique no territorio para add.)");
 
 			break;
-			
+
 		case FIM:
 			helpText.setText("Dica: finalize a jogada");
 			break;
@@ -252,7 +267,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		else{
 			botaoFimAtaque.setEnabled(false);
 		}
-		
+
 		if(ControladorPainelOpcoes.getFase()==Fase.ATAQUE && ControladorPainelOpcoes.podeAtacar()==true){
 			botaoDado.setEnabled(true);
 		}
@@ -312,18 +327,22 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		if(e.getSource() == botaoFimAtaque){
 			ControladorPainelOpcoes.fimAtaque();
 			botaoFimAtaque.setEnabled(false);
-			
+
 			ControladorPainelOpcoes.snapShot();
 		}
-		
+
 		if(e.getSource() == botaoObjetivo){
 			System.out.println("Objetivo");
 			ControladorFluxo.novoFrameObjetivo();
 		}
-		
+
 		if(e.getSource() == botaoTroca){
 			System.out.println("Troca");
 			ControladorPainelOpcoes.troca();
+		}
+		if(e.getSource() == botaoTerritorio){
+			System.out.println("Territorio");
+			ControladorFluxo.novoFrameTerritorio();
 		}
 
 	}

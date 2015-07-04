@@ -387,16 +387,17 @@ public class ControladorPainelOpcoes {
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
 					ControladorFluxo.novoFrameGanhouOJogo();
 				}
-				boolean flag = false;
-				for(int i=0 ; mundo.getJogadores()[i] == null ;i++){
-					if(mundo.getJogadores()[i].getCor().equals("azul.png")){
-						flag = true; 
-					}
+				
+			}
+			boolean flag = false;
+			for(int i=0 ; i<6 && mundo.getJogadores()[i] != null ;i++){
+				if(mundo.getJogadores()[i].getCor().equals("azul.png")){
+					flag = true; 
 				}
-				if(flag == false){
-					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
-				}
+			}
+			if(flag == false){
+				System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
+				ControladorFluxo.novoFrameGanhouOJogo();
 			}
 		}
 		else if(aux.equals(cartasObjetivo[1])){
@@ -405,16 +406,17 @@ public class ControladorPainelOpcoes {
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
 					ControladorFluxo.novoFrameGanhouOJogo();
 				}
-				boolean flag = false;
-				for(int i=0 ; mundo.getJogadores()[i] == null ;i++){
-					if(mundo.getJogadores()[i].getCor().equals("verde.png")){
-						flag = true; 
-					}
+				
+			}
+			boolean flag = false;
+			for(int i=0 ; i<6 && mundo.getJogadores()[i] != null ;i++){
+				if(mundo.getJogadores()[i].getCor().equals("verde.png")){
+					flag = true; 
 				}
-				if(flag == false){
-					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
-				}
+			}
+			if(flag == false){
+				System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
+				ControladorFluxo.novoFrameGanhouOJogo();
 			}
 
 		}
@@ -424,16 +426,17 @@ public class ControladorPainelOpcoes {
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
 					ControladorFluxo.novoFrameGanhouOJogo();
 				}
-				boolean flag = false;
-				for(int i=0 ; mundo.getJogadores()[i] == null ;i++){
-					if(mundo.getJogadores()[i].getCor().equals("verde.png")){
-						flag = true; 
-					}
+				
+			}
+			boolean flag = false;
+			for(int i=0 ; i<6 && mundo.getJogadores()[i] != null ;i++){
+				if(mundo.getJogadores()[i].getCor().equals("verde.png")){
+					flag = true; 
 				}
-				if(flag == false){
-					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
-				}
+			}
+			if(flag == false){
+				System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
+				ControladorFluxo.novoFrameGanhouOJogo();
 			}
 
 		}
@@ -443,16 +446,17 @@ public class ControladorPainelOpcoes {
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
 					ControladorFluxo.novoFrameGanhouOJogo();
 				}
-				boolean flag = false;
-				for(int i=0 ; mundo.getJogadores()[i] == null ;i++){
-					if(mundo.getJogadores()[i].getCor().equals("vermelho.png")){
-						flag = true; 
-					}
+				
+			}
+			boolean flag = false;
+			for(int i=0 ; i<6 && mundo.getJogadores()[i] != null ;i++){
+				if(mundo.getJogadores()[i].getCor().equals("vermelho.png")){
+					flag = true; 
 				}
-				if(flag == false){
-					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
-				}
+			}
+			if(flag == false){
+				System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
+				ControladorFluxo.novoFrameGanhouOJogo();
 			}
 
 		}
@@ -462,16 +466,17 @@ public class ControladorPainelOpcoes {
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
 					ControladorFluxo.novoFrameGanhouOJogo();
 				}
-				boolean flag = false;
-				for(int i=0 ; mundo.getJogadores()[i] == null ;i++){
-					if(mundo.getJogadores()[i].getCor().equals("branco.png")){
-						flag = true; 
-					}
+				
+			}
+			boolean flag = false;
+			for(int i=0 ; i<6 && mundo.getJogadores()[i] != null ;i++){
+				if(mundo.getJogadores()[i].getCor().equals("branco.png")){
+					flag = true; 
 				}
-				if(flag == false){
-					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
-				}
+			}
+			if(flag == false){
+				System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
+				ControladorFluxo.novoFrameGanhouOJogo();
 			}
 
 		}
@@ -481,16 +486,17 @@ public class ControladorPainelOpcoes {
 					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
 					ControladorFluxo.novoFrameGanhouOJogo();
 				}
-				boolean flag = false;
-				for(int i=0 ; mundo.getJogadores()[i] == null ;i++){
-					if(mundo.getJogadores()[i].getCor().equals("preto.png")){
-						flag = true; 
-					}
+				
+			}
+			boolean flag = false;
+			for(int i=0 ; i<6 && mundo.getJogadores()[i] != null ;i++){
+				if(mundo.getJogadores()[i].getCor().equals("preto.png")){
+					flag = true; 
 				}
-				if(flag == false){
-					System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
-					ControladorFluxo.novoFrameGanhouOJogo();
-				}
+			}
+			if(flag == false){
+				System.out.println(mundo.getR().getAtual().getJogador().getNome() + "ganhou");
+				ControladorFluxo.novoFrameGanhouOJogo();
 			}
 
 		}
