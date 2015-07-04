@@ -17,6 +17,7 @@ public class Mundo {
 	String[] cartasObjetivo;
 	Baralho cartasTroca;
 	ArrayList<String> objDisponiveis = new ArrayList<String>();
+	ArrayList<Carta> cartasDisponiveis = new ArrayList<Carta>();
 
 	private static Mundo instance;
 
@@ -562,6 +563,10 @@ public class Mundo {
 		for(int i = 0; i<14 ; i++){
 			objDisponiveis.add(cartasObjetivo[i]);
 		}
+		
+		for(int i = 0; i<53 ; i++){
+			cartasDisponiveis.add(cartas[i]);
+		}
 	
 		
 
@@ -668,6 +673,25 @@ public class Mundo {
 		this.objDisponiveis = objDisponiveis;
 	}
 
+	public Baralho getCartasTroca() {
+		return cartasTroca;
+	}
+
+	public void setCartasTroca(Baralho cartasTroca) {
+		this.cartasTroca = cartasTroca;
+	}
+
+	public ArrayList<Carta> getCartasDisponiveis() {
+		return cartasDisponiveis;
+	}
+
+	public void setCartasDisponiveis(ArrayList<Carta> cartasDisponiveis) {
+		this.cartasDisponiveis = cartasDisponiveis;
+	}
+	
+	
+
+	
 	
 
 }

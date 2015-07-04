@@ -4,9 +4,12 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import Controladores.ControladorFluxo;
 import Controladores.ControladorMapa;
+import Controladores.ControladorPainelOpcoes;
 import Modelos.Mundo;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -55,6 +58,7 @@ public class FrameConquistouTerritorio extends JFrame implements ActionListener 
 			b3.setVisible(false);
 		}
 		
+		ControladorPainelOpcoes.conquistou();
 		setSize(500,100);
 		setVisible(true);
 		

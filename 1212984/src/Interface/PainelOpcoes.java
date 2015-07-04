@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import org.imgscalr.Scalr;
 
 import Controladores.ControladorFluxo;
+import Controladores.ControladorInicial;
 import Controladores.ControladorMapa;
 import Controladores.ControladorPainelOpcoes;
 
@@ -31,6 +32,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 	private JButton botaoFimDaJogada = new JButton();
 	private JButton botaoFimAtaque = new JButton();
 	private JButton botaoObjetivo = new JButton();
+	private JButton botaoTroca = new JButton();
 	private String path1 = System.getProperty("user.dir");
 	private String path2 = "/src/zImagens/Background/";
 	private String path4 = "/src/zImagens/Botoes/";
@@ -43,6 +45,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 	private BufferedImage imgJogador;
 	private BufferedImage imgFimAtaque;
 	private BufferedImage imgAlvo;
+	private BufferedImage imgTroca;
 	private BufferedImage[] imgPinos = new BufferedImage[6];
 	private JLabel nomeJogador;
 	private JLabel[] ordemDosJogadores = new JLabel[6];
@@ -70,6 +73,9 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 			
 			File imgObj = new File(path1 + path4 + "obj.png");
 			imgAlvo = ImageIO.read(imgObj);
+			
+			File imgTrocaF = new File(path1 + path4 + "troca.png");
+			imgTroca = ImageIO.read(imgTrocaF);
 
 
 			for(int i=0; i<6 && cores[i]!=null ; i++){
@@ -108,6 +114,14 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		botaoObjetivo.addActionListener(this);
 		this.add(botaoObjetivo);
 		botaoObjetivo.setVisible(true);
+		
+		botaoTroca.setIcon(new ImageIcon(Scalr.resize(imgTroca, 50)));
+		botaoTroca.setOpaque(false);
+		botaoTroca.setContentAreaFilled(false);
+		botaoTroca.setBorderPainted(false);
+		botaoTroca.addActionListener(this);
+		this.add(botaoTroca);
+		botaoTroca.setVisible(true);
 
 		botaoDado.setIcon(new ImageIcon(Scalr.resize(imgDados, 50)));
 		botaoDado.setSize(50, 50);
@@ -168,6 +182,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		helpText.setBounds(this.getBounds().width-750, this.getBounds().height-130, 600,50);
 		botaoDado.setBounds(this.getBounds().width-400, this.getBounds().height-90, 50, 50);
 		botaoObjetivo.setBounds(this.getBounds().width-500, this.getBounds().height-90, 50, 50);
+		botaoTroca.setBounds(this.getBounds().width-600, this.getBounds().height-90, 50, 50);
 
 		for ( int i = 0, j = 120; i<6 && imgPinos[i]!=null ; i++, j=j+22 ){
 			ordemDosJogadores[i].setBounds(j, 0, 20, 20);			
@@ -244,9 +259,9 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		else{
 			botaoDado.setEnabled(false);
 		}
-		if(ControladorPainelOpcoes.getFase()==Fase.RECEBENDOA && !ControladorPainelOpcoes.jogadorAtual("exer").equals("0")){
-			exeRestantes.setText("Exercitos restantes: " + ControladorPainelOpcoes.jogadorAtual("Africa"));
-			helpText.setText("Dica: recebendo exercitos para a Africa");
+		if(ControladorPainelOpcoes.getFase()==Fase.RECEBENDOAM && !ControladorPainelOpcoes.jogadorAtual("exer").equals("0")){
+			exeRestantes.setText("Exercitos restantes: " + ControladorPainelOpcoes.jogadorAtual("America do Norte"));
+			helpText.setText("Dica: recebendo exercitos para a America do Norte");
 		}
 
 		for(int i=0;i<6;i++){
@@ -263,6 +278,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 			ControladorFluxo.novoFrameDados();
 		}
 		if(e.getSource() == botaoFimDaJogada){
+			ControladorInicial.daCarta();
 			ControladorFluxo.novoFrameFimDaJogada();
 		}
 
@@ -276,6 +292,11 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		if(e.getSource() == botaoObjetivo){
 			System.out.println("Objetivo");
 			ControladorFluxo.novoFrameObjetivo();
+		}
+		
+		if(e.getSource() == botaoTroca){
+			System.out.println("Troca");
+			ControladorPainelOpcoes.troca();
 		}
 
 	}

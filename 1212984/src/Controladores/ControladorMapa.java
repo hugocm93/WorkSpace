@@ -311,6 +311,7 @@ public class ControladorMapa {
 		t.setDono(mundo.getR().getAtual().getJogador());
 		mundo.getR().getAtual().getJogador().getTerritoriosPossuidos().add(t);
 		
+		ControladorPainelOpcoes.conquistou();
 		ControladorInicial.verificaContinentes();
 		
 	}

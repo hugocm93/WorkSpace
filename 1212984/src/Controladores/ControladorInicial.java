@@ -1,12 +1,12 @@
 package Controladores;
 
 import java.util.ArrayList;
-
+import java.util.ListIterator;
+import Modelos.Carta;
 import Modelos.Continente;
 import Modelos.Jogador;
 import Modelos.Mundo;
 import Modelos.Rodada;
-import Modelos.Tabela1;
 import Modelos.Territorio;
 import Modelos.Turno;
 
@@ -132,7 +132,7 @@ public class ControladorInicial {
 	public static void verificaContinentes()  {
 		Jogador[] jogadores = mundo.getJogadores();
 		Continente[] conts = mundo.getContinentes();
-		
+
 		int u;
 		for(u=0; u<6 && jogadores[u]!=null ;u++){
 			int[] AA = {0,0,0,0,0,0};
@@ -175,4 +175,24 @@ public class ControladorInicial {
 
 	}
 
+	public static void daCarta() {
+		
+
+		if(!mundo.getR().getAtual().isJaRecebeuCarta() && mundo.getR().getAtual().isPodeReceberCarta()){
+			int index = (int)(Math.random() * mundo.getCartasDisponiveis().size());
+			Carta aux = mundo.getCartasDisponiveis().get(index);
+
+			mundo.getR().getAtual().getJogador().getCartas().add(aux);
+			aux.setDono(mundo.getR().getAtual().getJogador());
+
+			mundo.getCartasDisponiveis().remove(aux);
+
+			System.out.println("Carta" + aux.getImgNome());
+			mundo.getR().getAtual().setJaRecebeuCarta(true);
+		}
+
+	}
+
 }
+
+

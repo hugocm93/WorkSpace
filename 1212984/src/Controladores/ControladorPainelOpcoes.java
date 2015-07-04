@@ -1,8 +1,10 @@
 package Controladores;
 
 import java.util.HashMap;
+import java.util.ListIterator;
 
 import Interface.Fase;
+import Modelos.Carta;
 import Modelos.Jogador;
 import Modelos.Mundo;
 import Modelos.Territorio;
@@ -54,6 +56,8 @@ public class ControladorPainelOpcoes {
 	}
 
 	public static void isfimRodada() {
+		
+		
 		int aux = mundo.getR().getIndexTurno();
 		int aux2 = mundo.getR().getIndexRodada();
 		int u = mundo.getNJogadores();
@@ -65,6 +69,7 @@ public class ControladorPainelOpcoes {
 		}
 
 		ControladorInicial.verificaContinentes();
+		
 	}
 
 	public static boolean permitidoPassar(String name) {
@@ -126,7 +131,7 @@ public class ControladorPainelOpcoes {
 	}
 
 	public static Fase getFase() {
-		
+
 		if(mundo.getR().getAtual().getnExercitosDaVez() == 0 && !ControladorPainelOpcoes.isNotPrimeiraRodada()){
 			mundo.getR().getAtual().setF(Fase.FIM);
 		}
@@ -209,5 +214,89 @@ public class ControladorPainelOpcoes {
 
 		mundo.getR().getAtual().setSnap(snap);
 
+	}
+
+	public static void troca() {
+		int aux = mundo.getR().getAtual().getnExercitosDaVez();
+
+		if(aux != 0 && !mundo.getR().getAtual().isJaTrocou()){
+			if(mundo.getR().getAtual().getJogador().getCartas().size() >= 3){
+				int quad = 0;
+				int tria = 0;
+				int circ = 0;
+
+				ListIterator<Carta> li = mundo.getR().getAtual().getJogador().getCartas().listIterator();
+
+				Carta[] q = new Carta[3];
+				Carta[] t = new Carta[3];
+				Carta[] c = new Carta[3];
+
+				while(li.hasNext()){
+					Carta aux1 = li.next();
+
+					System.out.println(aux1);
+					System.out.println(aux1.getTerritorio() );
+					System.out.println(aux1.getTerritorio().getSimb());
+					
+					switch(aux1.getTerritorio().getSimb()){
+					case QUADRADO:
+						q[quad] = aux1;
+						quad++;
+						break;
+					case TRIANGULO:
+						t[tria] = aux1;
+						tria++;
+						break;
+					case CIRCULO:
+						c[circ] = aux1;
+						circ++;
+						break;
+					}
+				}
+
+
+				if(quad!=0 && tria!=0 && circ!=0){
+					mundo.getR().getAtual().getJogador().getCartas().remove(q[0]);
+					mundo.getR().getAtual().getJogador().getCartas().remove(t[0]);
+					mundo.getR().getAtual().getJogador().getCartas().remove(c[0]);
+				}
+				else if(quad==3){
+					mundo.getR().getAtual().getJogador().getCartas().remove(q[0]);
+					mundo.getR().getAtual().getJogador().getCartas().remove(q[1]);
+					mundo.getR().getAtual().getJogador().getCartas().remove(q[2]);
+
+				}
+				else if(tria==3){
+					mundo.getR().getAtual().getJogador().getCartas().remove(t[0]);
+					mundo.getR().getAtual().getJogador().getCartas().remove(t[1]);
+					mundo.getR().getAtual().getJogador().getCartas().remove(t[2]);
+
+				}
+				else if(circ==3){
+					mundo.getR().getAtual().getJogador().getCartas().remove(c[0]);
+					mundo.getR().getAtual().getJogador().getCartas().remove(c[1]);
+					mundo.getR().getAtual().getJogador().getCartas().remove(c[2]);
+
+				}
+
+				else{
+					return;
+				}
+
+			}
+			else{
+				return;
+			}
+			
+			mundo.getR().getAtual().setnExercitosDaVez(aux + mundo.getTabTroca().proximoValor());
+			mundo.getR().getAtual().setJaTrocou(true);
+		}
+		
+
+	}
+
+	public static void conquistou() {
+		mundo.getR().getAtual().setPodeReceberCarta(true);
+		
 	}
 }

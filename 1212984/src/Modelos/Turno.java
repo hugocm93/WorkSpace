@@ -9,6 +9,9 @@ public class Turno {
 	Jogador jogador;
 	int indexJogador;
 	int nExercitosDaVez;
+	boolean jaTrocou;
+	boolean jaRecebeuCarta;
+	boolean podeReceberCarta;
 	
 	HashMap<String, Integer> nExercitosDaVezContinente;
 	
@@ -117,6 +120,31 @@ public class Turno {
 		this.snap = snap;
 	}
 
+	public boolean isJaTrocou() {
+		return jaTrocou;
+	}
+
+	public void setJaTrocou(boolean jaTrocou) {
+		this.jaTrocou = jaTrocou;
+	}
+
+	public boolean isJaRecebeuCarta() {
+		return jaRecebeuCarta;
+	}
+
+	public void setJaRecebeuCarta(boolean jaRecebeuCarta) {
+		this.jaRecebeuCarta = jaRecebeuCarta;
+	}
+
+	public boolean isPodeReceberCarta() {
+		return podeReceberCarta;
+	}
+
+	public void setPodeReceberCarta(boolean podeReceberCarta) {
+		this.podeReceberCarta = podeReceberCarta;
+	}
+
+	
 	
 	
 }
