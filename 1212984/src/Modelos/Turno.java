@@ -2,6 +2,7 @@ package Modelos;
 
 import java.util.HashMap;
 
+import Controladores.ControladorInicial;
 import Interface.Fase;
 
 public class Turno {
@@ -36,6 +37,7 @@ public class Turno {
 		this.indexJogador = index;
 		
 		nExercitosDaVezContinente = new HashMap<String, Integer>();
+		
 	}
 
 	public Jogador getJogador() {

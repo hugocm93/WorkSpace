@@ -5,8 +5,10 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import Interface.Constantes;
+import Modelos.Carta;
 import Modelos.Cor;
 import Modelos.Mundo;
 import Modelos.Territorio;
@@ -102,11 +104,92 @@ public class ControladorMapa {
 		if(t==null){
 			return ;
 		}
+		
+		switch(ControladorPainelOpcoes.getFase()){
+		case ATAQUE:
+			break;
+		case ATAQUEDESLOCAMENTO:
+			break;
+		case CARTA:
+			break;
+		case DESLOCAMENTO:
+			break;
+		case FIM:
+			break;
+		case PRIM:
+			break;
+		case RECEBENDO:
+			t.exerMais();
+			int nExercitosDaVez1 = mundo.getR().getAtual().getnExercitosDaVez()-1;
+			mundo.getR().getAtual().setnExercitosDaVez(nExercitosDaVez1);
+			break;
+		case RECEBENDOA:
+			
+			if(t.getCont().getNome().equals("Africa")){
+				t.exerMais();
+				int nExercitosDaVez = mundo.getR().getAtual().getnExercitosDaVezContinente().get(t.getCont().getNome())-1;
+				mundo.getR().getAtual().getnExercitosDaVezContinente().remove(t.getCont());
+				
+				mundo.getR().getAtual().getnExercitosDaVezContinente().put(t.getCont().getNome(), nExercitosDaVez);
+			}
+			break;
+		case RECEBENDOAM:
+			
+			if(t.getCont().getNome().equals("America do Norte")){
+				t.exerMais();
+				int nExercitosDaVez = mundo.getR().getAtual().getnExercitosDaVezContinente().get(t.getCont().getNome())-1;
+				mundo.getR().getAtual().getnExercitosDaVezContinente().remove(t.getCont());
+				
+				mundo.getR().getAtual().getnExercitosDaVezContinente().put(t.getCont().getNome(), nExercitosDaVez);
+			}
+			break;
+		case RECEBENDOAS:
+			
+			if(t.getCont().getNome().equals("America do Sul")){
+				t.exerMais();
+				int nExercitosDaVez = mundo.getR().getAtual().getnExercitosDaVezContinente().get(t.getCont().getNome())-1;
+				mundo.getR().getAtual().getnExercitosDaVezContinente().remove(t.getCont());
+				
+				mundo.getR().getAtual().getnExercitosDaVezContinente().put(t.getCont().getNome(), nExercitosDaVez);
+			}
+			break;
+		case RECEBENDOASI:
+			
+			if(t.getCont().getNome().equals("Asia")){
+				t.exerMais();
+				int nExercitosDaVez = mundo.getR().getAtual().getnExercitosDaVezContinente().get(t.getCont().getNome())-1;
+				mundo.getR().getAtual().getnExercitosDaVezContinente().remove(t.getCont());
+				
+				mundo.getR().getAtual().getnExercitosDaVezContinente().put(t.getCont().getNome(), nExercitosDaVez);
+			}
+			break;
+		case RECEBENDOEU:
+			
+			if(t.getCont().getNome().equals("Europa")){
+				t.exerMais();
+				int nExercitosDaVez = mundo.getR().getAtual().getnExercitosDaVezContinente().get(t.getCont().getNome())-1;
+				mundo.getR().getAtual().getnExercitosDaVezContinente().remove(t.getCont());
+				
+				mundo.getR().getAtual().getnExercitosDaVezContinente().put(t.getCont().getNome(), nExercitosDaVez);
+			}
+			break;
+		case RECEBENDOOC:
+			
+			if(t.getCont().getNome().equals("Oceania")){
+				t.exerMais();
+				int nExercitosDaVez = mundo.getR().getAtual().getnExercitosDaVezContinente().get(t.getCont().getNome())-1;
+				mundo.getR().getAtual().getnExercitosDaVezContinente().remove(t.getCont());
+				
+				mundo.getR().getAtual().getnExercitosDaVezContinente().put(t.getCont().getNome(), nExercitosDaVez);
+			}
+			break;
+			
+		default:
+			break;
+		
+		}
 
-		t.exerMais();
-		int nExercitosDaVez = mundo.getR().getAtual().getnExercitosDaVez()-1;
-		mundo.getR().getAtual().setnExercitosDaVez(nExercitosDaVez);
-		return;
+		
 	}
 
 	public static boolean permitido(String name) {
@@ -114,10 +197,94 @@ public class ControladorMapa {
 		if(t==null){
 			return false;
 		}
-		if(t.getDono().getNome().equals(mundo.getR().getAtual().getJogador().getNome())){
+		if(t.getDono().getNome().equals(mundo.getR().getAtual().getJogador().getNome()) && t.getDono().getCor().equals(mundo.getR().getAtual().getJogador().getCor())){
 			if(mundo.getR().getAtual().getnExercitosDaVez() > 0){
 				return true;
 			}
+		}
+		else{
+			return false;
+		}
+		
+		switch(ControladorPainelOpcoes.getFase()){
+		case ATAQUE:
+			break;
+		case ATAQUEDESLOCAMENTO:
+			break;
+		case CARTA:
+			break;
+		case DESLOCAMENTO:
+			break;
+		case FIM:
+			break;
+		case PRIM:
+			break;
+		case RECEBENDO:
+			break;
+		case RECEBENDOA:
+			Territorio t1 = mundo.getTerritorios().get(name);
+			if(t1==null){
+				return false;
+			}
+			
+			if(t1.getCont().getNome().equals("Africa")){
+				return true;
+			}
+			break;
+		case RECEBENDOAM:
+			Territorio t11 = mundo.getTerritorios().get(name);
+			if(t11==null){
+				return false;
+			}
+			
+			if(t11.getCont().getNome().equals("America do Norte")){
+				return true;
+			}
+			break;
+		case RECEBENDOAS:
+			Territorio t111 = mundo.getTerritorios().get(name);
+			if(t111==null){
+				return false;
+			}
+			
+			if(t111.getCont().getNome().equals("America do Sul")){
+				return true;
+			}
+			break;
+		case RECEBENDOASI:
+			Territorio t1111 = mundo.getTerritorios().get(name);
+			if(t1111==null){
+				return false;
+			}
+			
+			if(t1111.getCont().getNome().equals("Asia")){
+				return true;
+			}
+			break;
+		case RECEBENDOEU:
+			Territorio t11111 = mundo.getTerritorios().get(name);
+			if(t11111==null){
+				return false;
+			}
+			
+			if(t11111.getCont().getNome().equals("Europa")){
+				return true;
+			}
+			break;
+		case RECEBENDOOC:
+			Territorio t111111 = mundo.getTerritorios().get(name);
+			if(t111111==null){
+				return false;
+			}
+			
+			if(t111111.getCont().getNome().equals("Oceania")){
+				return true;
+			}
+			break;
+			
+		default:
+			break;
+		
 		}
 
 		return false;
@@ -200,12 +367,12 @@ public class ControladorMapa {
 		}
 		if(t.getDono().getNome().equals(mundo.getR().getAtual().getJogador().getNome())){
 			if(t.getExercitos() > 1){
-				      return true;
+				return true;
 			}
 		}
 		return false;
 	}
-	
+
 	public static boolean permitidoMover2(String name) {
 		Territorio t = mundo.getTerritorios().get(name);
 		if(t==null){
@@ -214,17 +381,17 @@ public class ControladorMapa {
 		if(t.getDono().getNome().equals(mundo.getR().getAtual().getJogador().getNome())){
 			if(t.getExercitos() > 1){
 				if(mundo.getR().getAtual().getSnap().get(name).intValue() != 0){
-					
-				      return true;
+
+					return true;
 				}
 			}
 		}
 		return false;
 	}
-	
+
 	public static void moveu(String name){
 		Integer i = mundo.getR().getAtual().getSnap().get(name).intValue() - 1;
-		
+
 		mundo.getR().getAtual().getSnap().remove(name);
 		mundo.getR().getAtual().getSnap().put(name, i);
 	}
@@ -308,11 +475,77 @@ public class ControladorMapa {
 			return ;
 		}
 		t.getDono().getTerritoriosPossuidos().remove(t);
-		t.setDono(mundo.getR().getAtual().getJogador());
 		mundo.getR().getAtual().getJogador().getTerritoriosPossuidos().add(t);
-		
+		t.setDono(mundo.getR().getAtual().getJogador());
+
 		ControladorPainelOpcoes.conquistou();
-		ControladorInicial.verificaContinentes();
-		
+		//ControladorInicial.verificaContinentes();
+
 	}
+
+	public static boolean podeTrocar() {
+
+		int aux = mundo.getR().getAtual().getnExercitosDaVez();
+
+		if(aux != 0 && !mundo.getR().getAtual().isJaTrocou()){
+			if(mundo.getR().getAtual().getJogador().getCartas().size() >= 3){
+				int quad = 0;
+				int tria = 0;
+				int circ = 0;
+
+				ListIterator<Carta> li = mundo.getR().getAtual().getJogador().getCartas().listIterator();
+
+				Carta[] q = new Carta[3];
+				Carta[] t = new Carta[3];
+				Carta[] c = new Carta[3];
+
+				while(li.hasNext()){
+					Carta aux1 = li.next();
+
+					switch(aux1.getTerritorio().getSimb()){
+					case QUADRADO:
+						q[quad] = aux1;
+						quad++;
+						break;
+					case TRIANGULO:
+						t[tria] = aux1;
+						tria++;
+						break;
+					case CIRCULO:
+						c[circ] = aux1;
+						circ++;
+						break;
+					}
+				}
+
+
+				if(quad!=0 && tria!=0 && circ!=0){
+					return true;
+				}
+				else if(quad==3){
+					return true;
+
+				}
+				else if(tria==3){
+
+					return true;
+				}
+				else if(circ==3){
+					return true;
+
+				}
+
+				else{
+					return false;
+				}
+
+			}
+			else{
+				return false;
+			}
+		}
+		return false;
+
+	}
+
 }

@@ -2,9 +2,9 @@ package Controladores;
 
 import java.util.HashMap;
 import java.util.ListIterator;
-
 import Interface.Fase;
 import Modelos.Carta;
+import Modelos.Continente;
 import Modelos.Jogador;
 import Modelos.Mundo;
 import Modelos.Territorio;
@@ -34,6 +34,26 @@ public class ControladorPainelOpcoes {
 			return String.format("%d",mundo.getR().getAtual().getnExercitosDaVezContinente().get(param).intValue());
 
 		}
+		if(param.equals("America do Sul")){
+			return String.format("%d",mundo.getR().getAtual().getnExercitosDaVezContinente().get(param).intValue());
+
+		}
+		if(param.equals("Africa")){
+			return String.format("%d",mundo.getR().getAtual().getnExercitosDaVezContinente().get(param).intValue());
+
+		}
+		if(param.equals("Europa")){
+			return String.format("%d",mundo.getR().getAtual().getnExercitosDaVezContinente().get(param).intValue());
+
+		}
+		if(param.equals("Asia")){
+			return String.format("%d",mundo.getR().getAtual().getnExercitosDaVezContinente().get(param).intValue());
+
+		}
+		if(param.equals("Oceania")){
+			return String.format("%d",mundo.getR().getAtual().getnExercitosDaVezContinente().get(param).intValue());
+
+		}
 		return null;
 	}
 
@@ -56,8 +76,8 @@ public class ControladorPainelOpcoes {
 	}
 
 	public static void isfimRodada() {
-		
-		
+
+
 		int aux = mundo.getR().getIndexTurno();
 		int aux2 = mundo.getR().getIndexRodada();
 		int u = mundo.getNJogadores();
@@ -69,7 +89,7 @@ public class ControladorPainelOpcoes {
 		}
 
 		ControladorInicial.verificaContinentes();
-		
+
 	}
 
 	public static boolean permitidoPassar(String name) {
@@ -141,59 +161,91 @@ public class ControladorPainelOpcoes {
 		if(mundo.getR().getAtual().isFimFaseAtaque()){
 			mundo.getR().getAtual().setF(Fase.DESLOCAMENTO);
 		}
-		try{
-			if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("America do Norte").intValue() > 0){
-				mundo.getR().getAtual().setF(Fase.RECEBENDOAM);
-			}
-		}
-		catch(Exception e){
-
-		}
-		try{
-			if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("America do Sul").intValue() > 0){
-				mundo.getR().getAtual().setF(Fase.RECEBENDOAS);
-			}
-		}
-		catch(Exception e){
-
-		}
-		try{
-			if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("Africa").intValue() > 0){
-				mundo.getR().getAtual().setF(Fase.RECEBENDOA);
-			}
-		}
-		catch(Exception e){
-
-		}
-		try{
-			if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("Europa").intValue() > 0){
-				mundo.getR().getAtual().setF(Fase.RECEBENDOEU);
-			}
-		}
-		catch(Exception e){
-
-		}
-		try{
-			if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("Asia").intValue() > 0){
-				mundo.getR().getAtual().setF(Fase.RECEBENDOASI);
-			}
-		}
-		catch(Exception e){
-
-		}
-		try{
-			if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("Oceania").intValue() > 0){
-				mundo.getR().getAtual().setF(Fase.RECEBENDOOC);
-			}
-		}
-		catch(Exception e){
-
-		}
 		if(mundo.getR().getAtual().getnExercitosDaVez() > 0){
 			mundo.getR().getAtual().setF(Fase.RECEBENDO);
 		}
+		if(mundo.getR().getAtual().getnExercitosDaVez() == 0){
+			//ControladorInicial.verificaContinentes();
+			try{
+				if(ControladorPainelOpcoes.pertenceAoAtual("America do Norte")){
+					if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("America do Norte").intValue() > 0){
+
+						mundo.getR().getAtual().setF(Fase.RECEBENDOAM);
+					}
+				}
+			}
+			catch(Exception e){
+
+			}
+			try{
+				if(ControladorPainelOpcoes.pertenceAoAtual("America do Sul")){
+					if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("America do Sul").intValue() > 0){
+						mundo.getR().getAtual().setF(Fase.RECEBENDOAS);
+					}
+				}
+			}
+			catch(Exception e){
+
+			}
+			try{
+				if(ControladorPainelOpcoes.pertenceAoAtual("Africa")){
+
+					if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("Africa").intValue() > 0){
+						mundo.getR().getAtual().setF(Fase.RECEBENDOA);
+					}
+				}
+			}
+			catch(Exception e){
+
+			}
+			try{
+				if(ControladorPainelOpcoes.pertenceAoAtual("Europa")){
+					if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("Europa").intValue() > 0){
+						mundo.getR().getAtual().setF(Fase.RECEBENDOEU);
+					}
+				}
+			}
+			catch(Exception e){
+
+			}
+			try{
+				if(ControladorPainelOpcoes.pertenceAoAtual("Asia")){
+
+					if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("Asia").intValue() > 0){
+						mundo.getR().getAtual().setF(Fase.RECEBENDOASI);
+					}
+				}
+			}
+			catch(Exception e){
+
+			}
+			try{
+				if(ControladorPainelOpcoes.pertenceAoAtual("Oceania")){
+
+					if(mundo.getR().getAtual().getnExercitosDaVezContinente().get("Oceania").intValue() > 0){
+						mundo.getR().getAtual().setF(Fase.RECEBENDOOC);
+					}
+				}
+			}
+			catch(Exception e){
+
+			}
+		}
+
 
 		return mundo.getR().getAtual().getF();
+	}
+
+	private static boolean pertenceAoAtual(String name) {
+		ListIterator<Continente> li  = mundo.getR().getAtual().getJogador().getContinentesPossuidos().listIterator();
+
+		while(li.hasNext()){
+			if(li.next().getNome().equals(name)){
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	public static boolean podeAtacar() {
@@ -237,7 +289,7 @@ public class ControladorPainelOpcoes {
 					System.out.println(aux1);
 					System.out.println(aux1.getTerritorio() );
 					System.out.println(aux1.getTerritorio().getSimb());
-					
+
 					switch(aux1.getTerritorio().getSimb()){
 					case QUADRADO:
 						q[quad] = aux1;
@@ -287,16 +339,16 @@ public class ControladorPainelOpcoes {
 			else{
 				return;
 			}
-			
+
 			mundo.getR().getAtual().setnExercitosDaVez(aux + mundo.getTabTroca().proximoValor());
 			mundo.getR().getAtual().setJaTrocou(true);
 		}
-		
+
 
 	}
 
 	public static void conquistou() {
 		mundo.getR().getAtual().setPodeReceberCarta(true);
-		
+
 	}
 }

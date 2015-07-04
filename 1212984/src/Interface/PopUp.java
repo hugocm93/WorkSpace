@@ -63,7 +63,6 @@ class PopUp extends JPopupMenu implements ActionListener{
 		add(anItem);
 		anItem.addActionListener(this);
 
-
 	}
 
 	@Override
