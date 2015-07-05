@@ -182,6 +182,7 @@ public class ControladorInicial {
 
 	}
 
+	
 	public static void daCarta() {
 
 

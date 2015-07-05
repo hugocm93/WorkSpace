@@ -1,17 +1,13 @@
 package Controladores;
 
 import javax.swing.ImageIcon;
-import java.util.*;
-import Interface.Observable;
-import Interface.Observer;
 import Modelos.Dado;
 import Modelos.Mundo;
 import Modelos.Territorio;
 import Modelos.TipoDado;
 
-public class ControladorFrameDados implements Observable {
+public class ControladorFrameDados{
 
-	private List<Observer> observers = new ArrayList();
 	private static Mundo mundo = Mundo.getInstance();
 
 	public static  void jogarDadosAtaque(int nExercitosAtaque){
@@ -159,27 +155,4 @@ public class ControladorFrameDados implements Observable {
 		}
 	}
 	
-	public static String getNomeDefensor(){
-		return mundo.getR().getAtual().getDefensor().getDono().getNome();
-	}
-
-	@Override
-	public void registerObserver(Observer observer) {
-		observers.add(observer);
-	}
-
-	@Override
-	public void removeObserver(Observer observer) {
-		observers.remove(observer);
-	}
-
-	@Override
-	public void notifyObservers() {
-		for (Observer ob : observers) {
-            System.out.println("Notificando observers!");
-              ob.update(getNomeDefensor());
-            }
-	}
-
-
 }

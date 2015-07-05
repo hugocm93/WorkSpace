@@ -1,6 +1,7 @@
 package Controladores;
 
 import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
 
 import Interface.Constantes;
@@ -13,9 +14,11 @@ import Interface.PainelMapa;
 import Interface.PainelOpcoes;
 import Interface.PainelTelaInicial;
 import Interface.FrameTerritorio;
+import Modelos.Mundo;
 
 public class ControladorFluxo{
 
+	private static Mundo mundo = Mundo.getInstance();
 	public static  JFrame janela;
 	private static FrameDados frameDados;
 	private static FrameFimDaJogada frameFimDaJogada;
@@ -26,6 +29,10 @@ public class ControladorFluxo{
 	public static  PainelMapa painelMapa;
 	private static PainelOpcoes painelOpcoes;
 	private static FrameTerritorio frameTerritorio;
+	
+	public static void testarObserver(){
+		mundo.registerObserver(painelTelaInicial);
+	}
 	
 	public static void criaJanela(){
 

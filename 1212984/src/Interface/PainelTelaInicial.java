@@ -8,17 +8,20 @@ import java.awt.event.FocusListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 import Controladores.ControladorInicial;
 import Controladores.ControladorFluxo;
+
 import org.imgscalr.Scalr;
 
-public class PainelTelaInicial extends JPanel implements ActionListener, FocusListener{
+public class PainelTelaInicial extends JPanel implements ActionListener, FocusListener, Observer{
 
 	private static final long serialVersionUID = 1L;
 	private String path1 = System.getProperty("user.dir");
@@ -128,7 +131,8 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 
 			}
 			else{
-				JOptionPane.showMessageDialog(this, "O n√∫mero m√≠nimo de jogadores √© 3.");
+				JOptionPane.showMessageDialog(this, "O numero minimo de jogadores eh 3.");
+				ControladorFluxo.testarObserver();
 			}
 		}
 	}
@@ -158,4 +162,14 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 	public void focusLost(FocusEvent e) {
 
 	}
+
+	@Override
+	public void update(Object obj) {
+		
+		if(nJogadores < 3){
+			System.out.println("Quantidade de jogadores n„o v·lida!");
+		}
+		
+	}
+
 }

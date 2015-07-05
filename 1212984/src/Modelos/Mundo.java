@@ -3,9 +3,14 @@ package Modelos;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
-public class Mundo {
+import Interface.Observable;
+import Interface.Observer;
 
+public class Mundo implements Observable{
+
+	private List<Observer> observers = new ArrayList<Observer>();
 	Continente[] continentes;
 	Tabela1 tabTroca;
 	Jogador[] jogadores;
@@ -18,6 +23,7 @@ public class Mundo {
 	Baralho cartasTroca;
 	ArrayList<String> objDisponiveis = new ArrayList<String>();
 	ArrayList<Carta> cartasDisponiveis = new ArrayList<Carta>();
+	static String[] rets;
 
 	private static Mundo instance;
 
@@ -651,6 +657,7 @@ public class Mundo {
 		for(u=0; u<6 && this.getJogadores()[u]!=null ;u++);
 		
 		nJogadores = u;
+		notifyObservers();
 	}
 	
 	public int getNJogadores(){
@@ -687,6 +694,25 @@ public class Mundo {
 
 	public void setCartasDisponiveis(ArrayList<Carta> cartasDisponiveis) {
 		this.cartasDisponiveis = cartasDisponiveis;
+	}
+
+	@Override
+	public void registerObserver(Observer observer) {
+		observers.add(observer);
+	}
+
+	@Override
+	public void removeObserver(Observer observer) {
+		observers.remove(observer);
+	}
+
+	@Override
+	public void notifyObservers() {
+		for (Observer ob : observers) {
+            System.out.println("Notificando observers!");
+              ob.update(this.nJogadores);
+            }
+		
 	}
 	
 	

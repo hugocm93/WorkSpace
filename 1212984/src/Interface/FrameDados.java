@@ -21,7 +21,7 @@ import Controladores.ControladorFrameDados;
 import Controladores.ControladorMapa;
 import Modelos.Mundo;
 
-public class FrameDados extends JFrame implements ActionListener, Observer{
+public class FrameDados extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private static Mundo mundo = Mundo.getInstance();
@@ -178,20 +178,5 @@ public class FrameDados extends JFrame implements ActionListener, Observer{
 				}
 			}
 		}
-	}
-
-
-	@Override
-	public void update(String obj) {
-		if(ControladorFrameDados.compararDados() == true){
-			System.out.println("O jogador " + obj + " perdeu!");
-		}
-	}
-
-
-	@Override
-	public void update(Object obj) {
-		// TODO Auto-generated method stub
-		
 	}
 }
