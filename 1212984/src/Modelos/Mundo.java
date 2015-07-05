@@ -710,7 +710,7 @@ public class Mundo implements Observable{
 	public void notifyObservers() {
 		for (Observer ob : observers) {
             System.out.println("Notificando observers!");
-              ob.update(this.nJogadores);
+              ob.update(getNJogadores());
             }
 		
 	}

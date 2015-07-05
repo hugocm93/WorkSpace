@@ -121,6 +121,7 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 					}	
 				}
 				ControladorInicial.calculaJogadores();
+				ControladorFluxo.testarObserver();
 				ControladorInicial.sortSequencia();	//sorteando a sequencia
 				ControladorInicial.distribuiObjetivos();
 				ControladorInicial.sortearTerritorios();
@@ -132,7 +133,7 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 			}
 			else{
 				JOptionPane.showMessageDialog(this, "O numero minimo de jogadores eh 3.");
-				ControladorFluxo.testarObserver();
+				
 			}
 		}
 	}
@@ -166,8 +167,17 @@ public class PainelTelaInicial extends JPanel implements ActionListener, FocusLi
 	@Override
 	public void update(Object obj) {
 		
-		if(nJogadores < 3){
-			System.out.println("Quantidade de jogadores não válida!");
+		if(nJogadores == 3){
+			System.out.println("Temos 3 jogadores!");
+		}
+		if(nJogadores == 4){
+			System.out.println("Temos 4 jogadores!");
+		}
+		if(nJogadores == 5){
+			System.out.println("Temos 5 jogadores!");
+		}
+		if(nJogadores ==6){
+			System.out.println("Temos 6 jogadores!");
 		}
 		
 	}
