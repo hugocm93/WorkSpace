@@ -1,6 +1,7 @@
 package Controladores;
 
 import java.awt.BorderLayout;
+import java.util.*;
 
 import javax.swing.JFrame;
 
@@ -15,7 +16,7 @@ import Interface.PainelOpcoes;
 import Interface.PainelTelaInicial;
 import Interface.FrameTerritorio;
 
-public class ControladorFluxo {
+public class ControladorFluxo implements Observer{
 
 	public static  JFrame janela;
 	private static FrameDados frameDados;
@@ -149,5 +150,12 @@ public class ControladorFluxo {
 		frameTerritorio.setBounds(0,0,440,725);
 		frameTerritorio.setVisible(true);
 		frameTerritorio.setResizable(false);
+	}
+
+	@Override
+	public void update(Observable frameTerritorio, Object painelCartas) {
+		if (painelCartas != null) {
+            System.out.println("Voce tem um painel de cartas!");
+        }
 	}
 }
