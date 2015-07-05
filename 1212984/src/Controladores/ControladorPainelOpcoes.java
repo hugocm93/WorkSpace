@@ -362,20 +362,20 @@ public class ControladorPainelOpcoes {
 
 	public static void verificaGanhador() {
 		final String[] cartasObjetivo = new String[14];
-		cartasObjetivo[0] = "Destruir totalmente os exercitos azuis.\n Se voce √© quem possui os exercitos azuis,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
-		cartasObjetivo[1] = "Destruir totalmente os exercitos verdes.\n Se voce √© quem possui os exercitos verdes,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
-		cartasObjetivo[2] = "Destruir totalmente os exercitos amarelos.\n Se voce √© quem possui os exercitos amarelos,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
-		cartasObjetivo[3] = "Destruir totalmente os exercitos vermelhos.\n Se voce √© quem possui os exercitos vermelhos,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
-		cartasObjetivo[4] = "Destruir totalmente os exercitos brancos.\n Se voce √© quem possui os exercitos brancos,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
-		cartasObjetivo[5] = "Destruir totalmente os exercitos pretos.\n Se voce √© quem possui os exercitos pretos,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
-		cartasObjetivo[6] = "Conquistar na totalidade a Europa, Oceania\n e mais um continente √† sua escolha";
-		cartasObjetivo[7] = "Conquistar na totalidade\n a √Åsia e a √Åfrica";
-		cartasObjetivo[8] = "Conquistar na totalidade\n a Am√©rica do Norte e a Oceania";
-		cartasObjetivo[9] = "Conquistar na totalidade a Europa,\n a Am√©rica do Sul e mais um\n continete √† sua escolha";
-		cartasObjetivo[10] = "Conquistar na totalidade a √Åsia\n e a Am√©rica do Sul";
-		cartasObjetivo[11] = "Conquistar 24 territ√≥rios\n √† sua escolha";
-		cartasObjetivo[12] = "Conquistar na totalidade a\n Am√©rica do Norte e a √Åfrica";
-		cartasObjetivo[13] = "Conquistar 18 territ√≥rios e ocupar\n cada um deles com pelo menos 2 ex√©rcitos";
+		cartasObjetivo[0] = "Destruir totalmente os exercitos azuis.\n Se voce È quem possui os exercitos azuis,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
+		cartasObjetivo[1] = "Destruir totalmente os exercitos verdes.\n Se voce È quem possui os exercitos verdes,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
+		cartasObjetivo[2] = "Destruir totalmente os exercitos amarelos.\n Se voce È quem possui os exercitos amarelos,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
+		cartasObjetivo[3] = "Destruir totalmente os exercitos vermelhos.\n Se voce È quem possui os exercitos vermelhos,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
+		cartasObjetivo[4] = "Destruir totalmente os exercitos brancos.\n Se voce È quem possui os exercitos brancos,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
+		cartasObjetivo[5] = "Destruir totalmente os exercitos pretos.\n Se voce È quem possui os exercitos pretos,\n ou se o jogador que os possuir for eliminado\n por outro jogador\n, o seu objetivo passa a ser\n conquistar 24 territorios";
+		cartasObjetivo[6] = "Conquistar na totalidade a Europa, Oceania\n e mais um continente a sua escolha";
+		cartasObjetivo[7] = "Conquistar na totalidade\n a ¡sia e a ¡frica";
+		cartasObjetivo[8] = "Conquistar na totalidade\n a AmÈrica do Norte e a Oceania";
+		cartasObjetivo[9] = "Conquistar na totalidade a Europa,\n a ¡frica do Sul e mais um\n continete a sua escolha";
+		cartasObjetivo[10] = "Conquistar na totalidade a ¡sia\n e a AmÈrica do Sul";
+		cartasObjetivo[11] = "Conquistar 24 territÛrios\n a sua escolha";
+		cartasObjetivo[12] = "Conquistar na totalidade a\n AmÈrica do Norte e a ¡frica";
+		cartasObjetivo[13] = "Conquistar 18 territÈrios e ocupar\n cada um deles com pelo menos 2 exÈrcitos";
 
 		String aux = mundo.getR().getAtual().getJogador().getObj();
 		System.out.println(aux);

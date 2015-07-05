@@ -7,18 +7,21 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
 import org.imgscalr.Scalr;
+
 import Controladores.ControladorFluxo;
 import Controladores.ControladorFrameDados;
 import Controladores.ControladorMapa;
 import Modelos.Mundo;
 
-public class FrameDados extends JFrame implements ActionListener{
+public class FrameDados extends JFrame implements ActionListener, Observer{
 
 	private static final long serialVersionUID = 1L;
 	private static Mundo mundo = Mundo.getInstance();
@@ -175,5 +178,20 @@ public class FrameDados extends JFrame implements ActionListener{
 				}
 			}
 		}
+	}
+
+
+	@Override
+	public void update(String obj) {
+		if(ControladorFrameDados.compararDados() == true){
+			System.out.println("O jogador " + obj + " perdeu!");
+		}
+	}
+
+
+	@Override
+	public void update(Object obj) {
+		// TODO Auto-generated method stub
+		
 	}
 }

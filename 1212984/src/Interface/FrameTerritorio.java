@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -17,10 +16,9 @@ import org.imgscalr.Scalr;
 
 import Controladores.ControladorMapa;
 
-public class FrameTerritorio extends JFrame implements Observable{
+public class FrameTerritorio extends JFrame{
 
 	private static final long serialVersionUID = 1L;
-	private List<Observer> observers = new ArrayList();
 	private PainelCartas painelCartas = new PainelCartas();
 
 
@@ -31,28 +29,6 @@ public class FrameTerritorio extends JFrame implements Observable{
 		
 		painelCartas.setVisible(true);
 		this.add(painelCartas);
-	}
-
-
-
-	@Override
-	public void registerObserver(Observer observer) {
-		observers.add(observer);
-	}
-
-
-	@Override
-	public void removeObserver(Observer observer) {
-	observers.remove(observer);
-	}
-
-
-	@Override
-	public void notifyObservers() {		
-		for (Observer ob : observers) {
-			System.out.println("Notificando observers!");
-	        ob.update(this.add(painelCartas));
-	    }
 	}
 }
 
