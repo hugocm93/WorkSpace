@@ -104,7 +104,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		this.add(botaoFimDaJogada);
 		botaoFimDaJogada.setVisible(true);
 
-		botaoTerritorio.setIcon(new ImageIcon(Scalr.resize(imgTerritorio, 50)));
+		botaoTerritorio.setIcon(new ImageIcon(Scalr.resize(imgTerritorio, 60)));
 		botaoTerritorio.setOpaque(false);
 		botaoTerritorio.setContentAreaFilled(false);
 		botaoTerritorio.setBorderPainted(false);
@@ -120,7 +120,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		this.add(botaoFimAtaque);
 		botaoFimAtaque.setVisible(true);
 
-		botaoObjetivo.setIcon(new ImageIcon(Scalr.resize(imgAlvo, 50)));
+		botaoObjetivo.setIcon(new ImageIcon(Scalr.resize(imgAlvo, 60)));
 		botaoObjetivo.setOpaque(false);
 		botaoObjetivo.setContentAreaFilled(false);
 		botaoObjetivo.setBorderPainted(false);
@@ -128,7 +128,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		this.add(botaoObjetivo);
 		botaoObjetivo.setVisible(true);
 
-		botaoTroca.setIcon(new ImageIcon(Scalr.resize(imgTroca, 50)));
+		botaoTroca.setIcon(new ImageIcon(Scalr.resize(imgTroca, 60)));
 		botaoTroca.setOpaque(false);
 		botaoTroca.setContentAreaFilled(false);
 		botaoTroca.setBorderPainted(false);
@@ -136,7 +136,7 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		this.add(botaoTroca);
 		botaoTroca.setVisible(true);
 
-		botaoDado.setIcon(new ImageIcon(Scalr.resize(imgDados, 50)));
+		botaoDado.setIcon(new ImageIcon(Scalr.resize(imgDados, 60)));
 		botaoDado.setSize(50, 50);
 		botaoDado.setVisible(true);
 		botaoDado.setOpaque(false);
@@ -193,11 +193,11 @@ public class PainelOpcoes extends JPanel implements ActionListener{
 		nomeJogador.setBounds(20, 88, 150, 20);
 		exeRestantes.setBounds(this.getBounds().width-200, this.getBounds().height-50, 200,50);
 		helpText.setBounds(this.getBounds().width-750, this.getBounds().height-130, 600,50);
-		botaoDado.setBounds(this.getBounds().width-400, this.getBounds().height-90, 50, 50);
-		botaoObjetivo.setBounds(this.getBounds().width-500, this.getBounds().height-90, 50, 50);
-		botaoTroca.setBounds(this.getBounds().width-600, this.getBounds().height-90, 50, 50);
+		botaoDado.setBounds(this.getBounds().width-400, this.getBounds().height-90, 60, 60);
+		botaoObjetivo.setBounds(this.getBounds().width-500, this.getBounds().height-90, 60, 60);
+		botaoTroca.setBounds(this.getBounds().width-600, this.getBounds().height-90, 60, 60);
 
-		botaoTerritorio.setBounds(this.getBounds().width-700, this.getBounds().height-90, 50, 50);
+		botaoTerritorio.setBounds(this.getBounds().width-700, this.getBounds().height-90, 60, 60);
 
 		for ( int i = 0, j = 120; i<6 && imgPinos[i]!=null ; i++, j=j+22 ){
 			ordemDosJogadores[i].setBounds(j, 0, 20, 20);			
